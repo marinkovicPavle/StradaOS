@@ -198,7 +198,7 @@ public class Weather {
         String name = null;
         try {
             if (Geocoder.isPresent()) {
-                List<Address> a = new Geocoder(c, new Locale(I18n.lang)).getFromLocation(lat, lon, 1);
+                List<Address> a = new Geocoder(c, "sr".equals(I18n.lang) ? I18n.loc : new Locale(I18n.lang)).getFromLocation(lat, lon, 1);
                 if (a != null && !a.isEmpty()) {
                     name = a.get(0).getLocality();
                     if (name == null) name = a.get(0).getSubAdminArea();

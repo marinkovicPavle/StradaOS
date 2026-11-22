@@ -21,8 +21,8 @@ import java.util.regex.Pattern;
  * tabla. En la traducción, {1}, {2}… permiten cambiar el orden. Si un texto no está en la tabla queda en español.
  */
 public class I18n {
-    static final String[] CODES = {"es", "en", "pt", "it", "de", "ms", "ar", "tr", "fr", "zh", "hu", "pl"};
-    static final String[] NAMES = {"Español", "English", "Português", "Italiano", "Deutsch", "Melayu", "العربية", "Türkçe", "Français", "中文", "Magyar", "Polski"};
+    static final String[] CODES = {"es", "en", "pt", "it", "de", "ms", "ar", "tr", "fr", "zh", "hu", "pl", "sr"};
+    static final String[] NAMES = {"Español", "English", "Português", "Italiano", "Deutsch", "Melayu", "العربية", "Türkçe", "Français", "中文", "Magyar", "Polski", "Srpski"};
 
     static String lang = "es";
     static Locale loc = new Locale("es", "CO");
@@ -42,7 +42,7 @@ public class I18n {
         int lit;   // letras fijas: se prueban primero los patrones más específicos
     }
 
-    /** Idioma guardado («auto», «es», «en», «pt», «it», «de», «ms», «ar», «tr», «fr», «zh», «hu»). Instalaciones anteriores a los idiomas siguen en español. */
+    /** Idioma guardado («auto», «es», «en», «pt», «it», «de», «ms», «ar», «tr», «fr», «zh», «hu», «pl», «sr»). Instalaciones anteriores a los idiomas siguen en español. */
     static String pref(SharedPreferences p) {
         String v = p.getString("lang", null);
         if (v == null) {
@@ -74,7 +74,7 @@ public class I18n {
             : "ms".equals(code) ? new Locale("ms", "MY") : "ar".equals(code) ? new Locale("ar")
             : "tr".equals(code) ? new Locale("tr", "TR") : "fr".equals(code) ? Locale.FRANCE
             : "zh".equals(code) ? Locale.SIMPLIFIED_CHINESE : "hu".equals(code) ? new Locale("hu", "HU")
-            : "pl".equals(code) ? new Locale("pl", "PL")
+            : "pl".equals(code) ? new Locale("pl", "PL") : "sr".equals(code) ? serbianLatin()
             : new Locale("es", "CO");
         num = "ar".equals(code) ? Locale.US : loc;
         map.clear();
@@ -230,6 +230,20 @@ public class I18n {
         if ("zh".equals(lang)) return "EEEE, M月d日";
         if ("hu".equals(lang)) return "MMMM d., EEEE";
         if ("pl".equals(lang)) return "EEEE, d MMMM";
+        if ("sr".equals(lang)) return "EEEE, d. MMMM";
         return "EEEE, d 'de' MMMM";
+    }
+
+    /** Srpski latinicom (sr-Latn-RS): bez pisma u Locale-u Android daje ćirilične nazive dana i meseci. */
+    static Locale serbianLatin() {
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            return new Locale.Builder().setLanguage("sr").setRegion("RS").setScript("Latn").build();
+        }
+        return new Locale("sr", "RS");
+    }
+
+    /** Jezik za upite servisima za pretragu i mesta: za srpski traži latinične nazive. */
+    static String webLang() {
+        return "sr".equals(lang) ? "sr-Latn,sr" : lang;
     }
 }
