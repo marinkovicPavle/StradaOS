@@ -221,6 +221,12 @@ public class Main extends Activity {
         };
         root.setBackgroundColor(BG);
         setContentView(root);
+        // točkić i tasteri: svako dugme posebno i okvir oko izabranog (vidi Rotary)
+        Rotary.load(prefs);
+        rotary = new Rotary(this, root, new Rotary.Scope() {
+            public View[] roots() { return focusRoots(); }
+            public boolean home() { return settingsView == null && drawer == null && (vpanel == null || !vpanel.isOpen()); }
+        });
         try {
             Location ll = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (!validLoc(ll)) ll = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -532,6 +538,102 @@ public class Main extends Activity {
         }
         if (e.getAction() == MotionEvent.ACTION_DOWN) idleReset();
         return super.dispatchTouchEvent(e);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent e) {
+        int code = e.getKeyCode();
+        if (Rotary.isNavKey(code)) {
+            if (idleView != null || idleSwallow) {
+                // kao dodir: taster koji gasi screensaver ne radi ništa drugo
+                if (e.getAction() == KeyEvent.ACTION_DOWN) { hideIdle(); idleSwallow = true; }
+                if (e.getAction() == KeyEvent.ACTION_UP) { idleSwallow = false; idleReset(); }
+                return true;
+            }
+            if (e.getAction() == KeyEvent.ACTION_DOWN) idleReset();
+            if (rotary != null && rotary.key(e)) return true;
+        }
+        return super.dispatchKeyEvent(e);
+    }
+
+    private Rotary rotary;
+
+    /** Šta točkić i strelice sada mogu da obiđu: ono što je gore pokriva ono ispod. */
+    private View[] focusRoots() {
+        if (settingsView != null && settingsView.getParent() != null) return new View[]{settingsView};
+        if (drawer != null && drawer.getParent() != null) return new View[]{drawer};
+        if (vpanel != null && vpanel.isOpen()) return new View[]{vpanel};
+        if (idleView != null) return new View[0];
+        return new View[]{board, vhandle};
+    }
+
+    /**
+     * Uči koje tastere šalje točkić u kolima: korak udesno, korak ulevo i pritisak. Prikazuje svaki taster koji
+     * stigne (ime, kod i scan kod): ako se pri okretanju ništa ne pojavi, jedinica ne prosleđuje točkić aplikacijama
+     * (koristi ga sistem ili CAN kutija) i nema šta da se nauči.
+     */
+    private void learnKnob() {
+        final int keepN = Rotary.next, keepP = Rotary.prev, keepO = Rotary.ok;
+        Rotary.next = Rotary.prev = Rotary.ok = -1;   // dok uči, tasteri ništa ne pomeraju
+        final String[] ask = {"Gira la perilla un paso a la derecha", "Ahora gírala un paso a la izquierda",
+            "Ahora presiónala (aceptar)"};
+        final int[] got = {-1, -1, -1};
+        final int[] step = {0};
+        final boolean[] done = {false};
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        final TextView msg = tv(ask[0], 17, TEXT, true);
+        msg.setSingleLine(false);
+        msg.setEllipsize(null);
+        final TextView seen = tv("Esperando una tecla…", 14, MUTED, false);
+        seen.setSingleLine(false);
+        seen.setEllipsize(null);
+        seen.setPadding(0, (int) (10 * s), 0, 0);
+        final TextView skip = tv("Omitir este paso", 14, RED, true);
+        skip.setPadding(0, (int) (16 * s), 0, (int) (4 * s));
+        box.addView(msg);
+        box.addView(seen);
+        box.addView(skip);
+        final AlertDialog d = new TB(this, dlg()).setTitle("Aprender la perilla").setView(box)
+            .setNegativeButton("Cancelar", null).create();
+        final Runnable finish = new Runnable() { public void run() {
+            done[0] = true;
+            SharedPreferences.Editor ed = prefs.edit();
+            String[] keys = {Rotary.P_NEXT, Rotary.P_PREV, Rotary.P_OK};
+            for (int k = 0; k < 3; k++) { if (got[k] > 0) ed.putInt(keys[k], got[k]); else ed.remove(keys[k]); }
+            ed.apply();
+            Rotary.load(prefs);
+            try { d.dismiss(); } catch (Throwable ignored) { }
+            toast(Rotary.learned() ? "Listo: gira la perilla para elegir y presiónala para abrir" : "No se aprendió ninguna tecla");
+            if (settingsView != null) showSettings(settingsCat);
+        }};
+        final Runnable advance = new Runnable() { public void run() {
+            step[0]++;
+            if (step[0] >= 3) { finish.run(); return; }
+            msg.setText(I18n.t(ask[step[0]]));
+        }};
+        skip.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { advance.run(); } });
+        d.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            public boolean onKey(DialogInterface di, int code, KeyEvent e) {
+                if (code == KeyEvent.KEYCODE_BACK || code == KeyEvent.KEYCODE_HOME) return false;
+                if (e.getAction() != KeyEvent.ACTION_DOWN || e.getRepeatCount() > 0) return true;
+                seen.setText(I18n.t("Llegó:") + " " + Rotary.keyName(code) + " · scan " + e.getScanCode());
+                int st = step[0];
+                if ((st == 1 && code == got[0]) || (st == 2 && (code == got[0] || code == got[1]) && code > 0)) {
+                    seen.setText(seen.getText() + "\n" + I18n.t("Es la misma tecla del paso anterior: prueba al otro lado"));
+                    return true;
+                }
+                got[st] = code;
+                advance.run();
+                return true;
+            }
+        });
+        d.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            public void onDismiss(DialogInterface di) {
+                if (!done[0]) { Rotary.next = keepN; Rotary.prev = keepP; Rotary.ok = keepO; }   // otkazano: ostaje kao pre
+            }
+        });
+        d.show();
     }
 
     private int idleColor() {
@@ -1365,6 +1467,7 @@ public class Main extends Activity {
 
         drawer = null;
         settingsView = null;
+        if (rotary != null) rotary.style(RED, s);
         updateClock();
         refreshStates();
         updateStatusIcons();
@@ -2864,6 +2967,7 @@ public class Main extends Activity {
             public void onClick(View v) { openNavMenu(); }
         });
         navHud = hud;
+        Rotary.proxy(turnBox, hud);   // točkić: strelica skretanja otvara meni rute (✕ je zaustavlja)
         place(card, hud, 12, 12, mapW - 24, 72);
 
         // 2.18: qué botones de conexión se ven (Reinaldo, MIGSGx #12). Con uno o ninguno, el clima usa el espacio libre.
@@ -3015,6 +3119,10 @@ public class Main extends Activity {
                 else setOpen[isOpen ? 1 : 0].run();
                 return true;
             }
+        });
+        // točkić: i strelica može da se izabere i pritisne (prstom i dalje radi dodir/prevlačenje odozgo)
+        handle.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) { setOpen[prefs.getBoolean("aa_panel_open", true) ? 1 : 0].run(); }
         });
         View.OnTouchListener swipeDown = new View.OnTouchListener() {
             float x0, y0;
@@ -3627,6 +3735,7 @@ public class Main extends Activity {
         card.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) { openMusicApp(); }
         });
+        Rotary.proxy(playerArt, card);   // točkić: omot zamenjuje karticu (otvara muzičku aplikaciju)
         renderTrack();
         // Oculta (2.18): se arma igual (la música sigue actualizándose sin fallar) pero no se muestra
         if (!showPlayer) board.removeView(card);
@@ -4263,6 +4372,7 @@ public class Main extends Activity {
         });
         card.setOnLongClickListener(new View.OnLongClickListener() { public boolean onLongClick(View v) { showPlayerDiag(); return true; } });
         card.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { openMusicApp(); } });
+        Rotary.proxy(playerArt, card);
         renderTrack();
     }
 
@@ -4865,6 +4975,7 @@ public class Main extends Activity {
         });
         card.setOnLongClickListener(new View.OnLongClickListener() { public boolean onLongClick(View v) { showPlayerDiag(); return true; } });
         card.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { openMusicApp(); } });
+        Rotary.proxy(playerArt, card);
         renderTrack();
     }
 
@@ -5225,6 +5336,7 @@ public class Main extends Activity {
         });
         card.setOnLongClickListener(new View.OnLongClickListener() { public boolean onLongClick(View v) { showPlayerDiag(); return true; } });
         card.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { openMusicApp(); } });
+        Rotary.proxy(playerArt, card);
         renderTrack();
     }
 
@@ -9683,6 +9795,17 @@ public class Main extends Activity {
             if (i == 1) { h.removeCallbacks(autoBackup); h.postDelayed(autoBackup, 500); }
             showSettings(settingsCat);
         }});
+        // točkić u kolima (W204 sa COMAND-om): nauči njegove tastere da se početni ekran obilazi bez dodira
+        LinearLayout kn = section(body, "Perilla y teclas del carro");
+        row(kn, "Aprender la perilla", "Gira y presiona la perilla o las flechas del volante: así eliges cada botón del inicio sin tocar la pantalla",
+            Rotary.learned() ? "Aprendida ✓" : "Sin aprender", new Runnable() { public void run() { learnKnob(); } });
+        if (Rotary.learned()) {
+            row(kn, "Olvidar la perilla", "Las flechas vuelven a moverse como siempre", null, new Runnable() { public void run() {
+                prefs.edit().remove(Rotary.P_NEXT).remove(Rotary.P_PREV).remove(Rotary.P_OK).apply();
+                Rotary.load(prefs);
+                showSettings(settingsCat);
+            }});
+        }
         LinearLayout hm = section(body, "Al encender");
         final boolean def = isDefaultHome();
         row(hm, "Launcher predeterminado", "La que aparece al encender y al tocar Inicio", def ? "StradaOS ✓" : "Otra · toca para cambiar", new Runnable() { public void run() {

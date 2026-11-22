@@ -67,6 +67,13 @@ class Dlg extends AlertDialog {
         w.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
+    /** Točkić u kolima (ako je naučen): okretanje prolazi kroz dugmad i listu prozora, pritisak bira. */
+    @Override
+    public boolean dispatchKeyEvent(android.view.KeyEvent e) {
+        try { if (Rotary.keyIn(e, getWindow().getDecorView())) return true; } catch (Throwable ignored) { }
+        return super.dispatchKeyEvent(e);
+    }
+
     private int px(float v) { return (int) (v * S); }
 
     private TextView text(CharSequence t, float size, int color, boolean bold) {

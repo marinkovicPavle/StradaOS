@@ -1845,3 +1845,20 @@ leída: «{}» — {} · {}/{} s · {}	read: «{}» — {} · {}/{} s · {}
 sonando	playing
 en pausa	paused
 estado ?	state ?
+# točkić u kolima (Rotary)
+Perilla y teclas del carro	Car knob and keys
+Aprender la perilla	Learn the knob
+Gira y presiona la perilla o las flechas del volante: así eliges cada botón del inicio sin tocar la pantalla	Turn and press the car's knob or the steering wheel arrows to pick each home button without touching the screen
+Aprendida ✓	Learned ✓
+Sin aprender	Not learned
+Olvidar la perilla	Forget the knob
+Las flechas vuelven a moverse como siempre	The arrow keys move as usual again
+Gira la perilla un paso a la derecha	Turn the knob one step to the right
+Ahora gírala un paso a la izquierda	Now turn it one step to the left
+Ahora presiónala (aceptar)	Now press it (OK)
+Esperando una tecla…	Waiting for a key…
+Omitir este paso	Skip this step
+Listo: gira la perilla para elegir y presiónala para abrir	Done: turn the knob to choose and press it to open
+No se aprendió ninguna tecla	No key was learned
+Llegó:	Received:
+Es la misma tecla del paso anterior: prueba al otro lado	That's the same key as the previous step: try the other direction
