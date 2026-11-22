@@ -1893,3 +1893,10 @@ Señal {} hace {} min	Signal {} {} min ago
 se abrió StradaOS	StradaOS opened
 no se pudo abrir	couldn't open
 No aprendidas	Not learned
+# auto 3D en la tarjeta del vehículo
+Usar la foto en vez del auto 3D	Use the photo instead of the 3D car
+Usar el auto 3D (W204)	Use the 3D car (W204)
+Auto 3D en la tarjeta	3D car on the card
+En vez de la foto: un W204 que giras con el dedo	Instead of the photo: a W204 you spin with your finger
+Auto 3D	3D car
+«2008 Mercedes-Benz C63 AMG» de 007 (sketchfab.com/tangwang920) · CC BY 4.0	“2008 Mercedes-Benz C63 AMG” by 007 (sketchfab.com/tangwang920) · CC BY 4.0

@@ -1864,8 +1864,11 @@ public class Main extends Activity {
         chip.setVisibility(prefs.getString("car_tag", "").trim().length() == 0 ? View.GONE : View.VISIBLE);
         placeWrap(card, chip, 20, 46);
 
-        Bitmap photo = CarPhoto.load(this);
-        if (photo != null) {
+        boolean spin3d = CarSpin.on(this, prefs);
+        Bitmap photo = spin3d ? null : CarPhoto.load(this);
+        if (spin3d) {
+            place(card, carSpin(null), 18, 78, 264, 160 + dy);
+        } else if (photo != null) {
             ImageView car = new ImageView(this);
             // 2.18: una foto con fondo (sin recortar) llena el recuadro con esquinas redondas; la recortada, como siempre
             boolean cutout = false;
@@ -4445,8 +4448,11 @@ public class Main extends Activity {
         View.OnLongClickListener photoLong = new View.OnLongClickListener() {
             public boolean onLongClick(View v) { photoMenu(); return true; }
         };
-        Bitmap photo = CarPhoto.load(this);
-        if (photo != null) {
+        boolean spin3d = CarSpin.on(this, prefs);
+        Bitmap photo = spin3d ? null : CarPhoto.load(this);
+        if (spin3d) {
+            place(card, carSpin(cardTap), px0, cy + 4, pw, ch - 8);
+        } else if (photo != null) {
             boolean cut = false;
             try { cut = CarPhoto.hasTransparency(photo); } catch (Throwable ignored) { }
             View pv;
@@ -5387,9 +5393,12 @@ public class Main extends Activity {
             // carros sin GPS: la foto del vehículo (o su ícono) en lugar de la velocidad
             sv.setVisibility(View.GONE);
             g.setVisibility(View.GONE);
-            Bitmap photo = CarPhoto.load(this);
+            boolean spin3d = CarSpin.on(this, prefs);
+            Bitmap photo = spin3d ? null : CarPhoto.load(this);
             float pw = w - 2 * m + 8, ph = hh - 34 - 10;
-            if (photo != null) {
+            if (spin3d) {
+                place(card, carSpin(null), m - 4, 34, pw, ph);
+            } else if (photo != null) {
                 ImageView car = new ImageView(this);
                 boolean cut = false;
                 try { cut = CarPhoto.hasTransparency(photo); } catch (Throwable ignored) { }
@@ -7704,15 +7713,31 @@ public class Main extends Activity {
 
     private void photoMenu() {
         final boolean has = CarPhoto.load(this) != null;
-        String[] opts = has ? new String[]{"Elegir otra foto", "Quitar la foto"} : new String[]{"Elegir foto"};
+        final boolean can3d = CarSpin.available(this), on3d = CarSpin.on(this, prefs);
+        final java.util.List<String> opts = new java.util.ArrayList<String>();
+        opts.add(has ? "Elegir otra foto" : "Elegir foto");
+        if (has) opts.add("Quitar la foto");
+        if (can3d) opts.add(on3d ? "Usar la foto en vez del auto 3D" : "Usar el auto 3D (W204)");
         new TB(this, dlg())
             .setTitle("Foto del vehículo")
-            .setItems(opts, new DialogInterface.OnClickListener() {
+            .setItems(opts.toArray(new String[0]), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface d, int w) {
-                    if (w == 0) pickPhoto();
-                    else { CarPhoto.delete(Main.this); rebuild(); }
+                    String o = opts.get(w);
+                    if (o.startsWith("Elegir")) pickPhoto();
+                    else if (o.equals("Quitar la foto")) { CarPhoto.delete(Main.this); rebuild(); }
+                    else { prefs.edit().putBoolean(CarSpin.P_ON, !on3d).apply(); rebuild(); }
                 }
             }).show();
+    }
+
+    /** Auto 3D (CarSpin) na kartici vozila: prevlačenje ga okreće, dodir kao na kartici, držanje otvara meni fotografije. */
+    private View carSpin(View.OnClickListener tap) {
+        CarSpin sp = new CarSpin(this, prefs);
+        if (tap != null) sp.setOnClickListener(tap);
+        sp.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) { photoMenu(); return true; }
+        });
+        return sp;
     }
 
     private void pickPhoto() {
@@ -9061,6 +9086,10 @@ public class Main extends Activity {
         LinearLayout f = section(body, "Foto");
         row(f, "Foto del vehículo", "Se usa tal cual; si quieres, le puedes quitar el fondo", CarPhoto.load(this) != null ? "Configurada" : "Sin foto",
             new Runnable() { public void run() { photoMenu(); } });
+        if (CarSpin.available(this))
+            toggle(f, "Auto 3D en la tarjeta", "En vez de la foto: un W204 que giras con el dedo", prefs.getBoolean(CarSpin.P_ON, false), new IntCb() { public void on(int i) {
+                prefs.edit().putBoolean(CarSpin.P_ON, i == 1).apply(); rebuild(); showSettings(settingsCat);
+            }});
         LinearLayout un = section(body, "Unidades");
         String su = prefs.getString("speed_unit", "auto");
         segmented(un, "Velocidad", "Automático: mph en EE. UU. y Reino Unido", new String[]{"Auto", "km/h", "mph"}, "kmh".equals(su) ? 1 : "mph".equals(su) ? 2 : 0,
@@ -10453,6 +10482,8 @@ public class Main extends Activity {
         row(l, "Android Auto", "Open Headunit (GPL-3.0) · Android Auto es marca de Google", null, null);
         row(l, "Códigos QR", "QR Code generator library · Project Nayuki (MIT)", null, null);
         row(l, "Íconos", "Material Symbols (Apache 2.0)", null, null);
+        if (CarSpin.available(this))
+            row(l, "Auto 3D", "«2008 Mercedes-Benz C63 AMG» de 007 (sketchfab.com/tangwang920) · CC BY 4.0", null, null);
         row(l, "Certificados raíz", "Mozilla CA (certifi, MPL-2.0)", null, null);
     }
 

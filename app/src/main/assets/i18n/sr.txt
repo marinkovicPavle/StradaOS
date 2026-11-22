@@ -1893,3 +1893,10 @@ Señal {} hace {} min	Signal {} pre {} min
 se abrió StradaOS	StradaOS se otvorio
 no se pudo abrir	nije mogao da se otvori
 No aprendidas	Nisu naučena
+# 3D auto na kartici vozila
+Usar la foto en vez del auto 3D	Koristi fotografiju umesto 3D auta
+Usar el auto 3D (W204)	Koristi 3D auto (W204)
+Auto 3D en la tarjeta	3D auto na kartici
+En vez de la foto: un W204 que giras con el dedo	Umesto fotografije: W204 koji okrećeš prstom
+Auto 3D	3D auto
+«2008 Mercedes-Benz C63 AMG» de 007 (sketchfab.com/tangwang920) · CC BY 4.0	„2008 Mercedes-Benz C63 AMG" autora 007 (sketchfab.com/tangwang920) · CC BY 4.0
