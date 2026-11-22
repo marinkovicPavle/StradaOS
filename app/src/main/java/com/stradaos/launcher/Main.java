@@ -735,6 +735,7 @@ public class Main extends Activity {
             else toast("Sin permiso de almacenamiento no se pueden buscar mapas");
             return;
         }
+        if (req == REQ_DIAG_W) { h.post(new Runnable() { public void run() { runDiag(); } }); return; }   // con o sin permiso se sigue
         if (req == REQ_BACKUP_W) { h.post(new Runnable() { public void run() { backupSave0(); } }); return; }   // con o sin permiso se sigue
         if (req == REQ_BACKUP_R) { h.post(new Runnable() { public void run() { backupRestore0(); } }); return; }
         if (req != 77 && req != 78) return;
@@ -5952,7 +5953,7 @@ public class Main extends Activity {
     static final String[] MUSIC_PKGS = {"com.spotify.music", "in.krosbits.musicolet", "com.google.android.apps.youtube.music",
         "com.maxrave.simpmusic", "com.maxmpz.audioplayer", "org.videolan.vlc", "deezer.android.app", "com.amazon.mp3",
         "com.apple.android.music", "com.soundcloud.android", "com.google.android.youtube", "com.aspiro.tidal", "com.zionhuang.music",
-        "it.vfsfitvnm.vimusic", "app.vitune.android", "com.kapp.youtube.final"};
+        "it.vfsfitvnm.vimusic", "app.vitune.android", "com.kapp.youtube.final", "com.aimp.player"};
     static final String[] NAV_PKGS = {"com.waze", "com.google.android.apps.maps", "com.google.android.apps.mapslite", "com.sygic.aura",
         "net.osmand", "net.osmand.plus", "app.organicmaps", "com.mapswithme.maps.pro", "com.here.app.maps", "ru.yandex.yandexnavi",
         "com.huawei.maps.app", "cz.seznam.mapy", "com.tomtom.gplay.navapp", "com.navitel", "com.magicearth.app"};
@@ -7416,7 +7417,17 @@ public class Main extends Activity {
             .setNegativeButton("Cerrar", null).show();
     }
 
+    private static final int REQ_DIAG_W = 85;
+    private boolean askedDiagWrite;
+
     private void runDiag() {
+        // Android 6–9: dozvola za memoriju, da StradaDiag bude u glavnoj memoriji; bez nje ide u folder aplikacije
+        if (SDK >= 23 && SDK <= 28 && !askedDiagWrite
+                && checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            askedDiagWrite = true;
+            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_DIAG_W);
+            return;
+        }
         toast("Exportando… puede tardar un minuto");
         new Thread(new Runnable() {
             public void run() {
@@ -7425,7 +7436,9 @@ public class Main extends Activity {
                     public void run() {
                         new TB(Main.this, dlg())
                             .setTitle("Diagnóstico listo")
-                            .setMessage("Se guardó en:\n" + r + "\n\nCopia la carpeta StradaDiag a una memoria USB y adjúntala en un «issue» del repositorio de StradaOS en GitHub.")
+                            .setMessage(r.contains("\nUSB: ")
+                                ? "Se guardó en:\n" + r + "\n\nLa carpeta StradaDiag ya está también en la memoria USB (Android/data). Adjúntala en un «issue» del repositorio de StradaOS en GitHub."
+                                : "Se guardó en:\n" + r + "\n\nCopia la carpeta StradaDiag a una memoria USB y adjúntala en un «issue» del repositorio de StradaOS en GitHub. Si conectas una memoria USB antes de exportar, se copia sola.")
                             .setPositiveButton("OK", null).show();
                     }
                 });
@@ -10071,6 +10084,17 @@ public class Main extends Activity {
                     showSettings(settingsCat);
                 }});
             }});
+        if (SDK >= 21) {
+            String mp = prefs.getString("music_app", null);
+            ComponentName mcn = mp != null ? ComponentName.unflattenFromString(mp) : null;
+            String mpkg = mcn != null ? mcn.getPackageName() : firstInstalled(MUSIC_PKGS);
+            toggle(hm, "Seguir con la música al encender", mpkg != null
+                    ? I18n.t("Le da ▶ a " + labelOf(mpkg) + " sin abrirla. No con CarPlay o Android Auto conectado")
+                    : "Le da ▶ a la última app de música. No con CarPlay o Android Auto conectado",
+                prefs.getBoolean("boot_music", false), new IntCb() { public void on(int i) {
+                    prefs.edit().putBoolean("boot_music", i == 1).apply();
+                }});
+        }
         // Salidas (issue #9): una pantalla Android 11 quedó atrapada en StradaOS tras elegirlo como launcher desde su
         // modo fábrica (toda app, incluso la ventana de desinstalar, se abría y volvía a StradaOS).
         LinearLayout out = section(body, "Salir de StradaOS");
@@ -10092,7 +10116,7 @@ public class Main extends Activity {
         LinearLayout k = section(body, "Compatibilidad");
         row(k, "Qué funciona en esta pantalla", "Cada función, desde qué Android sirve y su estado aquí", null, new Runnable() { public void run() { showCompat(); } });
         LinearLayout d = section(body, "Soporte");
-        row(d, "Exportar diagnóstico", "Guarda información de las apps de audio en la memoria interna", null, new Runnable() { public void run() { runDiag(); } });
+        row(d, "Exportar diagnóstico", "Guarda información de las apps de audio en la memoria interna y en la USB si está conectada", null, new Runnable() { public void run() { runDiag(); } });
     }
 
     // ───────────────────────── copia de seguridad (2.21) ─────────────────────────
@@ -10322,6 +10346,7 @@ public class Main extends Activity {
         bootAppDone = true;
         if (SystemClock.elapsedRealtime() > 4 * 60000L) return;
         runBootApp(2000);
+        bootMusic(6000);
     }
 
     /**
@@ -10332,10 +10357,44 @@ public class Main extends Activity {
     private final BroadcastReceiver screenReceiver = new BroadcastReceiver() {
         public void onReceive(Context c, Intent i) {
             if (Intent.ACTION_SCREEN_OFF.equals(i.getAction())) { screenOffAt = SystemClock.elapsedRealtime(); return; }
-            if (screenOffAt > 0 && SystemClock.elapsedRealtime() - screenOffAt > 5 * 60000L && hasWindowFocus()) runBootApp(1500);
+            if (screenOffAt > 0 && SystemClock.elapsedRealtime() - screenOffAt > 5 * 60000L) {
+                if (hasWindowFocus()) runBootApp(1500);
+                bootMusic(3000);
+            }
             screenOffAt = 0;
         }
     };
+
+    /**
+     * „Nastavi muziku pri paljenju" (ideja iz Dashphonic-a): pošalje ▶ aplikaciji za muziku (izabranoj ili prvoj
+     * poznatoj, npr. AIMP), bez otvaranja. Ako posle 3 s i dalje ništa ne svira, ▶ ide preko Androida, koji ga daje
+     * poslednjoj aplikaciji koja je svirala. Ne radi ništa ako muzika već svira ili su povezani CarPlay / Android Auto
+     * (tada muzika ide sa telefona).
+     */
+    private void bootMusic(long delay) {
+        if (SDK < 21 || !prefs.getBoolean("boot_music", false) || !prefs.getBoolean("setup_done", false)) return;
+        h.postDelayed(new Runnable() { public void run() {
+            final AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+            if (am.isMusicActive() || projectionActive()) return;
+            String saved = prefs.getString("music_app", null);
+            ComponentName cn = saved != null ? ComponentName.unflattenFromString(saved) : null;
+            String pkg = cn != null ? cn.getPackageName() : firstInstalled(MUSIC_PKGS);
+            if (pkg != null) {
+                long t = SystemClock.uptimeMillis();
+                for (int a : new int[]{KeyEvent.ACTION_DOWN, KeyEvent.ACTION_UP}) {
+                    Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
+                    i.setPackage(pkg);
+                    i.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(t, t, a, KeyEvent.KEYCODE_MEDIA_PLAY, 0));
+                    try { sendBroadcast(i); } catch (Throwable ignored) { }
+                }
+            }
+            h.postDelayed(new Runnable() { public void run() {
+                if (am.isMusicActive() || projectionActive()) return;
+                sendMediaKey(KeyEvent.KEYCODE_MEDIA_PLAY);
+                h.postDelayed(new Runnable() { public void run() { updatePlayIcon(); } }, 800);
+            }}, pkg != null ? 3000 : 0);
+        }}, delay);
+    }
 
     private void runBootApp(long delay) {
         final String comp = prefs.getString("boot_app", "");

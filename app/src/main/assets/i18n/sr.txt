@@ -1900,3 +1900,9 @@ Auto 3D en la tarjeta	3D auto na kartici
 En vez de la foto: un W204 que giras con el dedo	Umesto fotografije: W204 koji okrećeš prstom
 Auto 3D	3D auto
 «2008 Mercedes-Benz C63 AMG» de 007 (sketchfab.com/tangwang920) · CC BY 4.0	„2008 Mercedes-Benz C63 AMG" autora 007 (sketchfab.com/tangwang920) · CC BY 4.0
+Guarda información de las apps de audio en la memoria interna y en la USB si está conectada	Čuva podatke o audio aplikacijama u unutrašnju memoriju i na USB ako je utaknut
+Se guardó en:\n{}\n\nLa carpeta StradaDiag ya está también en la memoria USB (Android/data). Adjúntala en un «issue» del repositorio de StradaOS en GitHub.	Sačuvano u:\n{}\n\nFolder StradaDiag je već i na USB-u (Android/data). Priloži ga uz prijavu problema u StradaOS repozitorijumu na GitHub-u.
+Se guardó en:\n{}\n\nCopia la carpeta StradaDiag a una memoria USB y adjúntala en un «issue» del repositorio de StradaOS en GitHub. Si conectas una memoria USB antes de exportar, se copia sola.	Sačuvano u:\n{}\n\nKopiraj folder StradaDiag na USB i priloži ga uz prijavu problema u StradaOS repozitorijumu na GitHub-u. Ako pre izvoza utakneš USB, kopira se sam.
+Seguir con la música al encender	Nastavi muziku pri paljenju
+Le da ▶ a {} sin abrirla. No con CarPlay o Android Auto conectado	Pritisne ▶ u aplikaciji {} bez otvaranja. Ne dok su povezani CarPlay ili Android Auto
+Le da ▶ a la última app de música. No con CarPlay o Android Auto conectado	Pritisne ▶ u poslednjoj aplikaciji za muziku. Ne dok su povezani CarPlay ili Android Auto
