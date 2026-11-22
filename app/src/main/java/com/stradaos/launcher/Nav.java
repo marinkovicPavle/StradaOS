@@ -2367,7 +2367,7 @@ public class Nav {
                                     try {
                                         int res = tts.setLanguage(I18n.loc);
                                         if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
-                                            tts.setLanguage(new Locale(I18n.lang));
+                                            tts.setLanguage(new Locale(I18n.loc.getLanguage()));
                                         }
                                         tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                                             public void onStart(String utteranceId) { }

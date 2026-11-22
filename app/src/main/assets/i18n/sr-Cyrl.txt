@@ -1,0 +1,1864 @@
+# StradaOS · srpski prevod (ćirilica), pravi se iz sr.txt skriptom .github/scripts/sr_cyrl.py. Format: španski<TAB>prevod.
+Radio	Радио
+Cámara	Камера
+Archivos	Фајлови
+Ajustes	Подешавања
+Música	Музика
+Navegación	Навигација
+Navegador	Прегледач
+Navegador web	Веб прегледач
+Equipo	Јединица
+Elige primero la app de música Bluetooth	Прво изабери апликацију за Bluetooth музику
+Música Bluetooth	Bluetooth музика
+No se pudo abrir la app	Апликација није могла да се отвори
+Mi app	Моја апликација
+Mi vehículo	Моје возило
+Toca para poner la foto de tu vehículo	Додирни да додаш фотографију возила
+Velocidad	Брзина
+Diagnóstico del mapa	Дијагностика мапе
+Buscando GPS…	Тражим GPS…
+Buscando GPS	Тражим GPS
+En vivo · sin internet	Уживо · без интернета
+Última posición · sin internet	Последња позиција · без интернета
+Mapa en vivo	Мапа уживо
+Última posición conocida	Последња позната позиција
+Nada sonando	Ништа не свира
+Radio, Bluetooth o USB	Радио, Bluetooth или USB
+Internet desde la pantalla	Интернет на екрану
+No se pudo abrir «{}». Déjalo presionado para elegir otra app.	„{}" није могло да се отвори. Задржи прст на њему да изабереш другу апликацију.
+Botón {} · {}	Дугме {} · {}
+Cambiar app o función	Промени апликацију или функцију
+Cambiar el nombre	Преименуј
+Restablecer ({})	Врати ({})
+Botón restablecido	Дугме враћено
+Cerrar	Затвори
+Cerrar  ✕	Затвори  ✕
+★  Funciones de StradaOS (Música, Navegación, Android Auto…)	★  Функције StradaOS-а (Музика, Навигација, Android Auto…)
+¿Qué abre el botón {}?	Шта отвара дугме {}?
+Función del botón {}	Функција дугмета {}
+Nombre del botón {} (vacío = el de la app)	Назив дугмета {} (празно = назив апликације)
+Guardar	Сачувај
+Cancelar	Откажи
+Guardado: {}	Сачувано: {}
+Elige tu app de música	Изабери апликацију за музику
+Elige tu app de navegación	Изабери апликацију за навигацију
+Automático · {}	Аутоматски · {}
+{}\n    → {}	{}\n    → {}
+Buenos días	Добро јутро
+Buenas tardes	Добар дан
+Buenas noches	Добро вече
+Diagnóstico del reproductor	Дијагностика плејера
+Accesibilidad	Приступачност
+Activa «Carátula de Android Auto» (StradaOS)	Укључи „Android Auto албум арт" (StradaOS)
+No se pudo abrir Accesibilidad	Приступачност није могла да се отвори
+Activa «Pista actual de AA» en Open Headunit	Укључи „AA цуррент track" у Open Headunit-у
+«Ninguna aplic. funciona con este accesorio USB»	„No installed apps work with this USB accessory"
+Ese aviso lo causa una app de espejo de fábrica (EasyConnection/CarbitLink) que toma el USB antes que la app que elegiste.\n\n1. Desconecta el celular.\n2. Ajustes → Aplicaciones → EasyConnection → «Borrar datos».\n3. Apaga y enciende el carro.\n4. En Open Headunit → USB, si tu celular aparece como «Ignorado», tócalo para permitirlo.	Ту поруку изазива фабричка апликација за пресликавање екрана (EasyConnection/CarbitLink) која заузме USB пре апликације коју си изабрао.\n\n1. Искључи телефон.\n2. Подешавања → Апликације → EasyConnection → „Обриши податке".\n3. Угаси и упали кола.\n4. У Open Headunit-у → USB, ако ти је телефон „Игнорисан", додирни га да га дозволиш.
+Abrir EasyConnection	Отвори EasyConnection
+No hay apps de espejo instaladas	Нема инсталираних апликација за пресликавање
+Exportando… puede tardar un minuto	Извозим… може да потраје минут
+Diagnóstico listo	Дијагностика је спремна
+Se guardó en:\n{}\n\nCopia la carpeta StradaDiag a una memoria USB y adjúntala en un «issue» del repositorio de StradaOS en GitHub.	Сачувано у:\n{}\n\nКопирај фолдер StradaDiag на USB и приложи га уз пријаву проблема у StradaOS репозиторијуму на GitHub-у.
+12 horas	12 сати
+24 horas	24 сата
+Automático	Аутоматски
+Automática	Аутоматски
+Auto	Auto
+12 horas (a.m./p.m.)	12 сати (а.м./п.м.)
+Formato de hora	Формат времена
+Se aplicará al reiniciar StradaOS	Важи кад се StradaOS поново покрене
+Rojo	Црвена
+Naranja	Наранџаста
+Amarillo	Жута
+Verde	Зелена
+Turquesa	Тиркизна
+Azul	Плава
+Morado	Љубичаста
+Rosa	Розе
+Plata	Сребрна
+Bienvenido a StradaOS	Добродошао у StradaOS
+Vamos a dejar el launcher a tu gusto: tu nombre, tu vehículo, el color y la foto. Toma menos de un minuto y lo puedes cambiar después en el engranaje ⚙.	Хајде да подесимо лаунцхер по твом: име, возило, боја и фотографија. Траје мање од минут, а касније можеш да промениш све преко зупчаника ⚙.
+Empezar	Почни
+¿Cómo te llamas?	Како се зовеш?
+Nombre del vehículo (ej.: Mazda 2, Spark GT)	Назив возила (нпр. Mercedes Ц, Golf 7)
+Etiqueta corta (versión o placa). Déjalo vacío si no quieres	Кратка ознака (опрема или таблица). Остави празно ако ти не треба
+Después	Касније
+No encontrada	Није пронађено
+¿Qué app abre cada botón?	Коју апликацију отвара свако дугме?
+Están bien	Изгледа добро
+Siguiente	Даље
+Color de acento	Боја акцента
+Elegir otra foto	Изабери другу фотографију
+Quitar la foto	Уклони фотографију
+Elegir foto	Изабери фотографију
+Foto del vehículo	Фотографија возила
+¿De dónde sacamos la foto?	Одакле да узмемо фотографију?
+Consejo: usa una foto del carro de lado o de frente con fondo liso (blanco, gris o cielo). El fondo se quita solo.	Савет: користи фотографију аута са стране или спреда на једнобојној позадини (бела, сива или небо). Позадина се уклања аутоматски.
+Memoria / USB	Меморија / USB
+Galería	Галерија
+Elige la foto	Изабери фотографију
+Buscando fotos…	Тражим фотографије…
+No encontré fotos (.jpg/.png). Cópialas a la memoria USB o a Download.	Нема фотографија (.јпг/.пнг). Копирај их на USB или у Download.
+Quitando el fondo…	Уклањам позадину…
+No se pudo abrir la imagen	Слика није могла да се отвори
+No se pudo abrir la imagen: {}	Слика није могла да се отвори: {}
+La foto ya trae fondo transparente	Фотографија већ има провидну позадину
+No se detectó un fondo liso (se usará tal cual)	Није пронађена једнобојна позадина (користи се каква јесте)
+Vista previa · nivel {} de 4	Преглед · ниво {} од 4
+Vista previa · nivel {} de 4 (también quita el reflejo del piso)	Преглед · ниво {} од 4 (уклања и одсјај на поду)
+Usar esta	Користи ову
+Foto guardada	Фотографија је сачувана
+No se pudo guardar la foto	Фотографија није могла да се сачува
+Quitar más fondo	Уклони још позадине
+Quitando más fondo…	Уклањам још позадине…
+No es una imagen válida	Слика није исправна
+App elegida	Изабрана апликација
+CarPlay necesita un chip de autenticación de Apple dentro del equipo, así que no se puede activar solo con una app.\n\n• Si tu pantalla trae CarPlay integrado, deja presionado este botón y elige su app (ZLink, CarLink, TLink…).\n• Si no, puedes usar un adaptador CarPlay USB para pantallas Android (tipo Carlinkit/AutoKit): instala su app y este botón la abrirá.	CarPlay тражи Apple чип за аутентификацију у јединици, па не може да се укључи само апликацијом.\n\n• Ако твој екран има уграђен CarPlay, задржи прст на овом дугмету и изабери његову апликацију (ZLink, CarLink, TLink…).\n• Ако нема, можеш да користиш USB CarPlay адаптер за Android екране (типа Carlinkit/AutoKit): инсталирај његову апликацију и ово дугме ће је отварати.
+Entendido	Разумем
+Elegir app	Изабери апликацију
+Volver al inicio	Назад на почетни екран
+Tu vehículo	Твоје возило
+Apariencia	Изглед
+Conexión	Повезивање
+Accesos y apps	Пречице и апликације
+Mapa y clima	Мапа и време
+Sistema	Систем
+Acerca de	О апликацији
+Datos	Детаљи
+Tu nombre	Твоје име
+Aparece en el saludo de la pantalla de inicio	Приказује се у поздраву на почетном екрану
+Nombre del vehículo	Назив возила
+Etiqueta	Ознака
+Versión o placa. Déjala vacía para ocultarla	Опрема или таблица. Остави празно да се не приказује
+Etiqueta (vacío para ocultarla)	Ознака (празно да се сакрије)
+Foto	Фотографија
+Se recorta y se le quita el fondo automáticamente	Аутоматски се исеца и уклања јој се позадина
+Configurada	Постављена
+Sin foto	Нема фотографије
+Idioma	Језик
+Automático: el del sistema	Аутоматски: језик система
+Tema	Тема
+Modo	Режим
+Automático: claro de 6 a.m. a 6 p.m.	Аутоматски: светло од 6 до 18 х
+Oscuro	Тамно
+Claro	Светло
+Color	Боја
+Botones, anillo del reproductor, ruta y etiquetas	Дугмад, прстен плејера, рута и ознаке
+Reloj	Сат
+Celular	Телефон
+Cómo conectar el celular	Како се повезује телефон
+La app que se abre al conectar por USB	Апликација која се отвара при повезивању преко USB-а
+Preguntar	Питај
+App de Android Auto	Апликација за Android Auto
+Botón naranja de la tarjeta central	Наранџасто дугме на средњој картици
+App de CarPlay	Апликација за CarPlay
+Requiere pantalla con CarPlay o un adaptador	Тражи екран са CarPlay-ом или адаптер
+Ninguna	Ниједна
+Ninguno	Ништа
+Ayuda	Помоћ
+El celular dice «Ninguna aplic. funciona…»	Телефон каже „No installed apps work…"
+Cómo evitar que EasyConnection tome el USB	Како да EasyConnection не заузима USB
+Barra inferior (déjalos presionados en el inicio para cambiarlos)	Доња трака (задржи прст на њима на почетном екрану да их промениш)
+App: {}	Апликација: {}
+Función: {}	Функција: {}
+Apps preferidas	Омиљене апликације
+Se abre al tocar el reproductor	Отвара се кад додирнеш плејер
+Toca para elegir	Додирни да изабереш
+Se abre con el botón del mapa	Отвара се дугметом на мапи
+Apps de cada función	Апликација за сваку функцију
+La app que hace sonar el Bluetooth (se usa para pasar el sonido)	Апликација која пушта Bluetooth звук (користи се за пребацивање звука)
+Revisar todos los botones	Прегледај сву дугмад
+Lista rápida de qué abre cada uno, como en el asistente	Брза листа шта које отвара, као у чаробњаку за подешавање
+Restablecer	Врати на подразумевано
+Restablecer accesos	Врати пречице
+La barra vuelve a lo de siempre y se buscan las apps de fábrica	Трака се враћа на подразумевану и фабричке апликације се поново траже
+Accesos restablecidos	Пречице су враћене
+Clima	Време
+Mostrar el clima	Прикажи време
+Arriba, junto al saludo (necesita internet)	Горе, поред поздрава (треба интернет)
+Unidad	Јединица
+Ciudad	Град
+Vacío = automática por GPS	Празно = аутоматски преко GPS-а
+{} (GPS)	{} (GPS)
+Ciudad (vacío = automática por GPS)	Град (празно = аутоматски преко GPS-а)
+App de navegación preferida	Омиљена апликација за навигацију
+Se abre con el botón del mapa (Waze, Maps, OsmAnd…)	Отвара се дугметом на мапи (Waze, Maps, OsmAnd…)
+Mapa	Мапа
+Brillo del mapa	Осветљеност мапе
+Solo en modo oscuro	Само у тамном режиму
+Bajo	Ниска
+Medio	Средња
+Alto	Висока
+Fuentes probadas y errores	Испробани извори и грешке
+Mapa no disponible	Мапа није доступна
+Fuente del mapa (avanzado)	Извор мапе (напредно)
+URL propia con {z}/{x}/{y}	Сопствени URL са {z}/{x}/{y}
+Personalizada	Сопствени
+URL de teselas {z}/{x}/{y} (vacío = automático)	URL плочица {z}/{x}/{y} (празно = аутоматски)
+© colaboradores de OpenStreetMap	© OpenStreetMap сарадници
+App de música	Апликација за музику
+App de música preferida	Омиљена апликација за музику
+Se abre al tocar el reproductor del inicio	Отвара се кад додирнеш плејер на почетном екрану
+Pista en reproducción	Тренутно свира
+Carátula de Android Auto	Android Auto омот
+Lee la notificación de Open Headunit (accesibilidad)	Чита нотификацију Open Headunit-а (приступачност)
+Activada	Укључено
+Desactivada	Искључено
+Activado	Укључен
+Desactivado	Искључен
+Música de cualquier app	Музика из било које апликације
+Android 5+: acceso a notificaciones	Android 5+: приступ нотификацијама
+No se pudo abrir el ajuste	Подешавање није могло да се отвори
+Fuente activa, lector de notificaciones y Bluetooth	Активни извор, читач нотификација и Bluetooth
+Audio Bluetooth	Bluetooth звук
+Volver al Bluetooth al desconectar Android Auto	Назад на Bluetooth кад се Android Auto искључи
+Al quitar el cable, abre un instante la app de música Bluetooth para que el sonido siga por Bluetooth	Кад се кабл извуче, накратко отвара апликацију за Bluetooth музику да звук настави преко Bluetooth-а
+Escuchar el Bluetooth	Слушај Bluetooth
+En esta pantalla, toca ▶ en el inicio: StradaOS pasa el sonido a Bluetooth (por ejemplo, si venías de la radio)	На овом екрану додирни ▶ на почетном екрану: StradaOS пребацује звук на Bluetooth (на пример са радија)
+Pasar a Bluetooth al dar play en el celular (en prueba)	Пребаци на Bluetooth кад притиснеш play на телефону (бета)
+Abre un instante «Audio Bluetooth» y vuelve. En algunas pantallas no detecta el play del celular	Накратко отвара „Bluetooth аудио" и враћа се. Неки екрани не препознају play са телефона
+Probar ahora	Пробај сада
+Abre «Audio Bluetooth» un instante y vuelve al inicio	Накратко отвара „Bluetooth аудио" и враћа се на почетни екран
+Abrir la app de música Bluetooth al conectar el celular	Отвори апликацију за Bluetooth музику кад се телефон повеже
+Para pantallas que solo dejan sonar el Bluetooth con su app abierta: la abre un momento y vuelve al inicio	За екране који пуштају Bluetooth само док је њихова апликација отворена: отвара је на тренутак и враћа се на почетни екран
+App de música Bluetooth	Апликација за Bluetooth музику
+La que hace sonar el Bluetooth en esta pantalla	Она која пушта Bluetooth на овом екрану
+Tiempo antes de volver al inicio	Време пре повратка на почетни екран
+Súbelo si el audio se corta al volver	Повећај ако се звук прекида при повратку
+Abre la app de música Bluetooth y vuelve al inicio	Отвара апликацију за Bluetooth музику и враћа се на почетни екран
+Avanzado	Напредно
+Avisos extra de música	Додатни музички броадцаст-ови
+Nombres de avisos (broadcast) de otros equipos	Називи броадцаст-ова са других јединица
+Configurados	Подешено
+Acciones de aviso extra (separadas por coma)	Додатне броадцаст акције (одвојене зарезом)
+Ajustes del equipo	Подешавања јединице
+Los ajustes de la pantalla (los de la marca si los tiene)	Подешавања екрана (фабричка, ако постоје)
+Asistente de configuración inicial	Чаробњак за подешавање
+Nombre, vehículo, color y foto	Име, возило, боја и фотографија
+Compatibilidad	Компатибилност
+Qué funciona en esta pantalla	Шта ради на овом екрану
+Cada función, desde qué Android sirve y su estado aquí	Свака функција, која верзија Андроида јој треба и какво јој је стање овде
+Soporte	Подршка
+Exportar diagnóstico	Извези дијагностику
+Guarda información de las apps de audio en la memoria interna	Чува податке о аудио апликацијама у унутрашњу меморију
+Esta pantalla:	Овај екран:
+Ojo: la pantalla dice Android {}, pero por dentro es {}.	Напомена: екран каже Android {}, али је унутра {}.
+Requiere:	Захтева:
+Aquí:	Овде:
+Inicio, mapa, clima, velocímetro	Почетни екран, мапа, време, брзиномер
+Pista y carátula por Bluetooth	Песма и омот преко Bluetooth-а
+app Bluetooth de fábrica detectada	пронађена фабричка Bluetooth апликација
+depende de la marca	зависи од произвођача
+Botón ▶ del inicio pasa el sonido a Bluetooth	Дугме ▶ на почетном екрану пребацује звук на Bluetooth
+Pantallas Clinkway / Autochips	Clinkway / Autochips екрани
+funciona aunque vengas de la radio	ради и кад се прелази са радија
+en otras marcas: «Abrir la app de música Bluetooth al conectar»	на другим произвођачима: „Отвори апликацију за Bluetooth музику кад се телефон повеже"
+activado	укључено
+activada	укључен
+desactivado; en algunas pantallas no detecta el play del celular	искључено; неки екрани не препознају play са телефона
+Carátula de Android Auto (Open Headunit)	Android Auto омот (Open Headunit)
+Android 4.1+ · accesibilidad	Android 4.1+ · приступачност
+falta activar la accesibilidad	приступачност још није укључена
+Música de cualquier app (Spotify, YouTube…)	Музика из било које апликације (Spotify, YouTube…)
+falta dar acceso a notificaciones	приступ нотификацијама још није дозвољен
+no disponible en {}	није доступно на {}
+Android Auto con Open Headunit	Android Auto са Open Headunit-ом
+Android 4.1+ · cable USB	Android 4.1+ · USB кабл
+Open Headunit instalado	Open Headunit је инсталиран
+falta instalar Open Headunit	Open Headunit још није инсталиран
+Android Auto / CarPlay de la pantalla	Android Auto / CarPlay самог екрана
+Si la pantalla lo trae	Ако га екран има
+no detectado	није пронађено
+Pantalla con CarPlay o adaptador USB	Екран са CarPlay-ом или USB адаптер
+Mapa con internet seguro (TLS 1.2)	Мапа са сигурним интернетом (TLS 1.2)
+Android 4.1+ (StradaOS lo activa)	Android 4.1+ (StradaOS га укључује)
+en Android 4.x solo algunos servidores de mapas responden	на Андроиду 4.x одговарају само неки сервери мапа
+Instalar actualizaciones desde la app	Инсталирање ажурирања из апликације
+pide permiso «Instalar apps desconocidas»	тражи дозволу „Инсталирање непознатих апликација"
+No hay fallos registrados	Нема забележених падова
+Registro de fallos	Дневник падова
+Borrar	Обриши
+Registro borrado	Дневник је обрисан
+Gratis y de código abierto. Una nueva vida para las pantallas Android del carro.	Бесплатан и отвореног кода. Нови живот за Android екране у колима.
+Versión	Верзија
+Android de la pantalla	Android екрана
+Real: {} · ver qué funciona aquí	Стварни: {} · погледај шта овде ради
+Cierres inesperados o bloqueos de StradaOS en esta pantalla	Неочекивани падови или замрзавања StradaOS-а на овом екрану
+Sin fallos	Нема падова
+Ver	Прикажи
+Actualizaciones	Ажурирања
+Instalado desde {}	Инсталирано из {}
+Las actualizaciones llegan por esa app	Ажурирања стижу преко те апликације
+Avisar también de versiones en GitHub	Јави и за верзије на GitHub-у
+Comprobar actualizaciones automáticamente	Аутоматски проверавај ажурирања
+Opcional: las descargas de GitHub no pasan por la revisión de la tienda	Опционо: преузимања са GitHub-а не пролазе проверу продавнице
+Al abrir StradaOS con internet, una vez al día	Кад се StradaOS отвори са интернетом, једном дневно
+Actualizaciones desde GitHub	Ажурирања са GitHub-а
+Instalaste StradaOS desde {}. Si activas esto, StradaOS revisará una vez al día las versiones publicadas en github.com/{} y te ofrecerá descargarlas desde ahí.\n\nEsas descargas no pasan por la revisión de la tienda. Puede que GitHub tenga una versión un poco antes que la tienda.	StradaOS си инсталирао из {}. Ако ово укључиш, StradaOS ће једном дневно проверавати верзије објављене на github.com/{} и нудити да их преузме одатле.\n\nТа преузимања не пролазе проверу продавнице. GitHub понекад има верзију мало пре продавнице.
+Activar	Укључи
+Canal de actualizaciones	Канал ажурирања
+Buscar actualizaciones	Провери ажурирања
+Aún no se ha comprobado	Још није проверено
+Última comprobación: {}	Последња провера: {}
+Comunidad	Заједница
+Dar una estrella en GitHub	Дај звездицу на GitHub-у
+Ayuda a que más personas encuentren StradaOS	Помаже да више људи пронађе StradaOS
+Dar una estrella ⭐	Дај звездицу ⭐
+Abre el repositorio y toca «Star». ¡Gracias!	Отвори репозиторијум и додирни „Star". Хвала!
+Donar	Донирај
+Si StradaOS revivió tu pantalla, invítame un café	Ако је StradaOS оживео твој екран, части ме кафом
+Apoya el proyecto ☕	Подржи пројекат ☕
+StradaOS es gratis. Las donaciones ayudan a mantenerlo y a probarlo en más pantallas.	StradaOS је бесплатан. Донације помажу да се одржава и тестира на више екрана.
+Reportar un problema o sugerir algo	Пријави проблем или предложи нешто
+Crea un «issue» en GitHub (adjunta el diagnóstico)	Отвори иссуе на GitHub-у (приложи дијагностику)
+Reportar un problema	Пријави проблем
+Cuenta tu modelo de pantalla y su versión de Android. Puedes adjuntar la carpeta StradaDiag (Sistema → Exportar diagnóstico).	Напиши модел екрана и верзију Андроида. Можеш да приложиш фолдер StradaDiag (Систем → Извези дијагностику).
+Código fuente	Изворни код
+Licencia GPL-3.0	Лиценца GPL-3.0
+Créditos y licencias	Заслуге и лиценце
+Licencia	Лиценца
+Mapas	Мапе
+© colaboradores de OpenStreetMap, OpenTopoMap, Esri	© OpenStreetMap сарадници, OpenTopoMap, Esri
+Open Headunit (GPL-3.0) · Android Auto es marca de Google	Open Headunit (GPL-3.0) · Android Auto је заштитни знак Google-а
+Códigos QR	QR кодови
+Íconos	Иконе
+Certificados raíz	Коренски сертификати
+Buscando actualizaciones…	Проверавам ажурирања…
+No se pudo comprobar	Провера није успела
+Esta pantalla no logró conectarse con GitHub ({}). Puedes revisar las versiones desde tu celular:	Овај екран није могао да се повеже са GitHub-ом ({}). Верзије можеш да провериш са телефона:
+Tienes la última versión ({})	Имаш најновију верзију ({})
+Fuentes consultadas:\n{}	Проверени извори:\n{}
+cifrado no compatible	некомпатибилно шифровање
+sin internet	нема интернета
+sin internet / DNS	нема интернета / DNS
+tiempo agotado	истекло време
+error de red	грешка мреже
+tu tienda de apps	твоја продавница апликација
+Tienes la {} · nueva: {}	Имаш {} · нова: {}
+Mejoras y correcciones.	Побољшања и исправке.
+Nueva versión de StradaOS	Nova верзија StradaOS-а
+Tienes la {} · en GitHub: {}\nActualiza desde {} cuando llegue. Descargar de GitHub omite la revisión de la tienda.	Имаш {} · на GitHub-у: {}\nАжурирај из {} кад стигне. Преузимање са GitHub-а прескаче проверу продавнице.
+Ver en GitHub	Погледај на GitHub-у
+Descarga desde GitHub:	Преузми са GitHub-а:
+Descargar e instalar	Преузми и инсталирај
+Descarga la nueva versión desde:	Преузми нову верзију са:
+Omitir esta versión	Прескочи ову верзију
+Más tarde	Касније
+Descargando StradaOS {}…	Преузимам StradaOS {}…
+Descárgala desde tu celular	Преузми га са телефона
+Esta pantalla no pudo descargar el archivo. Escanea el código, descarga el APK y pásalo por USB.	Овај екран није могао да преузме фајл. Скенирај код, преузми APK и пребаци га USB-ом.
+¿Disfrutando StradaOS?	Свиђа ти се StradaOS?
+Si te gusta usar StradaOS, dale una estrella en GitHub. Y si revivió tu pantalla, considera invitarme un café ☕	Ако волиш да користиш StradaOS, дај му звездицу на GitHub-у. А ако је оживео твој екран, размисли да ме частиш кафом ☕
+Dar una estrella	Дај звездицу
+StradaOS es gratis. Las donaciones ayudan a mantenerlo.	StradaOS је бесплатан. Донације помажу да се одржава.
+Escanéalo con la cámara de tu celular o entra a:	Скенирај камером телефона или иди на:
+Abrir aquí	Отвори овде
+No hay navegador disponible	Нема доступног прегледача
+Open Headunit · USB	Open Headunit · USB
+Toca para instalar	Додирни да инсталираш
+Pantalla o adaptador	Екран или адаптер
+Elige la app de ajustes de tu pantalla	Изабери апликацију за подешавања екрана
+No se pudieron abrir los ajustes	Подешавања нису могла да се отворе
+No encontré la app de {}. Elígela de la lista.	Апликација {} није пронађена. Изабери је са листе.
+↺  Automático (por defecto)	↺  Аутоматски (подразумевано)
+¿Qué app abre «{}»?	Коју апликацију отвара „{}"?
+Restablecido	Враћено
+Esta pantalla no trae Android Auto integrado.\n\nInstala la app gratuita «Open Headunit» (github.com/andreknieriem/headunit-revived): copia su APK en la memoria USB o en Download y vuelve a tocar el botón. Luego conecta el celular por cable USB.	Овај екран нема уграђен Android Auto.\n\nИнсталирај бесплатну апликацију „Open Headunit" (github.com/andreknieriem/headunit-revived): копирај њен APK на USB или у Download и поново додирни дугме. Затим повежи телефон USB каблом.
+Android Auto por cable USB (necesita la app Android Auto en el celular)	Android Auto преко USB кабла (на телефону треба апликација Android Auto)
+Espejo de pantalla (necesita la app CarbitLink en el celular)	Пресликавање екрана (на телефону треба апликација CarbitLink)
+Android Auto / CarPlay integrados en la pantalla	Android Auto / CarPlay уграђен у екран
+Otra app…	Друга апликација…
+¿Cómo quieres conectar tu celular?	Како желиш да повежеш телефон?
+Conexión: {}. Cámbiala dejando presionado el botón.	Веза: {}. Промени је тако што задржиш прст на дугмету.
+el navegador	прегледач
+«{}» necesita un Android más nuevo que el de esta pantalla. Abro el navegador de fábrica.	„{}" тражи новији Android него што овај екран има. Отварам фабрички прегледач.
+No encontré un navegador. Déjalo presionado para elegir uno.	Прегледач није пронађен. Задржи прст да изабереш један.
+Permite «Instalar apps desconocidas» para StradaOS y vuelve a tocar.	Дозволи „Инсталирање непознатих апликација" за StradaOS и додирни поново.
+Activa «Orígenes desconocidos» y vuelve a tocar.	Укључи „Непознати извори" и додирни поново.
+No se pudo preparar {}	{} није могао да се припреми
+No se pudo abrir el instalador para {}	Инсталер за {} није могао да се отвори
+Aplicaciones  ·  Android {} (API {})	Апликације  ·  Android {} (API {})
+Despejado	Ведро
+Parcialmente nublado	Делимично облачно
+Nublado	Облачно
+Niebla	Магла
+Llovizna	Росуља
+Lluvia	Киша
+Nieve	Снег
+Tormenta	Олуја
+Mapa en vivo apagado	Мапа уживо је искључена
+Rendimiento	Перформансе
+Apágalo si la pantalla va lenta: queda un mapa de adorno y el velocímetro sigue funcionando	Искључи је ако је екран спор: остаје украсна мапа, а брзиномер и даље ради
+StradaOS aún no es tu pantalla de inicio	StradaOS још није твој почетни екран
+Por eso al encender el carro o al tocar Inicio aparece el menú de fábrica.\n\nToca «Fijar ahora», elige StradaOS y luego «Siempre».	Зато се фабрички мени појављује кад упалиш кола или додирнеш Home.\n\nДодирни „Постави сада", изабери StradaOS, па „Увек".
+Fijar ahora	Постави сада
+Ahora no	Не сада
+No volver a preguntar	Не питај поново
+Elige StradaOS y toca «Siempre»	Изабери StradaOS и додирни „Увек"
+Listo: StradaOS es tu pantalla de inicio	Готово: StradaOS је твој почетни екран
+Fijar StradaOS a mano	Постави StradaOS ручно
+Algunas pantallas no muestran la lista para elegir. Prueba así:\n\n1. Toca el botón Inicio (la casita) de la pantalla. Si pregunta qué app usar, elige StradaOS → Siempre.\n2. Si no pregunta: en los ajustes de la pantalla busca Aplicaciones → Aplicaciones predeterminadas → Pantalla de inicio (o «App de inicio») y elige StradaOS.\n3. Con Android 10 o más nuevo, no lo elijas desde el modo fábrica de la pantalla («Launcher», «Interfaz» o «UI»): en algunas marcas eso deja las demás apps sin poder abrirse. En Android 4 a 9 sí puedes usar esa opción.\n\nSi tu pantalla siempre vuelve a su menú de fábrica al encender, activa «Abrir StradaOS al encender» en Ajustes → Sistema.	Неки екрани не приказују листу за избор. Пробај овако:\n\n1. Додирни Home дугме екрана (кућица). Ако пита коју апликацију да користи, изабери StradaOS → Увек.\n2. Ако не пита: у подешавањима екрана потражи Апликације → Подразумеване апликације → Почетни екран и изабери StradaOS.\n3. На Андроиду 10 или новијем га не бирај из фабричког режима екрана („Launcher", „Интерфејс" или „UI"): код неких произвођача се после тога друге апликације не отварају. На Андроиду 4 до 9 можеш да користиш ту опцију.\n\nАко се твој екран при паљењу увек враћа на фабрички мени, укључи „Отвори StradaOS при паљењу" у Подешавања → Систем.
+Pantalla de inicio	Почетни екран
+La que aparece al encender y al tocar Inicio	Онај који се појави при паљењу и кад додирнеш Home
+StradaOS ✓	StradaOS ✓
+Otra · toca para cambiar	Други · додирни да промениш
+Abrir StradaOS al encender	Отвори StradaOS при паљењу
+Para pantallas que siempre arrancan en su menú de fábrica (Android 4 a 9)	За екране који се увек пале на фабрички мени (Android 4 до 9)
+¿La música Bluetooth se corta o no aparece?	Bluetooth музика се прекида или се не приказује?
+Qué hacer en cada caso	Шта да радиш у ком случају
+• Se corta al salir de la app Bluetooth: sal con el botón Inicio (la casita), no con Atrás. Atrás cierra la app de fábrica y con ella la música.\n\n• No suena hasta abrir la app Bluetooth: activa «Abrir la app de música Bluetooth al conectar el celular» (aquí mismo). Abre la app un instante y vuelve al inicio.\n\n• La canción no aparece en el inicio (Android 5 o más nuevo): activa «Música de cualquier app» arriba y dale acceso a notificaciones a StradaOS.\n\n• Revisa en Ajustes → Accesos y apps que «Música Bluetooth» sea la app Bluetooth de tu pantalla.	• Прекида се кад изађеш из Bluetooth апликације: изађи дугметом Home (кућица), не Back. Back затвара фабричку апликацију, а с њом и музику.\n\n• Не свира док не отвориш Bluetooth апликацију: укључи „Отвори апликацију за Bluetooth музику кад се телефон повеже" (овде). Отвара апликацију на тренутак и враћа се на почетни екран.\n\n• Песма се не приказује на почетном екрану (Android 5 или новији): укључи „Музика из било које апликације" изнад и дај StradaOS-у приступ нотификацијама.\n\n• Провери у Подешавања → Пречице и апликације да је „Bluetooth музика" Bluetooth апликација твог екрана.
+Sin permiso	Нема дозволе
+GPS apagado	GPS искључен
+Unidades	Јединице
+Automático: mph en EE. UU. y Reino Unido	Аутоматски: mph у САД и Великој Британији
+Permisos → Ubicación → Permitir	Дозволе → Локација → Дозволи
+Activa la ubicación para StradaOS en los ajustes de la pantalla	Укључи локацију за StradaOS у подешавањима екрана
+Activa la ubicación (GPS)	Укључи локацију (GPS)
+Activa la ubicación (GPS) en los ajustes de la pantalla	Укључи локацију (GPS) у подешавањима екрана
+Sin permiso de ubicación · toca aquí	Нема дозволе за локацију · додирни овде
+Ubicación apagada · toca aquí	Локација искључена · додирни овде
+Sin señal GPS · toca aquí	Нема GPS сигнала · додирни овде
+Versión de prueba	Пробна верзија
+Simular pantalla	Симулирај екран
+Para probar otros tamaños en una tablet o celular	За испробавање других величина на таблету или телефону
+Real	Стварни
+Aceite	Уље
+Configurar	Подеси
+¡Cambiar!	Промени га!
+Kilometraje estimado	Процењена километража
+Próximo cambio	Следећа замена
+Faltan {}	Још {}
+¡Ya toca!	Време је!
+Cambio de aceite	Замена уља
+Ya hice el cambio de aceite	Заменио сам уље
+Corregir el kilometraje actual	Исправи тренутну километражу
+Cambiar cada cuánto se hace	Промени колико често се ради
+Desactivar el recordatorio	Искључи подсетник
+Recordatorio de cambio de aceite	Подсетник за замену уља
+StradaOS no puede leer el kilometraje del tablero del carro. Escríbelo una vez y StradaOS le irá sumando lo que recorras con el GPS, para avisarte cuando toque el cambio.\n\nDe vez en cuando puedes corregirlo con el valor real del tablero.	StradaOS не може да прочита километражу са табле. Унеси је једном и StradaOS ће додавати пређени пут преко GPS-а, да те подсети кад је време за замену.\n\nС времена на време можеш да је исправиш стварним стањем са табле.
+¿A cuántos {} fue el último cambio de aceite?	Километража при последњој замени уља ({})
+Kilometraje actual del tablero	Тренутна километража са табле
+¿Cada cuántos {} cambias el aceite?	На колико {} се мења уље?
+Escribe un número válido	Унеси исправан број
+Kilometraje del tablero al hacer el cambio	Километража са табле при замени
+Es hora del cambio de aceite	Време је за замену уља
+El kilometraje estimado es ≈ {} y ya toca el cambio de aceite (cada {}).	Процењена километража је ≈ {} и замена уља је на реду (сваких {}).
+¿Ya lo hiciste?	Јеси ли је урадио?
+Ya lo hice	Готово
+Aún no	Још не
+Se muestra al lado de la velocidad y avisa cuando toca	Приказује се поред брзине; упозорава те кад је време
+Kilometraje actual	Тренутна километража
+Estimado con el GPS. Corrígelo con el del tablero cuando quieras	Процењена преко GPS-а. Исправи је стањем са табле кад год хоћеш
+Cada cuánto	Колико често
+Orientación del mapa	Оријентација мапе
+El mapa apunta	Мапа је окренута
+Según tu dirección: gira con el carro mientras te mueves	У смеру вожње: окреће се са колима док возиш
+Norte arriba	Север горе
+Según tu dirección	У смеру вожње
+# 2.13: ulje (poslednja zamena, jedinica) i aplikacije sakrivene iz fioke
+Último cambio	Последња замена
+Corregir el último cambio	Исправи последњу замену
+¿Tu tablero marca kilómetros o millas?	Да ли твоја табла показује километре или миље?
+Kilómetros (km)	Километри (km)
+Millas (mi)	Миље (mi)
+Revisa el último cambio	Провери последњу замену
+El último cambio ({}) queda por encima del kilometraje actual ({}). ¿Lo escribiste en otra unidad?	Последња замена ({}) је већа од тренутне километраже ({}). Да ли си је унео у другој јединици?
+Corregir	Исправи
+Guardar igual	Ипак сачувај
+Kilometraje del tablero cuando se hizo	Километража са табле кад је урађено
+Ocultas: {}	Сакривено: {}
+Ocultar del cajón	Сакриј из фиоке
+Información de la app	Информације о апликацији
+Oculta. Para volver a verla: Ajustes → Accesos y apps → Apps ocultas	Сакривено. Да се поново прикаже: Подешавања → Пречице и апликације → Сакривене апликације
+Cajón de apps	Фиока апликација
+Apps ocultas	Сакривене апликације
+No se ven en el cajón, pero siguen instaladas y se pueden poner en los botones	Не приказују се у фиоци, али су и даље инсталиране и могу да се бирају за дугмад
+Buscar app	Претражи апликације
+Apps ocultas en el cajón	Апликације сакривене из фиоке
+Se muestran todas las apps	Све апликације се приказују
+Apps ocultas: {}	Сакривене апликације: {}
+# 2.14: deinstaliranje iz fioke
+Desinstalar	Деинсталирај
+# 2.14: izlazak iz StradaOS-a (issue #9)
+Salir de StradaOS	Изађи из StradaOS-а
+Abrir el launcher de fábrica	Отвори фабрички лаунцхер
+Sale de StradaOS sin desinstalarlo	Излази из StradaOS-а без деинсталирања
+Desactivar StradaOS	Искључи StradaOS
+Si la pantalla quedó atrapada en StradaOS: se apaga solo, sin ventanas de Android	Ако је екран заглављен у StradaOS-у: сам се гаси, без Android прозора
+Desinstalar StradaOS	Деинсталирај StradaOS
+Android pide confirmar	Android тражи потврду
+No encontré otra pantalla de inicio en este equipo	Нисам нашао други почетни екран на овом уређају
+¿Cuál es el launcher de fábrica?	Који је фабрички лаунцхер?
+No se pudo abrir	Није могло да се отвори
+No encontré otra pantalla de inicio: StradaOS no se puede desactivar en este equipo	Нисам нашао други почетни екран: StradaOS не може да се искључи на овом уређају
+¿Desactivar StradaOS?	Искључити StradaOS?
+StradaOS deja de ser la pantalla de inicio, ya no se abre al encender y vuelve el launcher de fábrica. No pide confirmaciones de Android, así que sirve aunque la pantalla haya quedado atrapada.\n\nPara volver a usarlo después: desinstálalo desde los ajustes de la pantalla e instálalo de nuevo.	StradaOS престаје да буде почетни екран, више се не отвара при паљењу и враћа се фабрички лаунцхер. Не тражи Android потврде, па ради и кад је екран заглављен.\n\nДа га касније поново користиш: деинсталирај га из подешавања екрана и инсталирај поново.
+Desactivar	Искључи
+# 2.15: raspored početnog ekrana
+Diseño del inicio	Распоред почетног екрана
+Reproductor de música	Музички плејер
+Ponlo del lado del conductor para tenerlo a la mano	Стави га на страну возача да ти буде при руци
+Derecha	Десно
+Izquierda	Лево
+Tarjeta del vehículo	Картица возила
+Si la ocultas, la velocidad pasa arriba y el mapa y el reproductor ganan espacio	Ако је сакријеш, брзина иде горе, а мапа и плејер добијају више места
+Barra de botones	Трака са дугмадима
+Lateral: los botones van al costado y todo se ve más grande en pantallas bajas como 1280×480	Бочна: дугмад иду са стране и све изгледа веће на ниским екранима као 1280×480
+Normal	Нормална
+Compacta	Компактна
+Lateral	Бочна
+Aceite: configurar	Уље: подеси
+¡Cambiar aceite!	Промени уље!
+Aceite: {}	Уље: {}
+Mapa sin conexión	Офлајн мапа
+Archivo del mapa	Фајл мапе
+Un archivo .map (p. ej. colombia.map) en la memoria de la pantalla o en una USB: el mapa se ve sin internet	.map фајл (нпр. serbia.map) у меморији екрана или на USB-у: мапа ради без интернета
+Error	Грешка
+No se pudo abrir: {}	Не може да се отвори: {}
+Toca para dejar de usarlo	Додирни да престанеш да га користиш
+Mapa sin conexión quitado	Офлајн мапа је уклоњена
+¿Dónde consigo el mapa?	Где да нађем мапу?
+Mapas gratis de OpenStreetMap por país	Бесплатне OpenStreetMap мапе по земљама
+Buscando mapas…	Тражим мапе…
+No se encontró ningún mapa	Мапа није пронађена
+No hay archivos .map en la memoria de la pantalla ni en las USB conectadas. Toca «Cómo conseguirlo» para ver de dónde bajarlo.	Нема .map фајлова у меморији екрана ни на повезаним USB-овима. Додирни „Како да је набавим" да видиш одакле да је преузмеш.
+Cómo conseguirlo	Како да је набавим
+Elige el mapa	Изабери мапу
+No se pudo usar este archivo	Овај фајл не може да се користи
+Debe ser un mapa de mapsforge (.map) copiado completo.	Мора да буде mapsforge мапа (.map), копирана до краја.
+Mapa sin conexión listo: {}	Офлајн мапа је спремна: {}
+Sin permiso de almacenamiento no se pueden buscar mapas	Без дозволе за меморију мапе не могу да се траже
+Última posición · mapa sin conexión	Последња позиција · офлајн мапа
+no se encuentra el archivo	фајл није пронађен
+sin permiso para leer el archivo	нема дозволе за читање фајла
+no es un mapa de mapsforge (.map)	није mapsforge мапа (.map)
+el archivo está incompleto (¿se copió entero?)	фајл је непотпун (да ли је копиран до краја?)
+1. En un computador o celular, descarga el mapa de tu país (formato mapsforge, gratis):\ndownload.mapsforge.org/maps/v5\n\nColombia:\ndownload.mapsforge.org/maps/v5/south-america/colombia.map\n\n2. Cópialo a una memoria USB o a la carpeta Download de la pantalla.\n\n3. En Ajustes → Mapa y clima → Mapa sin conexión, toca «Archivo del mapa» y elígelo.\n\nEl mapa se usa en el inicio incluso con internet. Para actualizarlo, descarga uno nuevo y reemplaza el archivo.	1. На рачунару или телефону преузми мапу своје земље (mapsforge формат, бесплатно):\ndownload.mapsforge.org/maps/v5\n\nСрбија:\ndownload.mapsforge.org/maps/v5/europe/serbia.map\n\n2. Копирај је на USB или у фолдер Download на екрану.\n\n3. У Подешавања → Мапа и време → Офлајн мапа додирни „Фајл мапе" и изабери је.\n\nМапа се користи на почетном екрану чак и кад има интернета. Да је ажурираш, преузми нову и замени фајл.
+Toca para dejar de usarlo o borrarlo	Додирни да престанеш да је користиш или да је обришеш
+Descargar un mapa	Преузми мапу
+Elige tu país: se descarga gratis de OpenStreetMap (mapsforge) y se usa sin internet	Изабери своју земљу: преузима се бесплатно са OpenStreetMap-а (mapsforge) и ради без интернета
+Cargando la lista de mapas…	Учитавам листу мапа…
+No se pudo cargar la lista de mapas	Листа мапа није могла да се учита
+Revisa la conexión a internet e inténtalo de nuevo.	Провери интернет везу и покушај поново.
+por regiones	по регионима
+Elige el continente	Изабери континент
+Tamaño	Величина
+Se guarda en	Чува се у
+Espacio libre	Слободан простор
+memoria	меморија
+Usa datos: mejor con WiFi o un plan amplio. Puedes seguir usando la pantalla; si se corta la señal o la apagas, la descarga continúa después.	Троши податке: најбоље преко Wi-Fi-ја или издашног пакета. Можеш да наставиш да користиш екран; ако сигнал нестане или га угасиш, преузимање се касније наставља.
+No hay espacio suficiente en la memoria.	Нема довољно слободне меморије.
+Descargar	Преузми
+Descargando el mapa… puedes seguir usando la pantalla	Преузимам мапу… можеш да наставиш да користиш екран
+Descarga en curso	Преузимање је у току
+Descarga en pausa	Преузимање је паузирано
+Pausar	Паузирај
+Continuar	Настави
+Cancelar descarga	Откажи преузимање
+Descarga cancelada	Преузимање је отказано
+Este mapa lo descargó StradaOS. Puedes dejar de usarlo o borrarlo para liberar espacio.	StradaOS је преузео ову мапу. Можеш да престанеш да је користиш или да је обришеш да ослободиш простор.
+Puedes dejar de usar este mapa (el archivo no se borra).	Можеш да престанеш да користиш ову мапу (фајл се не брише).
+Dejar de usarlo	Престани да је користиш
+Borrar el archivo	Обриши фајл
+Mapa borrado	Мапа је обрисана
+Mapa descargado y listo: {}	Мапа је преузета и спремна: {}
+Descargando	Преузимање
+África	Африка
+Australia y Oceanía	Аустралија и Океанија
+Centroamérica y el Caribe	Централна Америка и Кариби
+Europa	Европа
+Norteamérica	Северна Америка
+Rusia	Русија
+Sudamérica	Јужна Америка
+sin conexión, reintentando…	нема везе, покушавам поново…
+el archivo quedó incompleto	фајл је непотпун
+no se pudo guardar el archivo	фајл није могао да се сачува
+no hay espacio suficiente	нема довољно простора
+se cortó la descarga	преузимање је прекинуто
+Sin señal GPS · mapa sin conexión	Нема GPS сигнала · офлајн мапа
+Sin señal GPS ni internet	Нема GPS сигнала ни интернета
+Sin señal GPS · última posición	Нема GPS сигнала · последња позиција
+# 2.17: tema po rasporedu ili po sistemu, ikone za Wi-Fi i Bluetooth, traka, dijagnostika mape
+Auto: por horario. Sistema: sigue el modo oscuro de la pantalla (algunas lo cambian al encender las luces)	Auto: по распореду. Систем: прати тамни режим екрана (неки га мењају кад упалиш светла)
+Oscuro desde	Тамно од
+Claro desde	Светло од
+Íconos de Wi-Fi y Bluetooth	Иконе за Wi-Fi и Bluetooth
+Arriba, junto al clima. Toca para encender o apagar; déjalo presionado para abrir sus ajustes	Горе, поред времена. Додирни да укључиш или искључиш; задржи да отвориш подешавања
+¿Apagar el Wi-Fi?	Искључити Wi-Fi?
+La pantalla se queda sin internet (mapa en vivo, clima y actualizaciones).	Екран ће остати без интернета (мапа уживо, време и ажурирања).
+Apagar	Искључи
+Esta pantalla no deja cambiar el Wi-Fi desde otra app: abre sus ajustes	Овај екран не дозвољава другим апликацијама да мењају Wi-Fi: отварам његова подешавања
+Encendiendo el Wi-Fi…	Укључујем Wi-Fi…
+Wi-Fi apagado	Wi-Fi искључен
+¿Apagar el Bluetooth?	Искључити Bluetooth?
+Se desconecta el celular (música y llamadas).	Телефон ће се искључити (музика и позиви).
+Esta pantalla no deja cambiar el Bluetooth desde otra app: abre sus ajustes	Овај екран не дозвољава другим апликацијама да мењају Bluetooth: отварам његова подешавања
+Encendiendo el Bluetooth…	Укључујем Bluetooth…
+Bluetooth apagado	Bluetooth искључен
+Lado de la barra lateral	Положај бочне траке
+Automático: del lado del reproductor	Аутоматски: на страни плејера
+Nombres de los botones	Називи дугмади
+Debajo de cada ícono de la barra	Испод сваке иконе у траци
+Permiso de ubicación: {}	Дозвола за локацију: {}
+NO (toca el letrero del mapa)	НЕ (додирни ознаку на мапи)
+sí	да
+GPS del equipo: {} · ubicación por red: {}	GPS јединице: {} · мрежна локација: {}
+no encontrado	није пронађен
+encendido	укључен
+apagado	искључен
+encendida	укључена
+apagada	искључена
+Última señal: {}	Последњи сигнал: {}
+ninguna desde que abrió StradaOS	ниједан откад је StradaOS отворен
+hace {} s	пре {} с
+hace {} min	пре {} мин
+Buscando desde hace {} min	Тражи већ {} мин
+Posición: {}	Позиција: {}
+sin GPS	нема GPS-а
+Zoom: {}	Зум: {}
+Mapa sin conexión: {}	Офлајн мапа: {}
+ninguno	нема
+error: {}	грешка: {}
+{} · en uso	{} · у употреби
+{} · fuera del área del archivo	{} · ван области фајла
+Teselas dibujadas desde el archivo: {} · {} ms cada una	Плочица нацртаних из фајла: {} · {} ms по плочици
+Proveedor: {}	Извор: {}
+{} · ninguna fuente respondió ({} vueltas)	{} · ниједан извор није одговорио ({} кругова)
+Teselas descargadas: {} · en caché: {}	Преузетих плочица: {} · у кешу: {}
+Errores seguidos: {}	Грешака заредом: {}
+Último error: {}	Последња грешка: {}
+Fuentes probadas:	Испробани извори:
+• {}: {}	• {}: {}
+sin probar	није испробан
+certificado	сертификат
+OSM Alemania	OSM Немачка
+OSM Francia	OSM Француска
+OSM Humanitario	OSM Хуманитарни
+Esri gris oscuro	Esri тамно сива
+sin iniciar	није покренуто
+TLS listo ({}), {} raíces	TLS спреман ({}), {} коренских
+TLS listo ({}), {} raíces, {} omitidas	TLS спреман ({}), {} коренских, {} прескочено
+TLS no disponible: {}	TLS није доступан: {}
+Íconos de Wi-Fi y Bluetooth arriba	Иконе за Wi-Fi и Bluetooth горе
+Bluetooth: estado del celular desde la app de fábrica; toca para abrirla	Bluetooth: стање телефона из фабричке апликације; додирни да је отвориш
+Tema según el modo oscuro del sistema	Тема која прати тамни режим система
+Pantallas que lo cambian (p. ej. con las luces)	Екрани који га мењају (нпр. са светлима)
+el sistema está en modo oscuro	систем је у тамном режиму
+el sistema está en modo claro	систем је у светлом режиму
+# 2.18: dugmad za povezivanje, detaljno vreme, sakrivanje brzine/ulja/plejera, dugme za navigaciju, originalna fotografija
+Cargando…	Учитавам…
+Esperando la ubicación…	Чекам локацију…
+Máx {} · Mín {}	Макс {} · Мин {}
+Sensación {}	Осећај {}
+Humedad {}	Влажност {}
+Viento {}	Ветар {}
+PRÓXIMAS HORAS	СЛЕДЕЋИХ САТИ
+PRÓXIMOS DÍAS	СЛЕДЕЋИХ ДАНА
+Ahora	Сада
+Hoy	Данас
+El clima está apagado en Ajustes → Mapa y clima	Време је искључено у Подешавања → Мапа и време
+Esperando la ubicación para el clima…	Чекам локацију за временску прогнозу…
+Cargando el clima…	Учитавам време…
+Velocidad y servicio	Брзина и сервис
+En la tarjeta del vehículo (o arriba si la ocultas). Apágalo si tu carro o pantalla no tiene GPS: la foto ocupa ese espacio	На картици возила (или горе ако је сакријеш). Искључи ако твоја кола или екран немају GPS: фотографија заузима то место
+Aceite en el inicio	Уље на почетном екрану
+Junto a la velocidad. Aunque lo ocultes, el aviso del cambio de aceite sigue saliendo	Поред брзине. И кад га сакријеш, упозорење за замену уља се и даље појављује
+Tarjeta del reproductor	Картица плејера
+Si la ocultas, el mapa gana espacio	Ако је сакријеш, мапа добија више места
+Botones de conexión	Дугмад за повезивање
+Con uno o ninguno, el clima ocupa el espacio libre del mapa	Са једним или ниједним, време попуњава слободан простор на мапи
+Android Auto y CarPlay	Android Auto и CarPlay
+Solo Android Auto	Само Android Auto
+Solo CarPlay	Само CarPlay
+Botón del navegador	Дугме за навигацију
+El botón redondo del mapa que abre tu app de navegación	Округло дугме на мапи које отвара твоју апликацију за навигацију
+Grande	Велико
+Muy grande	Врло велико
+Oculto	Сакривено
+Lado del botón del navegador	Страна дугмета за навигацију
+Automático: del lado del reproductor (el del conductor)	Аутоматски: на страни плејера (страни возача)
+Usar la foto original, sin recortar ni quitar el fondo	Користи оригиналну фотографију, без исецања и уклањања позадине
+Se le quita el fondo automáticamente, o la puedes usar tal cual	Позадина се уклања аутоматски, или можеш да је користиш каква јесте
+Lluvia {}	Киша {}
+Abriendo la foto…	Отварам фотографију…
+Vista previa	Преглед
+Sin fondo · nivel {} de 4	Позадина уклоњена · ниво {} од 4
+Sin fondo · nivel {} de 4 (también quita el reflejo del piso)	Позадина уклоњена · ниво {} од 4 (уклања и одсјај на поду)
+Usar la foto original, con fondo	Користи оригиналну фотографију, са позадином
+Quitar el fondo	Уклони позадину
+No se detectó un fondo liso: se usa la foto tal cual	Није пронађена једнобојна позадина: фотографија се користи каква јесте
+Se usa tal cual; si quieres, le puedes quitar el fondo	Користи се каква јесте; можеш да уклониш позадину ако хоћеш
+# 2.19: broj i veličina dugmadi, ikone aplikacija, paketi ikona, sakrivena traka, veličina teksta
+Cantidad de botones	Број дугмади
+«Apps» siempre queda al final	„Апликације" увек остаје последње
+Tamaño de los íconos	Величина икона
+Pequeño	Мала
+Pequeña	Мале
+Íconos de la barra	Иконе у траци
+Apps: el ícono de la app que abre cada botón (radio, cámara…)	Апликације: икона апликације коју дугме отвара (радио, камера…)
+Pack de íconos	Пакет икона
+Instala uno (los de Nova o ADW sirven) y elígelo aquí	Инсталирај неки (раде Nova или ADW пакети) и изабери га овде
+Cambia los íconos de la barra y del cajón de apps	Мења иконе у траци и у фиоци апликација
+Ninguno (íconos de siempre)	Ниједан (подразумеване иконе)
+No hay packs de íconos instalados	Нема инсталираних пакета икона
+Ese pack no trae la lista de íconos (appfilter)	Тај пакет нема листу икона (appfilter)
+Pack listo: {} íconos	Пакет је спреман: {} икона
+Lateral: los botones van al costado y todo se ve más grande en pantallas bajas como 1280×480. Oculta: el botón Apps va arriba	Бочна: дугмад иду са стране и све изгледа веће на ниским екранима као 1280×480. Сакривена: дугме Апликације иде горе
+Oculta	Сакривена
+Tamaño de la letra	Величина текста
+Para leer mejor de lejos o que quepa más	Да се боље чита издалека или да више стане
+# 2.20: analogni brzinomer, brzinomer na mapi, sopstvena održavanja
+Velocímetro	Брзиномер
+En la tarjeta del vehículo. Toma el color de acento	На картици возила. Користи боју акцента
+Digital	Дигитални
+Analógico	Аналогни
+Mixto	Комбиновани
+Velocímetro sobre el mapa	Брзиномер на мапи
+Redondo, en una esquina del mapa (en vez de la velocidad de arriba)	Округао, у углу мапе (уместо брзине горе)
+Mantenimiento	Одржавање
+Otros mantenimientos	Остало одржавање
+Agregar mantenimiento	Додај одржавање
+Filtros, bujías, frenos, correa, SOAT… Avisa por kilómetros, por tiempo o lo que llegue primero	Филтери, свећице, кочнице, каиш, осигурање… Подсећа по километражи, по времену или шта пре дође
+Filtro de aire	Филтер ваздуха
+Bujías	Свећице
+Pastillas de freno	Плочице кочница
+Líquido de frenos	Кочиона течност
+Refrigerante	Расхладна течност
+Correa de distribución	Зупчасти каиш
+Rotación de llantas	Ротација гума
+Alineación y balanceo	Трап и балансирање
+Revisión de la batería	Провера акумулатора
+Seguro obligatorio (SOAT)	Обавезно осигурање
+Revisión técnico-mecánica	Технички преглед
+Otro (escribe el nombre)	Друго (упиши назив)
+Nombre del mantenimiento	Назив одржавања
+Por kilómetros	По километражи
+Por tiempo	По времену
+Lo que llegue primero	Шта пре дође
+¿Cada cuántos meses?	На колико месеци?
+¿Cada cuántos {}?	На колико {}?
+¿A cuántos {} fue la última vez?	На колико {} је било последњи пут?
+¿Cuándo fue la última vez?	Кад је било последњи пут?
+Kilometraje del tablero	Километража са табле
+StradaOS no puede leer el kilometraje del carro. Escríbelo una vez y StradaOS le suma lo que recorras con el GPS.	StradaOS не може да прочита километражу кола. Упиши је једном и StradaOS додаје пређени пут преко GPS-а.
+Escribirlo	Упиши је
+Última vez	Последњи пут
+Cambiar cada cuánto	Промени колико често
+Corregir la última vez	Исправи последњи пут
+¿Borrar «{}»?	Обрисати „{}"?
+Kilometraje del tablero al hacerlo	Километража са табле кад је урађено
+Es hora de: {}	Време је за: {}
+¡Toca: {}!	На реду: {}!
+Cada {}	Сваких {}
+cada {} mes	сваких {} месец
+cada {} meses	сваких {} месеци
+¿Cada cuánto tiempo?	Колико често?
+Días	Дани
+Semanas	Недеље
+Meses	Месеци
+cada día	сваки дан
+cada semana	сваке недеље
+cada mes	сваког месеца
+cada {} días	сваких {} дана
+cada {} semanas	сваких {} недеља
+(lo primero)	(шта пре дође)
+{} meses	{} месеци
+{} día	{} дан
+{} días	{} дана
+# 2.20: preuređena Podešavanja, odeljak Održavanje, ikone, brzinomer na mapi
+Mantenimientos	Одржавање
+Barra de apps	Трака апликација
+Tarjetas	Картице
+Barra de arriba	Горња трака
+Diseño de la barra	Распоред траке
+Botones (déjalos presionados en el inicio para cambiarlos)	Дугмад (задржи их на почетном екрану да их промениш)
+Texto	Текст
+Kilometraje	Километража
+Escríbelo una vez y StradaOS le suma lo que recorras con el GPS	Упиши је једном и StradaOS додаје пређени пут преко GPS-а
+Avisa cuando toca el cambio	Подсећа те кад је време за замену
+En el inicio	На почетном екрану
+Mantenimiento en el inicio	Одржавање на почетном екрану
+Junto a la velocidad se ve el más próximo (el aceite u otro). Los avisos siguen saliendo aunque lo ocultes	Поред брзине видиш најближе (уље или друго). Упозорења се појављују и кад га сакријеш
+Se muestra junto a la velocidad: activa «Velocidad y servicio» en Pantalla de inicio	Приказује се поред брзине: укључи „Брзина и сервис" у Почетни екран
+Aceite, filtros, SOAT y más	Уље, филтери, осигурање и друго
+Ahora están en su propia sección	Сада имају свој одељак
+Al encender	При паљењу
+Launcher predeterminado	Подразумевани лаунцхер
+Esquina del velocímetro	Угао брзиномера
+Automático: arriba, en el lado contrario al botón del navegador	Аутоматски: горе, насупрот дугмету за навигацију
+Arriba a la izquierda	Горе лево
+Arriba a la derecha	Горе десно
+Abajo a la izquierda	Доле лево
+Abajo a la derecha	Доле десно
+Tamaño del velocímetro	Величина брзиномера
+En pantallas bajas se limita para no tapar el mapa	На ниским екранима је ограничена да не покрије мапу
+Elige un ícono	Изабери икону
+Cambiar el ícono	Промени икону
+Filtro de combustible	Филтер горива
+Aire acondicionado	Клима
+Lavado	Прање кола
+# 2.21: sopstveni prozori, prevedena dijagnostika, rezervna kopija, aplikacija pri paljenju, uspravni raspored
+Fuente: {}	Извор: {}
+Pista: {}	Песма: {}
+Carátula: {}	Омот: {}
+Lector de notificaciones (accesibilidad): {}	Читач нотификација (приступачност): {}
+ACTIVO	АКТИВАН
+Última notificación de Open Headunit: {}	Последња нотификација Open Headunit-а: {}
+ninguna	ниједна
+{} s, carátula {}, textos {}	{} с, омот {}, текстови {}
+Open Headunit corriendo: {} · celular por USB en modo Android Auto: {}	Open Headunit ради: {} · телефон на USB-у у Android Auto режиму: {}
+no se sabe	не зна се
+Android Auto conectado (para StradaOS): {}	Android Auto повезан (за StradaOS): {}
+App Bluetooth conectada: {}	Bluetooth апликација повезана: {}
+Audio Bluetooth automático: {}	Аутоматски Bluetooth звук: {}
+desactivado	искључен
+no aplica (otra marca)	не важи (други произвођач)
+App de música Bluetooth: {} · abrir al conectar: {}	Апликација за Bluetooth музику: {} · отвори при повезивању: {}
+no encontrada	није пронађена
+Sonido en Bluetooth (estimado): {} · app al frente: {}	Звук на Bluetooth-у (процена): {} · апликација у првом плану: {}
+Activaciones: {}	Активирања: {}
+Eventos Bluetooth:	Bluetooth догађаји:
+(sin eventos)	(нема догађаја)
+no	не
+conectado a la app Bluetooth	повезан са Bluetooth апликацијом
+la app Bluetooth se cerró	Bluetooth апликација се затворила
+se reinicia muy seguido: pausa de 15 min	пречесто се рестартује: пауза 15 мин
+activar audio: el celular no está conectado por Bluetooth	укључивање звука: телефон није повезан преко Bluetooth-а
+activar audio: el celular está en pausa	укључивање звука: телефон је паузиран
+modo de audio Bluetooth solicitado	затражен Bluetooth аудио режим
+activar audio falló: {}	укључивање звука није успело: {}
+el celular empezó a sonar	телефон је почео да пушта
+revisión falló: {}	провера није успела: {}
+otra fuente al frente: {}	други извор у првом плану: {}
+no se cambió: StradaOS acaba de arrancar	није пребачено: StradaOS је тек покренут
+no se cambió: llamada en curso	није пребачено: позив је у току
+no se cambió: Android Auto tiene el sonido	није пребачено: Android Auto има звук
+el sonido ya es Bluetooth	звук је већ на Bluetooth-у
+celular conectado por Bluetooth	телефон повезан преко Bluetooth-а
+no se abrió la app BT: cámara de reversa al frente	BT апликација није отворена: камера за рикверц је у првом плану
+no se abrió la app BT: no sé qué app está al frente	BT апликација није отворена: не зна се која је апликација у првом плану
+no se abrió la app BT: ajustes abiertos	BT апликација није отворена: подешавања су отворена
+abierta {} para tomar el sonido (luego vuelve a {})	отворено {} да преузме звук (па назад на {})
+abierta {} para tomar el sonido	отворено {} да преузме звук
+no se volvió: el usuario abrió {}	није се вратио: корисник је отворио {}
+Android Auto se desconectó	Android Auto је искључен
+Registro técnico para enviar al desarrollador (se guarda en español).	Технички дневник за слање програмеру (остаје на шпанском).
+Preparando {}…	Припремам {}…
+Copia de seguridad	Резервна копија
+Guardar una copia	Сачувај резервну копију
+Ajustes, mantenimientos, kilometraje y la foto del vehículo en un archivo, en la pantalla o en una USB. Nada se sube a internet	Подешавања, одржавање, километража и фотографија возила у једном фајлу, на екрану или на USB-у. Ништа се не шаље на интернет
+Restaurar una copia	Врати резервну копију
+Recupera todo después de restablecer la pantalla, o pásalo a otra pantalla	Врати све после ресетовања екрана, или пребаци на други екран
+Copia automática	Аутоматска резервна копија
+Cada vez que cambias algo se actualiza una copia en la pantalla y en la USB que esté conectada	Сваки пут кад нешто промениш, копија се ажурира на екрану и на повезаном USB-у
+Memoria de la pantalla	Меморија екрана
+Memoria USB	USB
+Elegir otra carpeta…	Изабери други фолдер…
+¿Dónde guardar la copia?	Где да се сачува резервна копија?
+No se pudo abrir el selector de archivos	Бирач фајлова није могао да се отвори
+No se pudo guardar la copia	Резервна копија није могла да се сачува
+Esa memoria no dejó escribir el archivo. Prueba con otra memoria o con «Elegir otra carpeta…».	Та меморија није дозволила упис фајла. Пробај другу или „Изабери други фолдер…".
+Copia guardada	Резервна копија је сачувана
+Se guardó en:	Сачувано у:
+Al restablecer la pantalla de fábrica también se puede borrar su memoria: guarda otra copia en una USB para tenerla a salvo.	Фабричко ресетовање екрана може да обрише и његову меморију: за сваки случај чувај још једну копију на USB-у.
+No se pudo leer el archivo	Фајл није могао да се прочита
+Buscando copias…	Тражим резервне копије…
+No se encontró ninguna copia	Резервна копија није пронађена
+No hay copias de StradaOS en la memoria de la pantalla ni en las USB conectadas. El archivo se llama «StradaOS-backup» y termina en .json.	Нема StradaOS резервних копија у меморији екрана ни на повезаним USB-овима. Фајл се зове „StradaOS-backup" и завршава се на .json.
+automática	аутоматска
+Buscar el archivo…	Потражи фајл…
+Elige la copia	Изабери резервну копију
+No se pudo restaurar	Враћање није успело
+Este archivo no es una copia de seguridad de StradaOS	Овај фајл није StradaOS резервна копија
+Copia del	Копија од
+Pantalla:	Екран:
+Ajustes guardados:	Сачувана подешавања:
+con la foto del vehículo	са фотографијом возила
+Se reemplaza toda la configuración actual de StradaOS por la de la copia.	Сва тренутна подешавања StradaOS-а замењују се онима из копије.
+¿Restaurar esta copia?	Вратити ову резервну копију?
+Restaurar	Врати
+Copia restaurada	Резервна копија је враћена
+Esta copia se hizo con una versión más nueva de StradaOS. Actualiza StradaOS y vuelve a intentarlo	Ова копија је направљена новијом верзијом StradaOS-а. Ажурирај StradaOS и покушај поново
+No se pudo guardar la configuración	Подешавања нису могла да се сачувају
+La copia está dañada o incompleta	Резервна копија је оштећена или непотпуна
+Abrir una app al encender	Отвори апликацију при паљењу
+StradaOS la abre un momento al arrancar (por ejemplo la radio, para que empiece a sonar) y vuelve al inicio	StradaOS је отвара на тренутак при покретању (нпр. радио, да почне да свира) и враћа се на почетни екран
+Copia de seguridad en un archivo (pantalla o USB)	Резервна копија у фајл (екран или USB)
+en Android 10+ la carpeta se elige con el selector de archivos	на Андроиду 10+ фолдер бираш бирачем фајлова
+Diseño vertical	Усправни распоред
+Pantallas en vertical (tipo Tesla)	Усправни екрани (типа Tesla)
+en uso	у употреби
+esta pantalla es horizontal	овај екран је положен
+# 2.21.1: PR #26 (wsx79)
+Pantalla completa	Цео екран
+Ocultar la barra del sistema	Сакриј системску траку
+Esconde también la barra de navegación de tu pantalla (abajo o al costado). Desliza desde el borde para verla un momento	Сакрива и навигациону траку твог екрана (доле или са стране). Превуци од ивице да је видиш на тренутак
+Corrección del velocímetro	Корекција брзиномера
+Suma o resta a la velocidad del GPS para que coincida con el tablero de tu carro	Додаје или одузима од GPS брзине да се поклопи са таблом твојих кола
+# 2.22: ručni raspored, tema po izlasku sunca, redosled aplikacija i ekran u mirovanju
+Diseño	Распоред
+Diseño de la pantalla	Распоред екрана
+Automático: según la forma de la pantalla. Elige Vertical si tu pantalla es vertical y se ve chica en el medio	Аутоматски: према облику екрана. Изабери Усправно ако ти је екран усправан и све изгледа ситно у средини
+Horizontal	Положено
+Vertical	Усправно
+se puede elegir en Ajustes → Pantalla de inicio → Diseño	можеш да га изабереш у Подешавања → Почетни екран → Распоред
+Área útil de la pantalla:	Употребљива површина екрана:
+Horario	Распоред
+Amanecer y atardecer: se calcula con el GPS, sin internet	Излазак и залазак сунца: рачуна се преко GPS-а, без интернета
+Horas fijas	Фиксни сати
+Amanecer y atardecer	Излазак и залазак сунца
+Amanecer	Излазак сунца
+Atardecer	Залазак сунца
+oscuro desde el atardecer hasta el amanecer	тамно од заласка до изласка сунца
+Esperando la ubicación del GPS	Чекам GPS локацију
+Mientras tanto usa las horas fijas	У међувремену користи фиксне сате
+Orden	Редослед
+Usadas recientemente	Недавно коришћене
+Instaladas recientemente	Недавно инсталиране
+A mano	Ручно
+Orden de las apps	Редослед апликација
+Deja presionada una app y elige «Mover» para cambiarla de lugar	Задржи прст на апликацији и изабери „Помери" да јој промениш место
+Mover	Помери
+Toca el lugar donde quieres poner «{}»	Додирни место где хоћеш да ставиш „{}"
+Pantalla en reposo	Екран у мировању
+Si no tocas la pantalla un rato, se pone negra con la hora, la fecha y la velocidad. Un toque la quita	Ако неко време не додирујеш екран, постаје црн са сатом, датумом и брзином. Један додир га враћа
+1 minuto	1 минут
+{} minutos	{} минута
+Después de	После
+Tiempo sin tocar la pantalla	Време без додиривања екрана
+Con el diseño de velocímetro que prefieras	Са стилом брзиномера који ти се свиђа
+Sin velocidad	Без брзине
+Color de la letra	Боја текста
+Blanco	Бела
+Gris suave	Благо сива
+Ámbar	Ћилибар
+Ver ahora	Прегледај сада
+Toca la pantalla para volver	Додирни екран да се вратиш
+# Navigacija skretanje po skretanje uživo
+Ir a…	Иди на…
+Recalculando…	Прерачунавам руту…
+Llegaste a tu destino	Стигао си на одредиште
+Activa el mapa en vivo en Ajustes → Mapa y clima	Укључи Мапу уживо у Подешавања → Мапа и време
+Escribe una dirección o lugar	Упиши адресу или место
+RECIENTES	НЕДАВНО
+¿A dónde vamos?	Куда?
+Buscar	Тражи
+Detener	Заустави
+Buscando…	Тражим…
+No se pudo buscar	Претрага није успела
+No se encontraron resultados	Нема резултата
+Resultados	Резултати
+Esperando señal GPS para calcular la ruta	Чекам GPS сигнал да израчунам руту
+Calculando ruta…	Рачунам руту…
+No se pudo calcular la ruta	Рута није могла да се израчуна
+Cambiar destino	Промени одредиште
+Silenciar voz de guía	Утишај гласовно навођење
+Activar voz de guía	Укључи гласовно навођење
+Vista Norte arriba	Приказ са севером горе
+Vista en dirección de marcha	Приказ у смеру вожње
+Abrir en otra app	Отвори у другој апликацији
+Detener navegación	Заустави навигацију
+Navegación en el mapa	Навигација на мапи
+Voz activada	Глас укључен
+Voz silenciada	Глас утишан
+En el mapa de StradaOS	На StradaOS мапи
+Se abre con el botón del mapa (Waze, Maps, OsmAnd… o integrada en el mapa)	Отвара се дугметом на мапи (Waze, Maps, OsmAnd… или уграђена на мапи)
+Voz de navegación	Глас навигације
+Indicaciones paso a paso habladas durante el recorrido	Изговорена упутства скретање по скретање током вожње
+★  En el mapa de StradaOS (integrada)	★  На StradaOS мапи (уграђена)
+Guardado: Navegación en el mapa	Сачувано: Навигација на мапи
+Coordenadas	Координате
+No se encontró ruta	Рута није пронађена
+Ruta recalculada	Рута је прерачуната
+Sal por {}	Крени улицом {}
+Inicia el recorrido	Крени
+En la rotonda, salida {} hacia {}	На кружном току изађи на {}. излаз у {}
+En la rotonda, toma la salida {}	На кружном току изађи на {}. излаз
+En la rotonda, sigue hacia {}	На кружном току настави у {}
+En la rotonda, toma la salida	На кружном току изађи
+Haz un giro en U en {}	Полукружно окретање у {}
+Haz un giro en U	Окрени се полукружно
+Gira levemente a la derecha en {}	Благо десно у {}
+Gira levemente a la derecha	Благо десно
+Gira a la derecha en {}	Скрени десно у {}
+Gira a la derecha	Скрени десно
+Gira fuerte a la derecha en {}	Оштро десно у {}
+Gira fuerte a la derecha	Оштро десно
+Gira levemente a la izquierda en {}	Благо лево у {}
+Gira levemente a la izquierda	Благо лево
+Gira a la izquierda en {}	Скрени лево у {}
+Gira a la izquierda	Скрени лево
+Gira fuerte a la izquierda en {}	Оштро лево у {}
+Gira fuerte a la izquierda	Оштро лево
+Incorpórate a {}	Укључи се на {}
+Toma el desvío	Уђи на рампу
+Continúa por {}	Настави улицом {}
+Sigue recto	Право
+En 500 metros	За 500 метара
+En 150 metros	За 150 метара
+En 500 pies	За 500 стопа
+En un cuarto de milla	За четврт миље
+En {}	За {}
+Sin conexión · vuelve a la ruta	Без интернета · врати се на руту
+Casa	Кућа
+Trabajo	Посао
+Toca para guardar GPS	Додирни да сачуваш тренутни GPS
+Ir ahora	Крени сада
+Actualizar con GPS actual	Ажурирај тренутним GPS-ом
+Eliminado	Уклоњено
+Esperando señal GPS para guardar ubicación	Чекам GPS сигнал да сачувам локацију
+Guardado en Casa	Сачувано као Кућа
+Guardado en Trabajo	Сачувано као Посао
+Gasolina	Гориво
+Salud	Здравље
+Parqueo	Паркинг
+Comida	Храна
+FAVORITOS	ОМИЉЕНА
+Quitar de favoritos	Уклони из омиљених
+Añadir a favoritos	Додај у омиљена
+Guardar como Casa	Сачувај као Кућа
+Guardar como Trabajo	Сачувај као Посао
+Añadido a favoritos	Додато у омиљена
+Quitado de favoritos	Уклоњено из омиљених
+Ruta aproximada (mapa local sin conexión)	Приближна рута (локална офлајн мапа)
+Ruta guardada (sin conexión)	Сачувана рута (офлајн)
+Recalcular ruta	Прерачунај руту
+ruta guardada	сачувана рута
+sin conexión · aproximada	офлајн · приближна
+aproximada	приближна
+Para rutas largas o sin mapa local hace falta internet	За дуге руте или без локалне мапе треба интернет
+Mapa local	Локална мапа
+Pueblo	Место
+Barrio	Насеље
+Calle	Улица
+Estación de servicio	Бензинска пумпа
+Hospital	Болница
+Clínica	Клиника
+Farmacia	Апотека
+Parqueadero	Паркинг
+Restaurante	Ресторан
+Cafetería	Кафић
+Supermercado	Супермаркет
+Hotel	Хотел
+Aeropuerto	Аеродром
+Estación	Станица
+Lugar	Локација
+con tráfico	са саобраћајем
+Tráfico en vivo activado	Саобраћај уживо је укључен
+Tráfico en vivo	Саобраћај уживо
+Muestra congestión en el mapa y evita trancones (usa clave gratis de TomTom)	Приказује гужве на мапи и избегава застоје (користи бесплатан TomTom кључ)
+Clave gratis de TomTom	Бесплатан TomTom кључ
+Para capas de tráfico y rutas con tráfico (regístrate gratis en developer.tomtom.com)	За слојеве саобраћаја уживо и руте које узимају у обзир саобраћај (бесплатна регистрација на developer.tomtom.com)
+Clave API gratis de TomTom	Бесплатан TomTom API кључ
+Capa de tráfico propia (avanzado)	Сопствени слој саобраћаја (напредно)
+URL transparente de tráfico con {z}/{x}/{y}	Провидне плочице саобраћаја, URL са {z}/{x}/{y}
+URL capa de tráfico {z}/{x}/{y} (vacío = automático)	URL слоја саобраћаја {z}/{x}/{y} (празно = аутоматски)
+Servidor de rutas OSRM (avanzado)	OSRM сервер за руте (напредно)
+URL propia compatible con OSRM (vacío = automático)	Сопствени URL компатибилан са OSRM-ом (празно = аутоматски)
+URL servidor OSRM (vacío = automático)	URL OSRM сервера (празно = аутоматски)
+Compatibilidad TLS en rutas	TLS компатибилност за руте
+Para radios antiguas donde falle el HTTPS de rutas o búsqueda	За старије јединице на којима HTTPS за руте или претрагу не ради
+Mostrando hora de llegada	Приказујем време доласка
+Mostrando tiempo restante	Приказујем преостало време
+Radar	Радар
+Ir a Casa	Води ме кући
+Ir a Trabajo	Води ме на посао
+Configura «{}» primero en Navegación	Прво подеси „{}" у Навигацији
+PARADAS	СТАЈАЊА
+Limpiar	Обриши
++ Añadir parada intermedia	+ Додај стајање успут
+Modo parada activo: elige una parada	Режим стајања: изабери стајање
+Buscar parada intermedia	Тражи стајање успут
+Añadir parada en ruta	Додај стајање успут
+Elegir destino final	Изабери крајње одредиште
+Añadir como parada	Додај као стајање
+Parada añadida	Стајање је додато
+Elegir parada	Изабери стајање
+Elegir ruta	Изабери руту
+Ruta	Рута
+Más rápida	Најбржа
+incidente	инцидент
+incidentes	инцидента
+incidente en la ruta	инцидент на рути
+incidentes en la ruta	инцидента на рути
+Incidentes en la ruta	Инциденти на рути
+Mostrar tiempo restante	Прикажи преостало време
+Mostrar hora de llegada	Прикажи време доласка
+Evitar peajes	Избегавај путарине
+Intenta evitar vías de peaje al calcular la ruta	Покушава да избегне путеве са наплатом при рачунању руте
+Evitar autopistas	Избегавај аутопутеве
+Intenta evitar autopistas o vías rápidas	Покушава да избегне аутопутеве и брзе путеве
+Rutas alternativas	Алтернативне руте
+Muestra 2 o 3 opciones de ruta antes de iniciar	Прикажи 2 или 3 опције руте пре поласка
+Muestra la hora estimada en lugar del tiempo restante	Приказује време доласка на сату уместо преосталог трајања
+Consulta cierres o accidentes una sola vez al calcular ruta (TomTom)	Једном при рачунању руте провери затворене путеве или незгоде (TomTom)
+Límite y alerta de velocidad	Ограничење брзине и упозорење
+Muestra la señal de límite en el mapa y avisa al excederlo	Прикажи знак ограничења брзине на мапи и упозори кад га пређеш
+Tolerancia de exceso	Праг прекорачења
+Margen sobre el límite antes de activar alerta	Колико изнад ограничења пре упозорења
+Sonido al exceder límite	Звук упозорења за брзину
+Pitido de alerta cuando superas la tolerancia	Пусти писак кад пређеш праг
+Alertas de radares sin conexión	Офлајн упозорења за радаре
+Avisa al acercarse a radares del mapa local .map	Упозорава кад се приближаваш радарима из локалног .map фајла
+Vía cerrada	Пут је затворен
+Carril cerrado	Трака је затворена
+Accidente	Незгода
+Obras en la vía	Радови на путу
+Tráfico detenido	Саобраћај стоји
+Incidente en la vía	Инцидент на путу
+Radar de velocidad adelante	Радар испред
+
+# 2.24: Personalizacija (teme)
+Personalización	Персонализација
+Cambia el aspecto de la pantalla de inicio con un toque. Puedes seguir ajustando cada detalle en las demás secciones.	Промени изглед почетног екрана једним додиром. Сваки детаљ и даље можеш да подесиш у осталим одељцима.
+Temas gratis	Бесплатне теме
+Temas premium	Премиум теме
+Próximamente	Ускоро
+Temas exclusivos para quienes apoyan StradaOS con una donación. Todas las funciones siguen siendo gratis.	Ексклузивне теме за оне који подрже StradaOS донацијом. Све функције остају бесплатне.
+En uso	У употреби
+Tema aplicado:	Тема је примењена:
+Clásico	Класична
+Música a la izquierda	Музика лево
+Mapa amplio	Широка мапа
+Minimalista	Минимална
+Vehículo a la izquierda, mapa en el centro y música a la derecha	Возило лево, мапа у средини и музика десно
+Mapa arriba; debajo, vehículo a la izquierda y música a la derecha	Мапа горе; доле возило лево и музика десно
+Música a la izquierda, mapa en el centro y vehículo a la derecha	Музика лево, мапа у средини и возило десно
+Mapa arriba; debajo, música a la izquierda y vehículo a la derecha	Мапа горе; доле музика лево и возило десно
+Sin tarjeta del vehículo: mapa más ancho, velocímetro abajo a la izquierda y música a la derecha	Без картице возила: шира мапа, брзиномер доле лево и музика десно
+Sin tarjeta del vehículo: mapa más alto con el velocímetro abajo a la izquierda y la música a lo ancho	Без картице возила: виша мапа са брзиномером доле лево и музика преко целе ширине
+Música a la izquierda, velocímetro abajo a la derecha, panel de conexión plegado y barra compacta	Музика лево, брзиномер доле десно, скупљен панел за повезивање и компактна трака
+Mapa casi completo: velocímetro abajo a la derecha, panel de conexión plegado, música a lo ancho y barra compacta	Мапа скоро преко целог екрана: брзиномер доле десно, скупљен панел за повезивање, музика преко целе ширине и компактна трака
+Cada tema se adapta solo a la orientación de la pantalla.	Свака тема се сама прилагођава оријентацији екрана.
+Tema premium	Премиум тема
+Aurora en uso	Аурора је у употреби
+El tema arma la pantalla de inicio. Las tarjetas, la barra y el velocímetro de aquí se usan otra vez al quitarlo en Personalización.	Тема распоређује почетни екран. Картице, трака и брзиномер одавде се поново користе кад је уклониш у Персонализацији.
+Tema premium quitado	Премиум тема је уклоњена
+Premium	Премиум
+Fondo con un arco de color difuminado y granulado, tarjetas translúcidas, la hora en grande con música, vehículo y clima arriba, el mapa a lo ancho y una barra tipo píldora. El botón «Solo mapa» agranda el mapa.	Позадина са меким, зрнастим луком боје, провидне картице, велики сат са музиком, возилом и временом горе, мапа преко целе ширине и трака у облику пилуле. Дугме «Само мапа» увећава мапу.
+Sigue el modo claro u oscuro de Apariencia.	Прати светли или тамни режим из Изгледа.
+Quitar el tema premium	Уклони премиум тему
+Aplicar	Примени
+Versión de prueba: se puede aplicar sin código.	Пробна верзија: може да се примени без кода.
+Disponible pronto con una donación. Todas las funciones siguen siendo gratis.	Ускоро уз донацију. Све функције остају бесплатне.
+Cobalto	Кобалт
+Azul noche en tres columnas: el mapa se difumina hasta el reproductor de carátula redonda, y tu vehículo muestra el velocímetro arriba, su foto en el medio y el mantenimiento abajo. La temperatura va sobre el mapa.	Ноћно плава у три колоне: мапа се претапа у плејер са округлим омотом, а твоје возило приказује брзиномер горе, фотографију у средини и одржавање доле. Температура је изнад мапе.
+Gratis	Бесплатно
+Gratis para todos. Los próximos temas premium se desbloquearán con una donación.	Бесплатно за све. Наредне премиум теме откључаваће се донацијом.
+Brillo de la pantalla	Осветљеност екрана
+Amanecer y atardecer: se calcula con el GPS, sin internet. Brillo: para pantallas que bajan el brillo al encender las luces	Излазак и залазак сунца: рачуна се преко GPS-а, без интернета. Осветљеност: за екране који се затамне кад упалиш светла
+Brillo actual	Тренутна осветљеност
+Prende y apaga las luces del carro para ver cuánto cambia	Упали и угаси светла на колима да видиш колико се мења
+Oscuro con brillo menor a	Тамно кад је осветљеност испод
+Elige un nivel entre el brillo de día y el de noche	Изабери ниво између дневне и ноћне осветљености
+Esta pantalla no informa su brillo	Овај екран не јавља своју осветљеност
+Países del Golfo	Земље Залива
+Irlanda del Norte	Северна Ирска
+Islas Canarias	Канарска острва
+Tiempo en StradaOS: {}	Време у StradaOS-у: {}
+Último tiempo por Bluetooth: {}	Последње време преко Bluetooth-а: {}
+# Blok 16 (2.25): premium tema Faro
+Fondo carbón (o perla en claro) con un haz de luz diagonal. A la izquierda, el velocímetro y un carro visto desde arriba que enciende los faros de noche; en el centro, el mapa integrado al fondo; a la derecha, el clima por horas y tus próximos mantenimientos, con el reproductor y la barra de apps debajo.	Позадина боје угља (бисерна у светлом режиму) са дијагоналним снопом светла. Лево брзиномер и ауто одозго који ноћу пали фарове; у средини мапа стопљена са позадином; десно време по сатима и предстојеће одржавање, а испод плејер и трака апликација.
+Color del carro	Боја аута
+El carro del tema Faro, visto desde arriba. También se cambia con una presión larga sobre el carro.	Auto у теми Фаро, виђен одозго. Можеш да га промениш и тако што задржиш прст на ауту.
+Intensidad del mapa	Јачина мапе
+Qué tan visible es el mapa sobre el fondo. Auto lo pone más fuerte en las pantallas sencillas de los radios y suave en las de alta gama. Súbela si al sol no se ve bien.	Колико се мапа види преко позадине. Auto је појачава на једноставним екранима ауто-радија, а смањује на бољим екранима. Појачај је ако се слабо види на сунцу.
+Baja	Ниска
+Media	Средња
+Alta	Висока
+Negro	Црна
+Sin mantenimientos programados	Нема заказаног одржавања
+Toca para agregar uno	Додирни да додаш
+Navegar	Навигација
+# 2.25: pesma iz aplikacija (pristup notifikacijama)
+Música sonando	Музика свира
+Toca para ver la canción	Додирни да видиш песму
+Ver la canción de tus apps	Види песму из својих апликација
+Para mostrar la canción, el artista y la carátula de Spotify, YouTube Music y otras apps, StradaOS necesita «Acceso a notificaciones». Solo lo usa para leer lo que suena: no guarda ni envía nada.	Да би приказао песму, извођача и омот из Spotify-а, YouTube Music-а и других апликација, StradaOS-у треба „Приступ нотификацијама". Користи га само да прочита шта свира: ништа се не чува и не шаље.
+No volver a mostrar	Не приказуј поново
+Esta pantalla no tiene el ajuste de «Acceso a notificaciones». Se puede activar una sola vez desde una computadora con ADB:	Овај екран нема подешавање „Приступ нотификацијама". Можеш га укључити једном са рачунара преко ADB-а:
+Spotify, YouTube Music y otras apps de la pantalla (acceso a notificaciones)	Spotify, YouTube Music и друге апликације на екрану (приступ нотификацијама)
+# FYT ekrani: tema po svetlima, kašnjenje promene teme i podaci iz kola
+Encendidas	Укључено
+Apagadas	Искључено
+Espera para pasar a oscuro	Кашњење пре преласка на тамно
+Cuánto debe durar el cambio (luces encendidas, poco brillo…) antes de oscurecer	Колико промена (упаљена светла, ниска осветљеност…) мора да траје пре него што пређе на тамно
+Espera para pasar a claro	Кашњење пре преласка на светло
+Útil si al apagar el carro de noche se apagan las luces y la pantalla pasa a claro de golpe	Корисно ако се, кад ноћу угасиш кола, угасе светла и екран нагло постане светао
+Sin espera	Без кашњења
+Marca de la pantalla	Произвођач јединице
+Genérica	Општи
+Detectada:	Препознат:
+No se detectó una marca con funciones propias	Није препознат произвођач са посебним функцијама
+Datos del carro	Подаци из кола
+Lectura actual	Тренутно очитавање
+Servicio com.syu.ms:	Сервис com.syu.ms:
+sin caja CAN	нема CAN кутије
+Esperando datos	Чекам податке
+Luces del carro	Светла кола
+Sin datos	Нема података
+sin conectar	није повезано
+conectando	повезујем
+conectado	повезано
+desconectado	прекинуто
+no se encontró com.syu.ms	com.syu.ms није пронађен
+com.syu.ms no respondió	com.syu.ms није одговорио
+com.syu.ms se reinició	com.syu.ms је рестартован
+Tema según las luces, batería y temperatura exterior	Тема према светлима, акумулатору и спољној температури
+Pantallas FYT (com.syu.ms)	FYT јединице (com.syu.ms)
+luces detectadas	светла су препозната
+Auto: por horario. Sistema: sigue las luces del carro (pantalla FYT)	Auto: по распореду. Систем: прати светла кола (FYT јединица)
+Espera para cambiar de tema	Одложи промене теме
+Evita cambios de golpe, p. ej. al apagar el carro de noche	Спречава нагле промене, нпр. кад ноћу угасиш кола
+Para seguirlas, elige Apariencia → Tema → Modo → Sistema	Да би их пратила, изабери Изглед → Тема → Режим → Систем
+Elige qué datos del carro se ven arriba, junto al Wi-Fi	Изабери који подаци из кола се приказују горе, поред Wi-Fi-ја
+Tensión de la batería	Напон акумулатора
+Medida por la pantalla; no necesita la caja CAN	Мери га јединица; не треба CAN кутија
+Temperatura exterior	Спољна температура
+Del sensor del carro; necesita la caja CAN	Са сензора кола; треба CAN кутија
+pantalla FYT detectada: elígela en Tu vehículo → Equipo	Препознат FYT екран: изабери га у Твоје возило → Јединица
+esta pantalla no informa las luces	овај екран не јавља светла
+# OBD-II (PR #42, Jaacern)
+Vehículo	Возило
+Monitor del vehículo	Монитор возила
+Batería	Акумулатор
+Carga del motor	Оптерећење мотора
+Acelerador	Гас
+Aire de admisión	Усисни ваздух
+Combustible	Гориво
+Mezcla corta	Краткорочна корекција горива
+Mezcla larga	Дугорочна корекција горива
+Flujo de aire	Проток ваздуха
+Presión del múltiple	Притисак у усисној грани
+Consumo del motor	Потрошња горива мотора
+Consumo por hora	Потрошња горива
+Aceite del motor	Моторно уље
+Panel de datos	Панел података
+Datos del panel	Подаци на панелу
+Datos del motor	Подаци мотора
+Cilindrada del motor	Запремина мотора
+Cilindrada del motor (litros)	Запремина мотора (литри)
+Protocolo	Протокол
+CAN 11 bits · 500 kbps	CAN 11-бит · 500 кбпс
+CAN 29 bits · 500 kbps	CAN 29-бит · 500 кбпс
+CAN 11 bits · 250 kbps	CAN 11-бит · 250 кбпс
+CAN 29 bits · 250 kbps	CAN 29-бит · 250 кбпс
+Escribe un número entre 0,5 y 8	Унеси број између 0,5 и 8
+Máximo 6 datos	Највише 6 вредности
+Hasta 6 datos del escáner, por ejemplo RPM, velocidad, refrigerante y consumo	До 6 вредности са скенера, на пример обртаји, брзина, расхладна течност и потрошња
+Conectando con el escáner…	Повезујем се са скенером…
+Conectado	Повезано
+Esperando al auto (¿contacto apagado?)	Чекам кола (контакт искључен?)
+Escáner conectado. Vigilando el motor.	Скенер је повезан. Пратим мотор.
+Se perdió la conexión con el escáner.	Веза са скенером је прекинута.
+Códigos borrados.	Кодови су обрисани.
+El auto no aceptó borrar los códigos.	Кола нису прихватила брисање кодова.
+El escáner no logra hablar con el auto. ¿Está el contacto puesto?	Скенер не може да комуницира са колима. Да ли је контакт укључен?
+El escáner no responde	Скенер не одговара
+El escáner cerró la conexión	Скенер је затворио везу
+El Bluetooth está apagado	Bluetooth је искључен
+Este equipo no tiene Bluetooth	Овај уређај нема Bluetooth
+No se pudo conectar	Повезивање није успело
+Motor sobrecalentado: {}	Мотор се прегрева: {}
+Refrigerante alto: {}	Висока температура расхладне течности: {}
+El refrigerante sube rápido: {} °C	Расхладна течност брзо расте: {} °Ц
+Voltaje alto: {}	Висок напон: {}
+Voltaje bajo: {}	Низак напон: {}
+RPM muy altas: {}	Врло високи обртаји: {}
+Motor muy exigido: {}	Мотор ради под великим оптерећењем: {}
+Aire de admisión muy caliente: {}	Усисни ваздух је врло врућ: {}
+Poco combustible: {}	Мало горива: {}
+Mezcla pobre ({}): {}	Сиромашна смеша ({}): {}
+Mezcla rica ({}): {}	Богата смеша ({}): {}
+Aceite del motor muy caliente: {}	Моторно уље је врло вруће: {}
+Código de falla {}	Код грешке {}
+Código pendiente {}	Код на чекању {}
+revisa el detalle en la pantalla	погледај детаље на екрану
+Detente en un lugar seguro y apaga el motor. No abras la tapa del radiador en caliente. Espera que enfríe y revisa el nivel de refrigerante, el electroventilador y la correa.	Стани на безбедно место и угаси мотор. Не отварај чеп хладњака док је врућ. Пусти да се охлади, па провери ниво расхладне течности, вентилатор хладњака и каиш.
+Baja la exigencia: usa una marcha más baja, apaga el aire acondicionado y, si sigue subiendo, pon la calefacción al máximo y busca dónde parar.	Успори: користи нижи степен, угаси климу и, ако и даље расте, пусти грејање на максимум и нађи место да станеш.
+Baja la exigencia: usa una marcha más baja, apaga el aire acondicionado y vigila que el electroventilador encienda.	Успори: користи нижи степен, угаси климу и провери да ли се вентилатор хладњака укључује.
+El alternador está cargando de más y puede dañar la batería. Revísalo pronto.	Алтернатор препуњава и може да оштети акумулатор. Дај га ускоро на проверу.
+El alternador no está cargando bien: apaga lo que no necesites (aire, luces extra) y ve a un taller antes de que se descargue la batería. Revisa la correa.	Алтернатор не пуни како треба: угаси оно што ти не треба (клима, додатна светла) и стигни до сервиса пре него што се акумулатор испразни. Провери каиш.
+Baja la velocidad o usa una marcha más alta. En bajadas, frena con motor sin pasar la zona roja.	Успори или користи виши степен. На низбрдици кочи мотором, али не улази у црвено поље.
+El motor va al máximo hace rato. En cuestas largas usa una marcha más baja y deja descansar el motor y la caja.	Мотор је неко време под пуним оптерећењем. На дугим успонима користи нижи степен и дај мотору и мењачу да се одморе.
+El aire que entra al motor está muy caliente: pierde potencia. Si estás detenido, avanza para que circule aire.	Ваздух који улази у мотор је врло врућ, па мотор губи снагу. Ако стојиш, помери се да ваздух може да струји.
+Carga combustible en la próxima estación. En la montaña puede no haber más adelante.	Наточи гориво на следећој пумпи. У планинама даље можда нема ниједне.
+El motor recibe menos combustible del que necesita: puede ser una fuga de vacío, el filtro de combustible o el sensor MAF. Puede perder fuerza en subidas.	Мотор добија мање горива него што му треба: може да буде цурење вакуума, филтер горива или MAF сензор. Може да губи снагу на успонима.
+El motor recibe más combustible del necesario: revisa el filtro de aire, el sensor MAF o un inyector que gotee.	Мотор добија више горива него што му треба: провери филтер ваздуха, MAF сензор или бризгаљку која цури.
+Baja la exigencia y revisa el nivel de aceite cuando puedas parar.	Успори и провери ниво уља кад будеш могао да станеш.
+código	код
+códigos	кодова
+Carrocería (airbag, cinturones, luces, cierre…)	Каросерија (ваздушни јастуци, појасеви, светла, браве…)
+Chasis (frenos ABS, dirección, suspensión, 4x4)	Шасија (ABS кочнице, управљач, вешање, 4x4)
+Comunicación entre computadores del auto	Комуникација између рачунара у колима
+Motor: mezcla de aire y combustible	Мотор: смеша ваздуха и горива
+Motor: encendido y fallas de encendido	Мотор: паљење и прескакање
+Control de emisiones	Контрола издувних гасова
+Velocidad, ralentí y entradas auxiliares	Брзина, празан ход и помоћни улази
+Computador del motor y sus salidas	Рачунар мотора и његови излази
+Caja de cambios	Мењач
+Motor o caja (sistema híbrido u otro)	Мотор или мењач (хибрид или друго)
+código propio de la marca	код специфичан за произвођача
+La API key no es válida	API кључ није исправан
+La IA está ocupada o sin saldo. Intenta más tarde.	AI је заузет или нема кредита. Покушај касније.
+La IA no quiso responder	AI је одбио да одговори
+La IA respondió vacío	AI је вратио празан одговор
+Luz del motor	Check engine
+Conectar	Повежи
+Auto simulado	Симулирана кола
+Apagado	Искључено
+En vivo	Уживо
+Conecta tu escáner OBD-II	Повежи свој OBD-II скенер
+1. Enchufa el escáner ELM327 en el conector OBD (bajo el volante) y pon el contacto.\n2. Si es Bluetooth, emparéjalo primero en los ajustes de Bluetooth del equipo (clave 1234 o 0000).\n3. Toca ⚙ para elegirlo y luego Conectar.\n\nStradaOS vigila la temperatura, el voltaje, la mezcla y los códigos de falla, y te avisa por voz aunque estés en otra app.	1. Утакни ELM327 скенер у OBD утичницу (испод волана) и укључи контакт.\n2. Ако је Bluetooth, прво га упари у Bluetooth подешавањима јединице (PIN 1234 или 0000).\n3. Додирни ⚙ да га изабереш, па Повежи.\n\nStradaOS прати температуру, напон, смешу горива и кодове грешака и упозорава те гласом чак и док користиш другу апликацију.
+Elegir escáner	Изабери скенер
+Probar con un auto simulado	Пробај са симулираним колима
+Alertas	Упозорења
+Todo normal por ahora.	За сада је све нормално.
+Sin monitor activo.	Монитор није покренут.
+Códigos de falla	Кодови грешака
+El auto no tiene códigos guardados.	Кола немају сачуване кодове.
+Se revisan al conectar y cada 30 segundos.	Проверава се при повезивању и на сваких 30 секунди.
+Pendiente	На чекању
+Grave	Озбиљно
+Leve	Мање
+Revisar	Провери
+Toca para ver qué hacer	Додирни да видиш шта да радиш
+Borrar códigos	Обриши кодове
+Hace {} min	пре {} мин
+Qué hacer	Шта да радиш
+Explicación de la IA	Објашњење од AI-ја
+Este código no está en la tabla sin conexión: suele ser un código propio de la marca. La IA puede explicarlo.	Овај код није у офлајн табели: обично је специфичан за произвођача. AI може да га објасни.
+Ojo: los códigos de airbag, ABS y carrocería normalmente no se leen con OBD-II genérico; si aparece aquí es porque el auto lo reporta al computador del motor.	Напомена: кодови ваздушних јастука, ABS-а и каросерије обично не могу да се прочитају генеричким OBD-II; ако се овде појави, кола га јављају рачунару мотора.
+Volver a preguntar a la IA	Питај AI поново
+Explicar con IA	Објасни помоћу AI-ја
+Para que una IA explique los códigos, pon tu API key (Claude, Groq, Gemini u otra) en ⚙ → Inteligencia artificial. Las explicaciones se guardan en el equipo y después funcionan sin internet.	Да би ти AI објаснио кодове, додај свој API кључ (Claude, Groq, Gemini или други) у ⚙ → Вештачка интелигенција. Објашњења се чувају на уређају и после раде без интернета.
+Preguntando a la IA…	Питам AI…
+No se pudo consultar la IA	AI није доступан
+Apaga el motor y deja solo el contacto puesto para borrar los códigos.	Угаси мотор и остави само укључен контакт да обришеш кодове.
+¿Borrar los códigos de falla?	Обрисати кодове грешака?
+Se apaga la luz del motor y se borran los datos que usa el taller para diagnosticar. Si la falla sigue, el código volverá a aparecer. Anota los códigos antes.	Лампица check engine се гаси и бришу се подаци које сервис користи за дијагностику. Ако квар остане, код ће се вратити. Прво запиши кодове.
+Escáner	Скенер
+Mi vehículo (para la IA)	Моје возило (за AI)
+Inteligencia artificial	Вештачка интелигенција
+Sin configurar	Није подешено
+Avisos por voz	Гласовна упозорења
+Sí	Да
+Encender el monitor al iniciar StradaOS	Покрени монитор кад се покрене StradaOS
+Registro de la conexión	Дневник везе
+Ajustes del vehículo	Подешавања возила
+Tu vehículo: marca, modelo, año, motor y caja	Твоје возило: марка, модел, годиште, мотор и мењач
+Ej.: Kia Sorento 2010 2.4 bencina 4x4 automático	Нпр.: Mercedes Ц 2010 2.2 дизел аутоматик
+Escáner Wi-Fi (escribir IP y puerto)	Wi-Fi скенер (унеси IP и порт)
+Auto simulado (para probar)	Симулирана кола (за тестирање)
+No hay escáneres Bluetooth emparejados: emparéjalo en los ajustes del equipo	Нема упарених Bluetooth скенера: упари га у подешавањима јединице
+Elige tu escáner	Изабери свој скенер
+IP y puerto del escáner Wi-Fi	IP и порт Wi-Fi скенера
+Escribe IP:puerto, por ejemplo 192.168.0.10:35000	Унеси IP:порт, на пример 192.168.0.10:35000
+Proveedor	Провајдер
+Modelo	Модел
+Dirección de la API	API адреса
+Borrar la API key	Обриши API кључ
+La IA recibe solo el código, el vehículo que escribiste y los datos del motor; nunca tu ubicación. Cada consulta la cobra tu proveedor con tu API key.	AI добија само код, возило које си унео и податке мотора; никад твоју локацију. Сваки захтев твој провајдер наплаћује на твој API кључ.
+Aviso sobre	Упозорење изнад
+alerta sobre	упозорење изнад
+Aviso bajo	Упозорење испод
+alerta bajo	упозорење испод
+Aviso sobre ±	Упозорење изнад ±
+alerta sobre ±	упозорење изнад ±
+Con el motor en marcha debe estar entre 13,5 y 14,8 V. Con el motor apagado, 12,4 a 12,8 V es normal.	Са упаљеним мотором треба да буде 13,5 до 14,8 В. Са угашеним мотором нормално је 12,4 до 12,8 В.
+Normal en marcha: 85 a 98 °C. También avisa si sube más de 4 °C por minuto sobre 95 °C.	Нормално у раду: 85 до 98 °Ц. Упозорава и ако расте више од 4 °Ц у минути изнад 95 °Ц.
+Cuánto corrige el computador la mezcla. Positivo = le falta combustible (fuga de aire); negativo = le sobra.	Колико рачунар коригује смешу. Позитивно = фали горива (цурење ваздуха); негативно = превише горива.
+Solo informativo: este dato no genera alertas.	Само информација: ова вредност не покреће упозорења.
+Otra compatible con OpenAI	Други компатибилан са OpenAI
+elegir…	изабери…
+Probar la IA	Испробај AI
+Primero escribe la API key	Прво унеси API кључ
+Buscando los modelos del proveedor…	Учитавам моделе провајдера…
+recomendado	препоручено
+Escribir otro…	Упиши други…
+Preguntando por el código de ejemplo P0711…	Питам за пример кода P0711…
+La IA funciona · P0711 de ejemplo	AI ради · пример P0711
+Volver	Назад
+Elige el modelo de la IA en los ajustes	Изабери AI модел у подешавањима
+Escribe la dirección de la API en los ajustes	Унеси API адресу у подешавањима
+Escaneando	Скенирање
+Escaneo terminado.	Скенирање је завршено.
+El escaneo se cortó	Скенирање је прекинуто
+Escanear todo lo que entrega el auto	Скенирај све што кола дају
+Conecta el escáner con el contacto puesto (mejor con el motor en marcha) y vuelve a intentarlo.	Повежи скенер са укљученим контактом (најбоље са упаљеним мотором) и покушај поново.
+Pregunta al auto por cada dato estándar y por los datos propios de la marca del motor y la caja. Tarda hasta 2 minutos y mientras tanto las alertas se pausan: hazlo detenido. Solo lee, no cambia nada en el auto.	Тражи од кола сваку стандардну вредност и сопствене податке произвођача за мотор и мењач. Траје до 2 минута и упозорења су за то време паузирана, па то ради док стојиш. Само чита; ништа не мења у колима.
+Escanear	Скенирај
+Guardado en	Сачувано у
+Lo que entrega tu auto	Шта твоја кола дају
+Consumo	Потрошња горива
+calculado	израчунато
+Panel	Табла
+Todos los datos	Сви подаци
+Datos en vivo	Подаци уживо
+Monitores de emisiones	Монитори емисије
+✓ listo · ✗ aún no termina su prueba (normal después de borrar códigos o desconectar la batería).	✓ спремно · ✗ тест још није завршен (нормално после брисања кодова или искључивања акумулатора).
+Fallas de encendido	Прескакање паљења
+Sistema de combustible	Систем горива
+Componentes	Компоненте
+Catalizador	Катализатор
+Catalizador calefaccionado	Грејани катализатор
+Vapores de combustible (EVAP)	Испарења горива (EVAP)
+Aire secundario	Секундарни ваздух
+Sensores de oxígeno	Ламбда сонде
+Calefactor de sensores de oxígeno	Грејач ламбда сонде
+Recirculación de gases (EGR)	Рециркулација издувних гасова (EGR)
+Preguntar a la IA	Питај AI
+Ajustar esta alerta	Подеси ово упозорење
+Alertas a vigilar	Упозорења која се прате
+Subida rápida del refrigerante	Брз раст температуре расхладне течности
+Códigos de falla nuevos (aviso por voz)	Нови кодови грешака (гласовно упозорење)
+aviso	упозорење
+alerta	аларм
+bajo	ниско
+Vigilar	Прати
+Valores de fábrica	Фабричке вредности
+Escribe un número	Унеси број
+Datos del motor cuando se registró la falla	Подаци мотора кад је квар забележен
+Buscar escáneres Bluetooth cercanos	Тражи Bluetooth скенере у близини
+Emparejado	Упарени
+emparejado	упарен
+No se pudo emparejar. Prueba con la clave 1234 o 0000.	Упаривање није успело. Пробај PIN 1234 или 0000.
+Sin el permiso de ubicación Android no deja buscar equipos Bluetooth	Без дозволе за локацију Android не дозвољава тражење Bluetooth уређаја
+No se encontraron equipos. ¿Está el escáner enchufado y el contacto puesto?	Нису пронађени уређаји. Да ли је скенер утакнут и контакт укључен?
+Buscando… (enchufa el escáner y pon el contacto)	Тражим… (утакни скенер и укључи контакт)
+Emparejando… si pide clave, escribe 1234 o 0000	Упарујем… ако тражи PIN, унеси 1234 или 0000
+Emparéjalo en los ajustes de Bluetooth del equipo	Упари га у Bluetooth подешавањима јединице
+Los escáneres suelen llamarse OBDII, OBD2, V-LINK o Vgate.	Скенери се обично зову ОБДИИ, OBD2, В-LINK или Vgate.
+Buscar de nuevo	Тражи поново
+Gráficos en vivo	Графикони уживо
+Desliza el dedo sobre un gráfico para ver el valor de cada momento. Toca los datos de arriba para comparar hasta 3.	Превуци прстом преко графикона да видиш вредност у сваком тренутку. Додирни ставке горе да упоредиш до 3.
+mín	мин
+máx	макс
+prom	просек
+ahora	сада
+hace	пре
+Esperando datos…	Чекам податке…
+Monitor apagado · toca para conectar	Монитор искључен · додирни да се повежеш
+monitor apagado	монитор искључен
+VEHÍCULO	ВОЗИЛО
+Qué muestra cada tarjeta	Шта приказује свака картица
+Música, el monitor del vehículo (temperatura, voltaje, RPM y alertas) o un gráfico en vivo	Музику, монитор возила (температура, напон, обртаји и упозорења) или графикон уживо
+Gráfico en vivo	Графикон уживо
+Gráfico del reproductor	Графикон на картици плејера
+Dato del escáner que se grafica (últimos 5 minutos)	Вредност са скенера за графикон (последњих 5 минута)
+Tarjeta del centro	Средња картица
+El mapa, el monitor del vehículo o un gráfico en vivo. Sin el mapa, Android Auto y CarPlay se abren desde la barra de botones	Мапу, монитор возила или графикон уживо. Без мапе, Android Auto и CarPlay се отварају из траке са дугмадима
+Gráfico del centro	Графикон на средњој картици
+Velocidad (GPS)	Брзина (GPS)
+Recuadro de la velocidad	Поље за брзину
+La velocidad del GPS o, en grande, otro dato del escáner (por ejemplo la temperatura del refrigerante)	GPS брзина или, великим словима, нека друга вредност са скенера (нпр. температура расхладне течности)
+Esta tarjeta	Ова картица
+Cambiar esta tarjeta…	Промени ову картицу…
+¿Qué dato graficar?	Коју вредност да прикаже на графикону?
+Monitor apagado	Монитор искључен
+Cambiar qué muestra…	Промени шта приказује…
+◀  Mover a la izquierda	◀  Помери лево
+Mover a la derecha  ▶	Помери десно  ▶
+Ancho de la tarjeta…	Ширина картице…
+Ancho de la tarjeta	Ширина картице
+Volver al orden y tamaño de siempre	Врати подразумевани редослед и величину
+Ya está a la izquierda	Већ је скроз лево
+Ya está a la derecha	Већ је скроз десно
+Ancha	Широка
+Muy ancha	Врло широка
+✋  Ajustar con el dedo (mover y cambiar tamaño)	✋  Подеси додиром (помери и промени величину)
+Arrastra la manija entre dos tarjetas para cambiar el ancho · arrastra una tarjeta para moverla	Превуци ручицу између две картице да промениш величину · превуци картицу да је помериш
+Listo	Готово
+límite	ограничење
+se ajusta solo	прилагођава се сама
+ancho	ширина
+VIAJE	ПУТ
+ALTITUD	ВИСИНА
+APPS	АПЛИКАЦИЈЕ
+pendiente —	нагиб —
+normal	нормално
+Mantén presionado para reiniciar el viaje o cambiar los widgets	Задржи прст да ресетујеш пут или промениш виџете
+Quitar este acceso	Уклони ову пречицу
+Acceso directo {}	Пречица {}
+Altitud, pendiente y rumbo	Висина, нагиб и смер
+Viaje (km, tiempo, consumo)	Пут (km, време, потрошња)
+Dato del vehículo…	Вредност возила…
+Accesos directos (3 apps)	Пречице (3 апликације)
+Dato del vehículo	Вредност возила
+Widget	Виџет
+Reiniciar el viaje	Ресетуј пут
+Quitar la franja	Уклони траку
+Franja de widgets	Трака са виџетима
+¿Qué dato mostrar?	Коју вредност да прикаже?
+Viaje reiniciado	Пут је ресетован
+Quitar la franja de widgets de abajo	Уклони траку са виџетима доле
+Franja de widgets debajo (altitud, viaje, apps…)	Трака са виџетима доле (висина, пут, апликације…)
+Arrastra las manijas para cambiar tamaños · arrastra una tarjeta para moverla · toca un widget para cambiarlo	Превуци ручице да промениш величину · превуци картицу да је помериш · додирни виџет да га промениш
+Agregar franja de widgets	Додај траку са виџетима
+Agregar un widget	Додај виџет
+Ajustar tamaños con el dedo	Подеси величине додиром
+Quitar este widget	Уклони овај виџет
+Accesos directos (apps)	Пречице (апликације)
+MÚSICA	МУЗИКА
+Música (canción y controles)	Музика (песма и команде)
+Arrastra las manijas para cambiar tamaños · arrastra una tarjeta para moverla · toca un widget para cambiarlo · ✕ oculta una tarjeta	Превуци ручице да промениш величину · превуци картицу да је помериш · додирни виџет да га промениш · ✕ сакрива картицу
+Ocultar la tarjeta del vehículo	Сакриј картицу возила
+Ocultar la tarjeta de música	Сакриј картицу музике
+Mostrar la tarjeta del vehículo	Прикажи картицу возила
+Mostrar la tarjeta de música	Прикажи картицу музике
+Avance del encendido	Предпаљење
+Sonda O2 banco 1	Ламбда сонда банка 1
+Sonda O2 banco 1 sensor 2	Ламбда сонда банка 1 сензор 2
+Tiempo de marcha	Време рада мотора
+Distancia con la luz del motor	Пређено са упаљеном лампицом мотора
+EGR comandada	Задати EGR
+Arranques desde borrar códigos	Загревања од брисања кодова
+Distancia desde borrar códigos	Пређено од брисања кодова
+Presión barométrica	Атмосферски притисак
+Catalizador banco 1	Катализатор банка 1
+Catalizador banco 1 sensor 2	Катализатор банка 1 сензор 2
+Carga absoluta	Апсолутно оптерећење
+Mezcla comandada	Задати однос смеше
+Acelerador relativo	Релативни положај лептира
+Acelerador B	Лептир Б
+Pedal D	Педала D
+Pedal E	Педала Е
+Acelerador comandado	Задати положај лептира
+Tiempo con la luz del motor	Време са упаљеном лампицом мотора
+Tiempo desde borrar códigos	Време од брисања кодова
+Mezcla O2 banco 1	Корекција ламбда банка 1
+Mezcla O2 banco 1 sensor 2	Корекција ламбда банка 1 сензор 2
+API key	API кључ
+Enviar el VIN a la IA	Пошаљи VIN вештачкој интелигенцији
+La IA recibe solo el código, el vehículo que escribiste y los datos del motor; nunca tu ubicación. El VIN solo se envía si lo activas aquí. Cada consulta la cobra tu proveedor con tu API key.	Вештачка интелигенција добија само код, возило које си уписао и податке мотора; никад твоју локацију. VIN се шаље само ако га овде укључиш. Сваки упит ти наплаћује твој провајдер преко твог API кључа.
+RPM	Обртаји
+# 2.26: OBD-II skener (panel vozila i podešavanja)
+Escáner OBD-II	OBD-II скенер
+Enciende el monitor del motor en «Escáner OBD-II»	Укључи монитор мотора у „OBD-II скенер"
+Conectando…	Повезујем…
+Monitor del motor	Монитор мотора
+Está apagado: enciéndelo para conectar el escáner	Искључен је: укључи га да повеже скенер
+Estado	Стање
+Abrir el panel del vehículo	Отвори панел возила
+Medidores, alertas y códigos encima del tema que tengas	Мерачи, упозорења и кодови преко твоје теме
+Diagnóstico	Дијагностика
+Qué vigila StradaOS y cuándo avisa por voz	Шта StradaOS прати и када те упозорава
+Todo normal	Све је у реду
+Qué significan y qué hacer; borrarlos con el motor apagado	Шта значе и шта да радиш; бриши их са угашеним мотором
+Cada dato que entrega tu auto, con gráficos	Све вредности које твоја кола дају, са графиконима
+Más	Још
+Opcional: explica los códigos para tu auto en particular	Опционо: објашњава кодове за твоја кола
+Motor, protocolo, panel y escaneo completo	Мотор, протокол, панел и потпуно скенирање
+Bluetooth emparejado, Wi-Fi (IP y puerto) o un auto simulado para probar	Упарени Bluetooth, Wi-Fi (IP и порт) или симулирана кола за пробу
+Empareja el escáner sin salir de StradaOS (clave 1234 o 0000)	Упари скенер без изласка из StradaOS-а (PIN 1234 или 0000)
+Reconectar	Поново повежи
+Conectar al iniciar StradaOS	Повежи се кад се StradaOS покрене
+Las alertas funcionan aunque estés en otra app (con una notificación fija)	Упозорења раде и док си у другој апликацији (уз сталну нотификацију)
+Cómo conectar el escáner	Како да повежеш скенер
+1. Enchufa el escáner ELM327 en el conector OBD (bajo el volante) y pon el contacto.\n2. Bluetooth: emparéjalo con la clave 1234 o 0000. Wi-Fi: conecta la pantalla a la red del escáner y escribe su IP y puerto (casi siempre 192.168.0.10:35000).\n3. Elígelo arriba en «Escáner».	1. Убаци ELM327 скенер у OBD прикључак (испод волана) и упали контакт.\n2. Bluetooth: упари га са PIN-ом 1234 или 0000. Wi-Fi: повежи екран на мрежу скенера и упиши IP и порт (скоро увек 192.168.0.10:35000).\n3. Изабери га горе у „Скенер".
+Lo que respondió el escáner (para reportar un problema)	Шта је скенер одговорио (за пријаву проблема)
+Todo normal por ahora	За сада је све у реду
+Alerta	Упозорење
+Aviso	Пажња
+Avisos	Обавештења
+Habla aunque estés en Waze o con música	Говори и док си у Waze-у или пушта музика
+Abrir el panel con una alerta grave	Отвори панел код озбиљног упозорења
+Por ejemplo, el motor muy caliente o la batería que no carga	На пример, мотор је јако врућ или акумулатор се не пуни
+Más de 4 °C por minuto con el motor caliente	Више од 4 °Ц у минути са загрејаним мотором
+Cuándo avisa cada dato	Када свака вредност упозорава
+Códigos guardados en el auto	Кодови сачувани у колима
+El auto no tiene códigos guardados	Кола немају сачуване кодове
+Se revisan al conectar y cada 30 segundos	Проверава се при повезивању и на сваких 30 секунди
+Luz del motor encendida	Упаљена лампица мотора
+El computador del motor confirmó una falla	Рачунар мотора је потврдио квар
+Con el motor apagado y el contacto puesto. Anota los códigos antes: no se puede deshacer	Са угашеним мотором и упаљеним контактом. Прво запиши кодове: не може да се поништи
+Conecta el escáner para ver los datos	Повежи скенер да видиш податке
+Gráficos	Графикони
+Hasta 3 datos a la vez, de 1 a 30 minutos	До 3 вредности одједном, од 1 до 30 минута
+La tuya: cada consulta la cobra tu proveedor	Твој: сваки упит наплаћује твој провајдер
+Privacidad	Приватност
+Qué se envía	Шта се шаље
+Solo el código, el vehículo que escribas y los datos del motor de ese momento; nunca tu ubicación. Las respuestas se guardan en la pantalla	Само код, возило које упишеш и подаци мотора у том тренутку; никад твоја локација. Одговори се чувају на екрану
+Tu vehículo (para la IA)	Твоје возило (за вештачку интелигенцију)
+Marca, modelo, año, motor y caja	Марка, модел, годиште, мотор и мењач
+Identifica tu auto de forma única. Apagado por defecto	Јединствено означава твоја кола. Подразумевано искључено
+Probar	Пробај
+Pregunta por un código de ejemplo	Пита за пример кода
+Motor	Мотор
+Para calcular el consumo en motores sin sensor MAF	За рачунање потрошње код мотора без MAF сензора
+Automático casi siempre; fuerza uno si el escáner no lo detecta	Скоро увек аутоматски; изабери ручно ако га скенер не препозна
+Panel del vehículo	Панел возила
+Lado del panel	Страна панела
+Pestaña en el borde	Језичак на ивици
+Toca o desliza la pestaña para abrir el panel. Sin ella, ábrelo con un botón de la barra	Додирни или превуци језичак да отвориш панел. Без њега, отвори га дугметом у траци
+Informe de cada dato estándar y los propios de la marca. Solo lee	Извештај свих стандардних вредности и оних од произвођача. Само читање
+Ver el último informe	Види последњи извештај
+Con un escáner ELM327 por Wi-Fi o Bluetooth: temperatura, batería, alertas por voz y códigos de falla	Са ELM327 скенером преко Wi-Fi-ја или Bluetooth-а: температура, акумулатор, гласовна упозорења и кодови грешака
+También con la pestaña del borde o con un botón de la barra	И језичком на ивици или дугметом у траци
+Vehículo (OBD-II)	Возило (OBD-II)
+Sin elegir	Није изабрано
+Apagada	Искључено
+Alerta sobre	Упозори изнад
+Alerta bajo	Упозори испод
+Alerta sobre ±	Упозори изнад ±
+No	Не
+Para que una IA explique los códigos, pon tu API key (Claude, Groq, Gemini u otra) en Ajustes → Tu vehículo → Escáner OBD-II → Inteligencia artificial. Las explicaciones se guardan en el equipo y después funcionan sin internet.	Да би вештачка интелигенција објаснила кодове, упиши свој API кључ (Claude, Groq, Gemini или други) у Подешавања → Твоје возило → OBD-II скенер → Вештачка интелигенција. Објашњења се чувају на уређају и после раде без интернета.
+Se apaga la luz del motor y se borran los datos que usa el taller para diagnosticar; también se reinician los monitores de emisiones. No se puede deshacer y, si la falla sigue, el código volverá a aparecer. Anota los códigos antes.	Лампица мотора се гаси и бришу се подаци које сервис користи за дијагностику; ресетују се и монитори емисије. Не може да се поништи и, ако квар остане, код ће се вратити. Прво запиши кодове.
+Ej.: Kia Picanto 2019 1.2 gasolina mecánico	Нпр.: Kia Picanto 2019 1.2 бензин мануелни
+Sin poner	Није подешено
+Escaneando… el avance se ve en el estado del escáner	Скенирам… напредак се види у стању скенера
+Todavía no hay un informe	Још нема извештаја
+Sin monitor activo	Ниједан активан монитор
+Sin códigos guardados	Нема сачуваних кодова
+Se revisan al conectar	Проверава се при повезивању
+Ver todo	Види све
+1 activa	активно: 1
+{} activas	активно: {}
+
+# 2.26: tekstovi skenera koji su nedostajali
+Parada intermedia	Успутно стајање
+
+# 2.26: upozorenja za smešu i objašnjenja najčešćih kodova grešaka (assets/obd/dtc_es.tsv)
+Árbol de levas de admisión adelantado más de lo esperado (variador CVVT).	Усисна брегаста осовина је више напред него што треба (CVVT варијатор).
+Revisa nivel y estado del aceite: el variador funciona con presión de aceite. Si el aceite está bien, revisar la válvula solenoide OCV.	Провери ниво и стање уља: варијатор ради на притисак уља. Ако је уље у реду, провери OCV електровентил.
+Árbol de levas de admisión atrasado más de lo esperado (variador CVVT).	Усисна брегаста осовина је више назад него што треба (CVVT варијатор).
+Revisa nivel y estado del aceite. Si sigue, revisar la válvula OCV y la cadena de distribución.	Провери ниво и стање уља. Ако остане, провери OCV вентил и ланац развода.
+Árbol de levas de escape adelantado más de lo esperado.	Издувна брегаста осовина је више напред него што треба.
+Revisa nivel y estado del aceite. Si sigue, revisar la válvula OCV de escape.	Провери ниво и стање уља. Ако остане, провери издувни OCV вентил.
+La posición del cigüeñal y del árbol de levas no coinciden.	Положаји радилице и брегасте осовине се не поклапају.
+Puede ser la cadena de distribución estirada o saltada. Evita exigir el motor y llévalo al taller pronto.	Ланац развода је можда издужен или је прескочио зуб. Не форсирај мотор и одвези га ускоро у сервис.
+El sensor de flujo de aire (MAF) marca fuera de lo esperado.	Сензор протока ваздуха (MAF) очитава ван опсега.
+Revisa el filtro de aire y que no haya mangueras sueltas después del sensor. Limpiar el MAF con limpiador especial.	Провери филтер ваздуха и потражи лабава црева после сензора. Очисти MAF наменским средством.
+Señal baja del sensor de flujo de aire (MAF).	Низак сигнал сензора протока ваздуха (MAF).
+Revisa el conector y el cableado del MAF.	Провери конектор и каблове MAF сензора.
+Señal alta del sensor de flujo de aire (MAF).	Висок сигнал сензора протока ваздуха (MAF).
+El sensor de presión del múltiple (MAP) marca fuera de lo esperado.	Сензор притиска у усисној грани (MAP) очитава ван опсега.
+Revisa mangueras de vacío y el conector del sensor MAP.	Провери вакуум црева и конектор MAP сензора.
+El sensor de temperatura del aire de admisión marca fuera de lo esperado.	Сензор температуре усисног ваздуха очитава ван опсега.
+Revisa el conector del sensor. No suele dejarte botado.	Провери конектор сензора. Ретко те остави на путу.
+Señal baja del sensor de temperatura del aire de admisión.	Низак сигнал сензора температуре усисног ваздуха.
+Revisa el conector y el cableado del sensor.	Провери конектор и каблове сензора.
+Señal alta del sensor de temperatura del aire de admisión.	Висок сигнал сензора температуре усисног ваздуха.
+El sensor de temperatura del refrigerante marca fuera de lo esperado.	Сензор температуре расхладне течности очитава ван опсега.
+No confíes en el indicador de temperatura hasta revisarlo. Vigila que el electroventilador encienda.	Не веруј мерачу температуре док се не провери. Провери да ли се вентилатор хладњака пали.
+Señal baja del sensor de temperatura del refrigerante.	Низак сигнал сензора температуре расхладне течности.
+Sin este dato el motor puede sobrecalentarse sin avisar. Revisa nivel de refrigerante y el conector del sensor.	Без овог очитавања мотор може да се прегреје без упозорења. Провери ниво расхладне течности и конектор сензора.
+Señal alta del sensor de temperatura del refrigerante.	Висок сигнал сензора температуре расхладне течности.
+El sensor de posición del acelerador marca fuera de lo esperado.	Сензор положаја лептира очитава ван опсега.
+El motor puede entrar en modo de emergencia (poca potencia). Revisa el cuerpo de aceleración y su conector.	Мотор може да пређе у хаваријски режим (мала снага). Провери тело лептира и његов конектор.
+Señal baja del sensor de posición del acelerador.	Низак сигнал сензора положаја лептира.
+Puede entrar en modo de emergencia. Revisa el conector del cuerpo de aceleración.	Може да пређе у хаваријски режим. Провери конектор тела лептира.
+Señal alta del sensor de posición del acelerador.	Висок сигнал сензора положаја лептира.
+El motor tarda mucho en llegar a temperatura para el control de mezcla.	Мотор се предуго загрева за регулацију горива.
+Suele ser el termostato abierto o el sensor de temperatura. Revisa en el taller.	Обично термостат заглављен у отвореном положају или сензор температуре. Нека се провери у сервису.
+El refrigerante no llega a la temperatura del termostato.	Расхладна течност не достиже температуру термостата.
+Casi siempre es el termostato pegado abierto. Gasta más combustible y calienta poco la cabina; cámbialo cuando puedas.	Скоро увек термостат заглављен у отвореном положају. Троши више горива и слабо греје кабину; замени га кад стигнеш.
+Falla en el circuito del sensor de oxígeno delantero (banco 1).	Квар струјног кола предње ламбда сонде (банка 1).
+Revisa el conector del sensor. Gastarás algo más de combustible.	Провери конектор сонде. Потрошња ће бити мало већа.
+El sensor de oxígeno delantero responde lento.	Предња ламбда сонда споро реагује.
+El sensor está viejo. Cámbialo cuando puedas.	Сонда је истрошена. Замени је кад стигнеш.
+Falla en el calentador del sensor de oxígeno delantero.	Квар грејача предње ламбда сонде.
+Revisa el fusible y el conector del sensor. Se puede seguir.	Провери осигурач и конектор сонде. Можеш да наставиш да возиш.
+Falla en el calentador del sensor de oxígeno trasero.	Квар грејача задње ламбда сонде.
+Mezcla pobre: entra más aire o llega menos combustible de lo que debería.	Сиромашна смеша: улази више ваздуха или стиже мање горива него што треба.
+Busca fugas de vacío (mangueras, junta de admisión), revisa el MAF, la presión de combustible y el filtro. En subidas largas puede perder fuerza.	Потражи цурење вакуума (црева, дихтунг усисне гране), провери MAF, притисак горива и филтер. Може да губи снагу на дугим успонима.
+Mezcla rica: llega más combustible del que debería.	Богата смеша: стиже више горива него што треба.
+Revisa el filtro de aire, el MAF, inyectores que goteen y el regulador de presión.	Провери филтер ваздуха, MAF, инјекторе који цуре и регулатор притиска.
+Temperatura del motor excesiva.	Температура мотора је превисока.
+Detente en un lugar seguro y apaga el motor. No abras la tapa del radiador en caliente. Revisa refrigerante, ventilador y correa.	Стани на безбедно место и угаси мотор. Не отварај чеп хладњака док је врућ. Провери расхладну течност, вентилатор и каиш.
+Falla en el circuito del relé de la bomba de combustible.	Квар струјног кола релеја пумпе горива.
+El motor puede apagarse sin aviso. Revisa relé y fusible de la bomba.	Мотор може да се угаси без упозорења. Провери релеј и осигурач пумпе.
+Falla en el inyector del cilindro {}.	Квар инјектора цилиндра {}.
+Puede fallar el cilindro {}. Revisa el conector del inyector.	Цилиндар {} може да прескаче. Провери конектор инјектора.
+Fallas de encendido en varios cilindros.	Прескакање паљења у више цилиндара.
+Si la luz del motor parpadea, baja la velocidad y no exijas el motor: el catalizador se puede dañar. Revisa bujías, bobinas, combustible y fugas de vacío.	Ако лампица мотора трепће, успори и не форсирај мотор: катализатор може да се оштети. Провери свећице, бобине, гориво и цурење вакуума.
+Falla de encendido en el cilindro {}.	Прескакање паљења у цилиндру {}.
+Si la luz parpadea, no exijas el motor. Intercambia la bobina del cilindro {} con otra para ver si la falla se mueve; revisa la bujía.	Ако лампица трепће, не форсирај мотор. Замени бобину цилиндра {} са другом да видиш да ли се прескакање премешта; провери свећицу.
+Falla en el circuito del sensor de detonación.	Квар струјног кола сензора детонације.
+El motor se protege atrasando el encendido: tendrá menos fuerza. Usa el combustible recomendado y revisa el conector del sensor.	Мотор се штити каснијим паљењем: имаће мање снаге. Користи препоручено гориво и провери конектор сензора.
+Falla en el sensor de posición del cigüeñal.	Квар сензора положаја радилице.
+El motor puede apagarse o no volver a arrancar. Evita lugares aislados y revisa el sensor y su conector.	Мотор може да се угаси или да не упали поново. Избегавај усамљена места и провери сензор и његов конектор.
+El sensor de posición del cigüeñal marca fuera de lo esperado.	Сензор положаја радилице очитава ван опсега.
+El motor puede apagarse o no volver a arrancar. Revisa el sensor y su conector.	Мотор може да се угаси или да не упали поново. Провери сензор и његов конектор.
+Falla en el sensor de posición del árbol de levas.	Квар сензора положаја брегасте осовине.
+Puede costar arrancar o apagarse. Revisa el sensor y su conector.	Може тешко да пали или да се гаси. Провери сензор и његов конектор.
+El sensor del árbol de levas marca fuera de lo esperado.	Сензор брегасте осовине очитава ван опсега.
+Revisa el sensor, su conector y la distribución.	Провери сензор, његов конектор и развод.
+Falla en el circuito de la bobina del cilindro {}.	Квар струјног кола бобине цилиндра {}.
+Puede fallar el cilindro {}. Revisa la bobina y su conector.	Цилиндар {} може да прескаче. Провери бобину и њен конектор.
+El catalizador (banco 1) ya no limpia los gases como debería.	Катализатор (банка 1) више не чисти издувне гасове како треба.
+Se puede seguir manejando. Antes de cambiarlo, descarta fallas de encendido, fugas de escape y sensores de oxígeno.	Можеш да наставиш да возиш. Пре замене искључи прескакање паљења, цурење издува и ламбда сонде.
+Flujo incorrecto en el sistema de vapores de combustible (EVAP).	Погрешан проток у систему испарења горива (EVAP).
+No afecta cómo maneja. Revisa la válvula de purga.	Не утиче на вожњу. Провери вентил за прочишћавање.
+Pequeña fuga en el sistema de vapores de combustible (EVAP).	Мало цурење у систему испарења горива (EVAP).
+Revisa que la tapa del estanque cierre bien. No afecta cómo maneja.	Провери да ли се чеп резервоара добро затвара. Не утиче на вожњу.
+Fuga grande en el sistema de vapores de combustible (EVAP).	Велико цурење у систему испарења горива (EVAP).
+Revisa que la tapa del estanque esté puesta y bien cerrada.	Провери да ли је чеп резервоара на месту и добро затворен.
+Fuga muy pequeña en el sistema de vapores de combustible (EVAP).	Врло мало цурење у систему испарења горива (EVAP).
+Revisa la tapa del estanque. No afecta cómo maneja.	Провери чеп резервоара. Не утиче на вожњу.
+Falla en el sensor de velocidad del vehículo.	Квар сензора брзине возила.
+La caja automática puede cambiar mal y el velocímetro fallar. Revisa el sensor y su conector.	Аутоматски мењач може лоше да мења брзине, а брзиномер може да откаже. Провери сензор и његов конектор.
+Falla en el control de ralentí.	Квар регулације празног хода.
+El motor puede quedar acelerado o apagarse en ralentí. Limpia el cuerpo de aceleración.	Мотор може да има висок празан ход или да се гаси на леру. Очисти тело лептира.
+Ralentí más bajo de lo esperado.	Празан ход је нижи него што треба.
+Limpia el cuerpo de aceleración y revisa fugas de vacío.	Очисти тело лептира и провери да ли цури вакуум.
+Ralentí más alto de lo esperado.	Празан ход је виши него што треба.
+Suele ser una fuga de vacío o el cuerpo de aceleración sucio.	Обично цурење вакуума или прљаво тело лептира.
+Voltaje del sistema bajo.	Низак напон система.
+El alternador puede no estar cargando. Revisa la correa, los bornes de la batería y el alternador antes de un viaje largo.	Алтернатор можда не пуни. Пре дужег пута провери каиш, клеме акумулатора и алтернатор.
+Voltaje del sistema alto.	Висок напон система.
+El regulador del alternador puede estar fallando y dañar la batería. Revísalo pronto.	Регулатор алтернатора можда отказује и може да оштети акумулатор. Нека се ускоро провери.
+Falla de comunicación interna del computador del motor.	Квар унутрашње комуникације рачунара мотора.
+Revisa masas (tierras) y conectores del computador.	Провери масе и конекторе рачунара.
+Falla de memoria del computador del motor.	Квар меморије рачунара мотора.
+Llévalo al taller.	Одвези га у сервис.
+La caja automática registró una falla (pide leer el computador de la caja).	Аутоматски мењач је забележио квар (очитај рачунар мењача).
+Hay otro código guardado en el computador de la caja. Si la caja queda en un solo cambio (modo de emergencia), maneja suave hasta el taller.	У рачунару мењача је сачуван још један код. Ако остане у једној брзини (хаваријски режим), вози полако до сервиса.
+Falla en el sensor de posición de la palanca de cambios.	Квар сензора положаја ручице мењача.
+Puede no arrancar en P o N o mostrar mal el cambio. Revisa el interruptor de rango.	Можда неће да упали у P или N или показује погрешну брзину. Провери прекидач положаја.
+Falla en el circuito del sensor de temperatura del aceite de la caja automática.	Квар струјног кола сензора температуре уља аутоматског мењача.
+La caja puede cambiar brusco. Revisa el nivel y el color del aceite de la caja y el conector del sensor. Evita remolcar o subir pendientes largas exigiendo la caja.	Промене брзина могу да буду грубе. Провери ниво и боју уља у мењачу и конектор сензора. Избегавај вучу и дуге стрме успоне који оптерећују мењач.
+El sensor de temperatura del aceite de la caja automática marca fuera de lo esperado.	Сензор температуре уља аутоматског мењача очитава ван опсега.
+La caja puede cambiar brusco o quedar en modo de emergencia. Revisa nivel y color del aceite de la caja (oscuro u olor a quemado es mala señal) y el conector del sensor. En subidas largas usa una marcha baja y descansa la caja.	Промене брзина могу да буду грубе или може да пређе у хаваријски режим. Провери ниво и боју уља у мењачу (тамно или мирис на изгорело је лош знак) и конектор сензора. На дугим успонима користи нижу брзину и пусти мењач да се одмори.
+Señal baja del sensor de temperatura del aceite de la caja automática.	Низак сигнал сензора температуре уља аутоматског мењача.
+Revisa el conector y el cableado del sensor. La caja puede cambiar brusco.	Провери конектор и каблове сензора. Промене брзина могу да буду грубе.
+Señal alta del sensor de temperatura del aceite de la caja automática.	Висок сигнал сензора температуре уља аутоматског мењача.
+Falla en el sensor de velocidad de entrada de la caja.	Квар сензора улазне брзине мењача.
+La caja puede cambiar brusco o quedar en modo de emergencia. Revisa el sensor y su conector.	Промене брзина могу да буду грубе или може да пређе у хаваријски режим. Провери сензор и његов конектор.
+Falla en el sensor de velocidad de salida de la caja.	Квар сензора излазне брзине мењача.
+La caja puede cambiar brusco y el velocímetro fallar. Revisa el sensor y su conector.	Промене брзина могу да буду грубе, а брзиномер може да откаже. Провери сензор и његов конектор.
+La relación de cambios no es la correcta (la caja patina).	Погрешан преносни однос (мењач проклизава).
+Revisa el nivel del aceite de la caja de inmediato. Maneja suave: seguir exigiéndola puede dañarla.	Одмах провери ниво уља у мењачу. Вози полако: даље форсирање може да га оштети.
+Relación incorrecta en 1ª: la caja patina en primera.	Погрешан однос у 1. брзини: мењач проклизава у првој.
+Revisa el nivel del aceite de la caja. Maneja suave hasta el taller.	Провери ниво уља у мењачу. Вози полако до сервиса.
+Relación incorrecta en 2ª: la caja patina en segunda.	Погрешан однос у 2. брзини: мењач проклизава у другој.
+Relación incorrecta en 3ª: la caja patina en tercera.	Погрешан однос у 3. брзини: мењач проклизава у трећој.
+Relación incorrecta en 4ª: la caja patina en cuarta.	Погрешан однос у 4. брзини: мењач проклизава у четвртој.
+Falla en el circuito del embrague del convertidor de torque.	Квар струјног кола спојнице хидроконвертора.
+Gastará más combustible y la caja se calentará más. Revisa el aceite de la caja.	Трошиће више горива и мењач ће се више грејати. Провери уље у мењачу.
+El embrague del convertidor de torque no acopla o patina.	Спојница хидроконвертора се не укључује или проклизава.
+La caja se calienta más: evita subidas largas exigentes y revisa el aceite de la caja.	Мењач се више греје: избегавај дуге захтевне успоне и провери уље у мењачу.
+Falla eléctrica en el embrague del convertidor de torque.	Електрични квар спојнице хидроконвертора.
+Revisa el conector de la caja. Gastará más combustible.	Провери конектор мењача. Трошиће више горива.
+Falla en el solenoide de cambio {}.	Квар електровентила мењача {}.
+La caja puede quedar en un solo cambio. Maneja suave hasta el taller.	Мењач може да остане у једној брзини. Вози полако до сервиса.
+El sensor de oxígeno trasero ve mezcla pobre después del catalizador.	Задња ламбда сонда види сиромашну смешу после катализатора.
+Revisa fugas de escape antes del sensor.	Провери да ли издув цури испред сонде.
+El sensor de oxígeno trasero ve mezcla rica después del catalizador.	Задња ламбда сонда види богату смешу после катализатора.
+Revisa sensores de oxígeno y el catalizador.	Провери ламбда сонде и катализатор.
+Mezcla pobre en ralentí.	Сиромашна смеша на празном ходу.
+Suele ser una fuga de vacío. Revisa mangueras y la válvula PCV.	Обично цурење вакуума. Провери црева и PCV вентил.
+Mezcla rica en ralentí.	Богата смеша на празном ходу.
+Revisa inyectores y la válvula de purga del EVAP.	Провери инјекторе и EVAP вентил за прочишћавање.
+
+# 2.26: monitori emisije i napredak skeniranja
+Escaneando: {}	Скенирам: {}
+Datos estándar (modo 01)…	Стандардни подаци (мод 01)…
+Información del vehículo (modo 09)…	Подаци о возилу (мод 09)…
+Modo 01 · PID {}	Мод 01 · PID {}
+Sin conexión	Није повезано
+Interrumpido	Прекинуто
+Dirección no válida: {}	Неисправна адреса: {}
+Apps	Апликације
+Guía del escáner	Водич за скенер
+Guía	Водич
+Qué comprar, cómo conectarlo y qué significa cada cosa · sin internet	Шта да купиш, како да га повежеш и шта све значи · ради без интернета
+Desbloquear	Откључај
+Se desbloquea con una donación. Todas las funciones de StradaOS siguen siendo gratis.	Откључава се донацијом. Све функције StradaOS-а остају бесплатне.
+Desbloqueado en esta pantalla. ¡Gracias por tu donación!	Откључано на овом екрану. Хвала на донацији!
+Prueba: volver a aplicar sin código	Проба: поново примени без кода
+Prueba: desbloquear como en la versión normal	Проба: откључај као у обичној верзији
+1. Dona 5 USD en Ko-fi: escanea el código con tu celular o entra a {}.	1. Донирај 5 USD на Ko-fi-ју: скенирај код телефоном или иди на {}.
+2. En el mensaje de la donación escribe el ID de esta pantalla:	2. У поруци уз донацију упиши ID овог екрана:
+3. Te enviamos un código STRD-XXXX-XXXX, casi siempre el mismo día. Escríbelo en «Tengo un código».	3. Послаћемо ти код STRD-XXXX-XXXX, обично истог дана. Упиши га под „Имам код".
+El tema queda en esta pantalla. Si cambias de radio o la restableces, escríbenos con el ID nuevo y te enviamos otro código sin costo.	Тема остаје на овом екрану. Ако промениш јединицу или је ресетујеш, пиши нам са новим ID-јем и бесплатно ћемо ти послати други код.
+Desbloquear {}	Откључај {}
+Tengo un código	Имам код
+Archivo por USB	Фајл преко USB-а
+ID de esta pantalla: {}. Necesitas internet solo esta vez.	ID овог екрана: {}. Интернет ти треба само овај пут.
+Escribe tu código	Упиши свој код
+El código tiene 8 letras o números después de STRD, por ejemplo STRD-7KQ2-M9XA.	Код има 8 слова или бројева после СТРД, на пример STRD-7KQ2-M9XA.
+Comprobando el código…	Проверавам код…
+No hay internet. Conéctate un momento (por ejemplo, con el celular como módem) y vuelve a intentarlo, o pide el archivo de licencia y pásalo por USB.	Нема интернета. Повежи се на тренутак (на пример, преко телефона као хотспота) и покушај поново, или затражи фајл лиценце и копирај га преко USB-а.
+No encontramos ese código para esta pantalla. Revisa que esté bien escrito y que el ID que enviaste sea {}.	Нисмо нашли тај код за овај екран. Провери да ли је добро уписан и да ли је ID који си послао {}.
+No se pudo desbloquear	Откључавање није успело
+Intentar de nuevo	Покушај поново
+Buscando la licencia en la pantalla y en las USB…	Тражим лиценцу на екрану и на USB-овима…
+No encontramos la licencia	Лиценца није пронађена
+Copia el archivo que te enviamos (stradaos-licencia.txt) en la raíz de una USB, conéctala y vuelve a intentarlo. Tiene que ser para el ID {}.	Копирај фајл који смо ти послали (stradaos-licencia.txt) у корен USB-а, укључи га и покушај поново. Мора да буде за ID {}.
+¡Listo!	Готово!
+{} quedó desbloqueado en esta pantalla. Gracias por apoyar StradaOS.	{} је сада откључан на овом екрану. Хвала што подржаваш StradaOS.
+Aplicar ahora	Примени сада
+1. Dona en Ko-fi 5 USD por un tema o 8 USD por dos: escanea el código con tu celular o entra a {}.	1. Донирај на Ko-fi-ју, 5 USD за једну тему или 8 USD за две: скенирај код телефоном или иди на {}.
+2. En el mensaje de la donación escribe el ID de esta pantalla y qué temas quieres:	2. У поруци уз донацију упиши ID овог екрана и које теме хоћеш:
+Se desbloquea con una donación de 5 USD, o 8 USD por dos temas. Todas las funciones de StradaOS siguen siendo gratis.	Откључава се донацијом од 5 USD, или 8 USD за две теме. Све функције StradaOS-а остају бесплатне.
+Usar la velocidad del escáner	Користи брзину са скенера
+Con el escáner conectado, el inicio muestra la velocidad del carro en vez de la del GPS: más exacta y sin retraso	Кад је скенер повезан, почетни екран приказује брзину кола уместо GPS брзине: тачније, без кашњења
+1. Enchufa el escáner ELM327 en el conector OBD (bajo el volante) y pon el contacto.\n2. Bluetooth: emparéjalo con la clave 1234 o 0000. Wi-Fi: conecta la pantalla a la red del escáner y escribe su IP y puerto (casi siempre 192.168.0.10:35000). Cable USB: conéctalo a la pantalla y acepta el permiso que pide Android.\n3. Elígelo arriba en «Escáner».	1. Убаци ELM327 скенер у OBD прикључак (испод волана) и упали контакт.\n2. Bluetooth: упари га са PIN-ом 1234 или 0000. Wi-Fi: повежи екран на мрежу скенера и упиши IP и порт (скоро увек 192.168.0.10:35000). USB кабл: укључи га у екран и прихвати дозволу коју Android тражи.\n3. Изабери га горе у „Скенер".
+Escáner por cable USB	Скенер на USB кабл
+Cable ELM327 USB (chips CH340, FTDI, PL2303 o CP2102)	ELM327 USB кабл (чипови CH340, FTDI, PL2303 или CP2102)
+Bluetooth emparejado, Wi-Fi (IP y puerto), cable USB o un auto simulado para probar	Упарени Bluetooth, Wi-Fi (IP и порт), USB кабл или симулирана кола за пробу
+No veo ningún escáner USB conectado. Conecta el cable ELM327 USB a la pantalla (si hace falta, con un adaptador OTG), enchúfalo en el conector OBD con el contacto puesto y vuelve a intentar. Sirven los cables con chip CH340, FTDI, PL2303 o CP2102.	Не видим ниједан повезан USB скенер. Укључи ELM327 USB кабл у екран (уз OTG адаптер ако треба), укључи га у OBD прикључак са упаљеним контактом и покушај поново. Раде каблови са чипом CH340, FTDI, PL2303 или CP2102.
+No veo el cable USB del escáner: revisa que esté conectado	Не видим USB кабл скенера: провери да ли је укључен
+Falta el permiso para usar el cable USB: acéptalo en la pantalla	Недостаје дозвола за USB кабл: прихвати је на екрану
+El cable USB no responde como un escáner ELM327	USB кабл не одговара као ELM327 скенер
+Este cable USB no parece un escáner	Овај USB кабл не личи на скенер
+Android no dejó abrir el cable USB	Android није дозволио да се отвори USB кабл
+Este equipo no tiene USB para accesorios	Овај уређај нема USB за додатну опрему
+No se pudo preparar el cable USB	USB кабл није могао да се подеси
+El cable USB no tiene canal de datos	USB кабл нема канал за податке
+Otra app está usando el cable USB	Друга апликација користи USB кабл
+El cable USB no aceptó la velocidad	USB кабл није прихватио брзину
+Se desconectó el cable USB	USB кабл је искључен
+Apps de Android Auto / CarPlay con notificación: {} · multimedia: {}	Android Auto / CarPlay апликације са нотификацијом: {} · мултимедија: {}
+▶ sin nada sonando abre tu app de música: {}	▶ кад ништа не свира отвара твоју апликацију за музику: {}
+no (Android Auto / CarPlay conectado)	не (Android Auto / CarPlay повезан)
+Música de cualquier app (Android 5+): {}	Музика из било које апликације (Android 5+): {}
+no aplica en este Android	не важи на овом Андроиду
+acceso a notificaciones {} · lector conectado {}	приступ нотификацијама {} · читач повезан {}
+SÍ	ДА
+NO	НЕ
+Sonido de música en el sistema: {}	Звук музике у систему: {}
+Sesiones multimedia: {}	Мултимедијалне сесије: {}
+ninguna (ninguna app publica lo que suena)	ниједна (ниједна апликација не објављује шта свира)
+el lector no arrancó	читач се није покренуо
+sin acceso ({})	нема приступа ({})
+Pantalla HCN (servicio sourceinfo): {}	HCN екран (сервис sourceinfo): {}
+no aplica (esta pantalla no es HCN)	не важи (овај екран није HCN)
+no se probó	није испробано
+conectado, se consulta cada 2 s (sin avisos)	повезано, проверава се на сваке 2 с (без догађаја)
+conectado, con avisos del servicio	повезано, са догађајима сервиса
+Bluetooth del sistema (AVRCP): {}	Системски Bluetooth (AVRCP): {}
+ningún aviso	нема догађаја
+{} avisos, el último hace {} s: {}	{} догађаја, последњи пре {} с: {}
+Tráfico en vivo: {}	Саобраћај уживо: {}
+activo	активан
+inactivo	неактиван
+fuente del equipo: {}	извор јединице: {}
+última lectura: {}	последње очитавање: {}
+avisos recibidos: {}	примљених догађаја: {}
+etiquetas del archivo: {}	ознаке фајла: {}
+{} s, hace {} s	{} с, пре {} с
+simulado (gancho de prueba)	симулирано (пробна кука)
+leída: «{}» — {} · {}/{} s · {}	прочитано: «{}» — {} · {}/{} с · {}
+«{}» — {} · {} · {} s	«{}» — {} · {} · {} с
+sonando	свира
+en pausa	паузирано
+estado ?	стање ?
+# točkić u kolima (Rotary)
+Perilla y teclas del carro	Точкић и тастери у колима
+Aprender la perilla	Научи точкић
+Gira y presiona la perilla o las flechas del volante: así eliges cada botón del inicio sin tocar la pantalla	Окрећи и притискај точкић у колима или стрелице на волану да бираш свако дугме на почетном екрану без додиривања екрана
+Aprendida ✓	Научен ✓
+Sin aprender	Није научен
+Olvidar la perilla	Заборави точкић
+Las flechas vuelven a moverse como siempre	Стрелице се опет померају као и обично
+Gira la perilla un paso a la derecha	Окрени точкић један корак удесно
+Ahora gírala un paso a la izquierda	Сада га окрени један корак улево
+Ahora presiónala (aceptar)	Сада га притисни (OK)
+Esperando una tecla…	Чекам тастер…
+Omitir este paso	Прескочи овај корак
+Listo: gira la perilla para elegir y presiónala para abrir	Готово: окрећи точкић да бираш и притисни га да отвориш
+No se aprendió ninguna tecla	Ниједан тастер није научен
+Llegó:	Примљено:
+Es la misma tecla del paso anterior: prueba al otro lado	То је исти тастер као у претходном кораку: пробај други смер

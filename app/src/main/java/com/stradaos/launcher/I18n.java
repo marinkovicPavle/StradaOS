@@ -21,8 +21,8 @@ import java.util.regex.Pattern;
  * tabla. En la traducción, {1}, {2}… permiten cambiar el orden. Si un texto no está en la tabla queda en español.
  */
 public class I18n {
-    static final String[] CODES = {"es", "en", "pt", "it", "de", "ms", "ar", "tr", "fr", "zh", "hu", "pl", "sr"};
-    static final String[] NAMES = {"Español", "English", "Português", "Italiano", "Deutsch", "Melayu", "العربية", "Türkçe", "Français", "中文", "Magyar", "Polski", "Srpski"};
+    static final String[] CODES = {"es", "en", "pt", "it", "de", "ms", "ar", "tr", "fr", "zh", "hu", "pl", "sr", "sr-Cyrl"};
+    static final String[] NAMES = {"Español", "English", "Português", "Italiano", "Deutsch", "Melayu", "العربية", "Türkçe", "Français", "中文", "Magyar", "Polski", "Srpski", "Српски"};
 
     static String lang = "es";
     static Locale loc = new Locale("es", "CO");
@@ -42,7 +42,7 @@ public class I18n {
         int lit;   // letras fijas: se prueban primero los patrones más específicos
     }
 
-    /** Idioma guardado («auto», «es», «en», «pt», «it», «de», «ms», «ar», «tr», «fr», «zh», «hu», «pl», «sr»). Instalaciones anteriores a los idiomas siguen en español. */
+    /** Idioma guardado («auto», «es», «en», «pt», «it», «de», «ms», «ar», «tr», «fr», «zh», «hu», «pl», «sr», «sr-Cyrl»). Instalaciones anteriores a los idiomas siguen en español. */
     static String pref(SharedPreferences p) {
         String v = p.getString("lang", null);
         if (v == null) {
@@ -55,6 +55,11 @@ public class I18n {
     /** Idioma del sistema si es uno de los disponibles; si no, inglés. */
     static String system() {
         String l = Locale.getDefault().getLanguage();
+        if ("sr".equals(l)) {
+            // Android bez oznake pisma prikazuje srpski ćirilicom
+            boolean latn = android.os.Build.VERSION.SDK_INT >= 21 && "Latn".equals(Locale.getDefault().getScript());
+            return latn ? "sr" : "sr-Cyrl";
+        }
         for (String c : CODES) if (c.equals(l)) return l;
         return "en";
     }
@@ -74,7 +79,7 @@ public class I18n {
             : "ms".equals(code) ? new Locale("ms", "MY") : "ar".equals(code) ? new Locale("ar")
             : "tr".equals(code) ? new Locale("tr", "TR") : "fr".equals(code) ? Locale.FRANCE
             : "zh".equals(code) ? Locale.SIMPLIFIED_CHINESE : "hu".equals(code) ? new Locale("hu", "HU")
-            : "pl".equals(code) ? new Locale("pl", "PL") : "sr".equals(code) ? serbianLatin()
+            : "pl".equals(code) ? new Locale("pl", "PL") : "sr".equals(code) ? serbian("Latn") : "sr-Cyrl".equals(code) ? serbian("Cyrl")
             : new Locale("es", "CO");
         num = "ar".equals(code) ? Locale.US : loc;
         map.clear();
@@ -230,20 +235,25 @@ public class I18n {
         if ("zh".equals(lang)) return "EEEE, M月d日";
         if ("hu".equals(lang)) return "MMMM d., EEEE";
         if ("pl".equals(lang)) return "EEEE, d MMMM";
-        if ("sr".equals(lang)) return "EEEE, d. MMMM";
+        if (serbian()) return "EEEE, d. MMMM";
         return "EEEE, d 'de' MMMM";
     }
 
-    /** Srpski latinicom (sr-Latn-RS): bez pisma u Locale-u Android daje ćirilične nazive dana i meseci. */
-    static Locale serbianLatin() {
+    /** Srpski sa pismom (Latn ili Cyrl): bez pisma u Locale-u Android daje ćirilične nazive dana i meseci. */
+    static Locale serbian(String script) {
         if (android.os.Build.VERSION.SDK_INT >= 21) {
-            return new Locale.Builder().setLanguage("sr").setRegion("RS").setScript("Latn").build();
+            return new Locale.Builder().setLanguage("sr").setRegion("RS").setScript(script).build();
         }
         return new Locale("sr", "RS");
     }
 
-    /** Jezik za upite servisima za pretragu i mesta: za srpski traži latinične nazive. */
+    /** Da li je izabran srpski (latinica ili ćirilica). */
+    static boolean serbian() {
+        return "sr".equals(lang) || "sr-Cyrl".equals(lang);
+    }
+
+    /** Jezik za upite servisima za pretragu i mesta: srpski latinicom traži latinične nazive, ćirilicom ćirilične. */
     static String webLang() {
-        return "sr".equals(lang) ? "sr-Latn,sr" : lang;
+        return "sr".equals(lang) ? "sr-Latn,sr" : "sr-Cyrl".equals(lang) ? "sr" : lang;
     }
 }

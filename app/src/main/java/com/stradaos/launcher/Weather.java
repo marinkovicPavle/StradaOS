@@ -198,7 +198,7 @@ public class Weather {
         String name = null;
         try {
             if (Geocoder.isPresent()) {
-                List<Address> a = new Geocoder(c, "sr".equals(I18n.lang) ? I18n.loc : new Locale(I18n.lang)).getFromLocation(lat, lon, 1);
+                List<Address> a = new Geocoder(c, I18n.serbian() ? I18n.loc : new Locale(I18n.lang)).getFromLocation(lat, lon, 1);
                 if (a != null && !a.isEmpty()) {
                     name = a.get(0).getLocality();
                     if (name == null) name = a.get(0).getSubAdminArea();
@@ -210,7 +210,7 @@ public class Weather {
                 boolean plain = scheme.startsWith("http:");
                 String q = String.format(Locale.US,
                         "api.bigdatacloud.net/data/reverse-geocode-client?latitude=%s&longitude=%s&localityLanguage=%s",
-                        coord(lat, plain), coord(lon, plain), I18n.lang);
+                        coord(lat, plain), coord(lon, plain), I18n.serbian() ? "sr" : I18n.lang);
                 try {
                     JSONObject o = new JSONObject(new String(Net.get(scheme + q, 8000), "UTF-8"));
                     name = o.optString("city", "");
