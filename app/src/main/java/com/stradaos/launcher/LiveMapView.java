@@ -84,6 +84,21 @@ public class LiveMapView extends View {
         }
     }
 
+    private static long fileRetryAt;
+
+    /**
+     * Izabrani fajl mape nije mogao da se otvori (npr. na USB-u koji pri paljenju još nije montiran, ili memorija
+     * nije bila spremna): pokušava se ponovo na 15 s, uz svako GPS očitavanje. Ranije je offline mapa izostajala sve
+     * do ponovnog ulaska u Podešavanja, a početni ekran je pokazivao „En vivo · sin internet" sa praznom mapom.
+     */
+    private void retryFile(long now) {
+        if (fileMap != null || now - fileRetryAt < 15000) return;
+        fileRetryAt = now;
+        if (sp.getString("map_file", "").length() == 0) return;
+        loadFile(getContext());
+        if (fileMap != null) invalidate();
+    }
+
     private final float s;
     private final float radius;
     private final int fileTile;                 // tamaño en px de las teselas dibujadas desde el archivo
@@ -365,6 +380,7 @@ public class LiveMapView extends View {
         }
         aStart = now;
         lastFixAt = now;
+        retryFile(now);
         if (!userZoom) zoom = speedKmh > 70 ? 15 : speedKmh > 35 ? 16 : 17;
         trimDisk();
         invalidate();
