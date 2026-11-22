@@ -1862,3 +1862,34 @@ Listo: gira la perilla para elegir y presiónala para abrir	Готово: окр
 No se aprendió ninguna tecla	Ниједан тастер није научен
 Llegó:	Примљено:
 Es la misma tecla del paso anterior: prueba al otro lado	То је исти тастер као у претходном кораку: пробај други смер
+# svetla učenjem, osvetljenost dan/noć, signali paljenja (ideje iz LiteDash-a)
+Apaga las luces del carro y toca Siguiente	Угаси светла на колима и додирни Даље
+Ahora enciende las luces (de posición o bajas) y toca Siguiente	Сада упали светла (позициона или кратка) и додирни Даље
+Leyendo los ajustes de la pantalla…	Читам подешавања екрана…
+Aprender las luces del carro	Научи светла кола
+No cambió ningún ajuste	Ниједно подешавање се није променило
+Esta pantalla no guarda las luces en sus ajustes. Para el tema por horario usa Apariencia → Tema → Auto.	Овај екран не чува светла у својим подешавањима. За тему по распореду користи Изглед → Тема → Auto.
+¿Cuáles son las luces?	Које подешавање је за светла?
+Luces aprendidas:	Светла су научена:
+Auto: por horario. Sistema: sigue las luces del carro	Auto: по распореду. Систем: прати светла кола
+StradaOS compara los ajustes de la pantalla con las luces apagadas y encendidas para seguir tus faros	StradaOS пореди подешавања екрана са угашеним и упаљеним светлима да би пратио твоје фарове
+Aprendidas ✓	Научена ✓
+Olvidar las luces	Заборави светла
+Vuelve al modo oscuro de la pantalla	Враћа се на тамни режим екрана
+Esta pantalla no tiene ese ajuste: el brillo cambia solo mientras se ve StradaOS	Овај екран нема то подешавање: осветљеност се мења само док се види StradaOS
+Brillo de día y de noche	Осветљеност дању и ноћу
+Cambiar el brillo de la pantalla	Мењај осветљеност екрана
+De noche baja el brillo solo. Sigue el tema (Auto o Sistema) o, si no, el horario	Ноћу сам смањује осветљеност. Прати тему (Auto или Систем), а иначе распоред
+Brillo de día	Осветљеност дању
+Brillo de noche	Осветљеност ноћу
+Noche	Ноћ
+Día	Дан
+Permitir cambiar el brillo del sistema	Дозволи мењање системске осветљености
+Sin este permiso el brillo cambia solo mientras se ve StradaOS	Без ове дозволе осветљеност се мења само док се види StradaOS
+El tema sigue el brillo de la pantalla	Тема прати осветљеност екрана
+Con esta opción el día y la noche salen del horario fijo o del sol	Уз ову опцију дан и ноћ се рачунају по фиксним сатима или по сунцу
+Último encendido	Последње паљење
+Señal {} hace {} min	Сигнал {} пре {} мин
+se abrió StradaOS	StradaOS се отворио
+no se pudo abrir	није могао да се отвори
+No aprendidas	Нису научена

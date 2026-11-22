@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -19,6 +20,8 @@
     <!-- Android 9+: «Desinstalar» desde el cajón (abre la confirmación de Android) -->
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- osvetljenost dan/noć: korisnik je daje u „Menjanje sistemskih podešavanja" -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
     <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
@@ -57,6 +60,12 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
                 <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+                <!-- buđenje MediaTek jedinica iz sna i paljenje kontakta (ACC) kod nekih proizvođača -->
+                <action android:name="android.intent.action.ACTION_BOOT_IPO"/>
+                <action android:name="com.fyt.boot.ACCON"/>
+                <action android:name="com.glsx.boot.ACCON"/>
+                <action android:name="com.cayboy.action.ACC_ON"/>
+                <action android:name="com.carboy.action.ACC_ON"/>
             </intent-filter>
         </receiver>
         <service android:name="com.stradaos.launcher.NotifArt" android:label="@string/acc_label"

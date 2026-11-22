@@ -1862,3 +1862,34 @@ Listo: gira la perilla para elegir y presiónala para abrir	Done: turn the knob 
 No se aprendió ninguna tecla	No key was learned
 Llegó:	Received:
 Es la misma tecla del paso anterior: prueba al otro lado	That's the same key as the previous step: try the other direction
+# 2.32+: luces aprendidas, brillo de día y de noche, señales de encendido (ideas de LiteDash)
+Apaga las luces del carro y toca Siguiente	Turn off the car lights and tap Next
+Ahora enciende las luces (de posición o bajas) y toca Siguiente	Now turn on the lights (parking or low beams) and tap Next
+Leyendo los ajustes de la pantalla…	Reading the screen's settings…
+Aprender las luces del carro	Learn the car lights
+No cambió ningún ajuste	No setting changed
+Esta pantalla no guarda las luces en sus ajustes. Para el tema por horario usa Apariencia → Tema → Auto.	This screen doesn't store the lights in its settings. For a schedule-based theme use Appearance → Theme → Auto.
+¿Cuáles son las luces?	Which one is the lights?
+Luces aprendidas:	Lights learned:
+Auto: por horario. Sistema: sigue las luces del carro	Auto: by schedule. System: follows the car lights
+StradaOS compara los ajustes de la pantalla con las luces apagadas y encendidas para seguir tus faros	StradaOS compares the screen's settings with the lights off and on to follow your headlights
+Aprendidas ✓	Learned ✓
+Olvidar las luces	Forget the lights
+Vuelve al modo oscuro de la pantalla	Goes back to the screen's dark mode
+Esta pantalla no tiene ese ajuste: el brillo cambia solo mientras se ve StradaOS	This screen doesn't have that setting: the brightness changes only while StradaOS is showing
+Brillo de día y de noche	Day and night brightness
+Cambiar el brillo de la pantalla	Change the screen brightness
+De noche baja el brillo solo. Sigue el tema (Auto o Sistema) o, si no, el horario	Lowers the brightness at night by itself. Follows the theme (Auto or System) or, otherwise, the schedule
+Brillo de día	Day brightness
+Brillo de noche	Night brightness
+Noche	Night
+Día	Day
+Permitir cambiar el brillo del sistema	Allow changing the system brightness
+Sin este permiso el brillo cambia solo mientras se ve StradaOS	Without this permission the brightness changes only while StradaOS is showing
+El tema sigue el brillo de la pantalla	The theme follows the screen brightness
+Con esta opción el día y la noche salen del horario fijo o del sol	With this option, day and night come from the fixed hours or the sun
+Último encendido	Last startup
+Señal {} hace {} min	Signal {} {} min ago
+se abrió StradaOS	StradaOS opened
+no se pudo abrir	couldn't open
+No aprendidas	Not learned

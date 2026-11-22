@@ -254,9 +254,7 @@ public class Main extends Activity {
             getContentResolver().registerContentObserver(
                 android.provider.Settings.System.getUriFor(android.provider.Settings.System.SCREEN_BRIGHTNESS), false, brightObs);
         } catch (Throwable ignored) { }
-        try {
-            getContentResolver().registerContentObserver(android.provider.Settings.System.getUriFor(Fyt.CAR_MODE), false, lightsObs);
-        } catch (Throwable ignored) { }
+        watchLights();
         startFyt();
         IntentFilter t = new IntentFilter(Intent.ACTION_TIME_TICK);
         t.addAction(Intent.ACTION_TIME_CHANGED);
@@ -488,6 +486,8 @@ public class Main extends Activity {
     protected void onResume() {
         super.onResume();
         Obd.addListener(obdWatch);
+        // povratak iz „Menjanje sistemskih podešavanja": ponovo primeni osvetljenost (sistemsku ili prozora)
+        if (prefs != null && prefs.getBoolean("dn_bright", false)) { brightApplied = -1; try { applyBrightness(); } catch (Throwable ignored) { } }
         if (homeFixing && SDK < 29) h.postDelayed(new Runnable() { public void run() { homeResult(); } }, 700);
         immersive();
         if (SDK >= 23 && !askedPerms) {
@@ -7982,6 +7982,85 @@ public class Main extends Activity {
             BG = 0xFF15171C; CARD = 0xFF1E2128; INNER = 0xFF262A33; BTN = 0xFF2A2E37; DOCK = 0xFF0D0E11;
             TEXT = 0xFFF2F3F5; MUTED = 0xFF8B9099; SOFT = 0xFFC5C8CE; CIRCLE = 0xFF23262E; ICON = 0xFFFFFFFF;
         }
+        try { applyBrightness(); } catch (Throwable e) { Guard.log("Osvetljenost: " + e); }
+    }
+
+    // ── Osvetljenost ekrana za dan i noć (ideja iz LiteDash-a, Brightness.kt, GPL-3.0) ──
+    // Sa dozvolom „Menjanje sistemskih podešavanja" menja osvetljenost sistema i pri isključivanju vraća korisnikovu;
+    // bez nje važi samo dok se vidi StradaOS (osvetljenost prozora).
+    static final int[] BRIGHT_LV = {5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100};
+    private int brightApplied = -2;
+
+    private boolean canWriteSettings() {
+        if (SDK < 23) return true;
+        try { return android.provider.Settings.System.canWrite(this); } catch (Throwable e) { return false; }
+    }
+
+    /** Noć za osvetljenost: u Auto i Sistem isto što i tema; inače po satima ili suncu (bez merenja osvetljenosti). */
+    private boolean brightNight() {
+        String mode = prefs.getString("theme", "dark");
+        if ("system".equals(mode) || ("auto".equals(mode) && !prefs.getBoolean("auto_bright", false))) return !LIGHT;
+        return darkHours(false);
+    }
+
+    private void applyBrightness() {
+        if (prefs == null) return;
+        if (!prefs.getBoolean("dn_bright", false)) { if (brightApplied != -2 || prefs.contains("dn_bright_user")) restoreBrightness(); return; }
+        int pct = brightNight() ? prefs.getInt("dn_bright_night", 30) : prefs.getInt("dn_bright_day", 100);
+        if (pct == brightApplied) return;
+        brightApplied = pct;
+        final int v = Math.max(1, Math.round(pct * 255f / 100f));
+        if (canWriteSettings()) {
+            final Context app = getApplicationContext();
+            if (!prefs.contains("dn_bright_user")) {
+                int cur = -1;
+                try { cur = android.provider.Settings.System.getInt(getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS, -1); } catch (Throwable ignored) { }
+                if (cur >= 0) prefs.edit().putInt("dn_bright_user", cur).apply();
+            }
+            windowBrightness(-1f);
+            new Thread(new Runnable() { public void run() {
+                try {
+                    android.content.ContentResolver r = app.getContentResolver();
+                    android.provider.Settings.System.putInt(r, android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
+                        android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                    android.provider.Settings.System.putInt(r, android.provider.Settings.System.SCREEN_BRIGHTNESS, v);
+                } catch (Throwable e) { Guard.log("Osvetljenost sistema: " + e); }
+            }}).start();
+        } else {
+            windowBrightness(pct / 100f);
+        }
+    }
+
+    /** Isključeno: vraća osvetljenost koju je korisnik imao pre (ako je StradaOS menjao sistemsku). */
+    private void restoreBrightness() {
+        brightApplied = -2;
+        windowBrightness(-1f);
+        final int user = prefs.getInt("dn_bright_user", -1);
+        prefs.edit().remove("dn_bright_user").apply();
+        if (user < 0 || !canWriteSettings()) return;
+        final Context app = getApplicationContext();
+        new Thread(new Runnable() { public void run() {
+            try { android.provider.Settings.System.putInt(app.getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS, user); }
+            catch (Throwable ignored) { }
+        }}).start();
+    }
+
+    private void windowBrightness(float f) {
+        try {
+            android.view.WindowManager.LayoutParams lp = getWindow().getAttributes();
+            if (lp.screenBrightness == f) return;
+            lp.screenBrightness = f;
+            getWindow().setAttributes(lp);
+        } catch (Throwable ignored) { }
+    }
+
+    private void askWriteSettings() {
+        try {
+            startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS,
+                android.net.Uri.parse("package:" + getPackageName())));
+        } catch (Throwable e) {
+            toast("Esta pantalla no tiene ese ajuste: el brillo cambia solo mientras se ve StradaOS");
+        }
     }
 
     // ── Espera antes de cambiar de tema (Auto, Sistema y Luces) ──
@@ -8059,12 +8138,96 @@ public class Main extends Activity {
     private final android.database.ContentObserver lightsObs = new android.database.ContentObserver(new Handler(android.os.Looper.getMainLooper())) {
         @Override public void onChange(boolean selfChange) {
             try {
-                if (prefs == null || root == null || !"system".equals(prefs.getString("theme", "dark")) || !fytOn()) return;
+                if (prefs == null || root == null || !"system".equals(prefs.getString("theme", "dark"))) return;
+                if (!fytOn() && !Lights.learned(prefs)) return;
                 h.removeCallbacks(brightApply);
                 h.postDelayed(brightApply, 300);
             } catch (Throwable ignored) { }
         }
     };
+
+    /** Prati car_mode (FYT) i, ako su naučena, svetla kola iz sistemskih podešavanja (Lights). */
+    private void watchLights() {
+        try { getContentResolver().unregisterContentObserver(lightsObs); } catch (Throwable ignored) { }
+        try {
+            getContentResolver().registerContentObserver(android.provider.Settings.System.getUriFor(Fyt.CAR_MODE), false, lightsObs);
+        } catch (Throwable ignored) { }
+        android.net.Uri u = Lights.uri(prefs);
+        if (u != null) try { getContentResolver().registerContentObserver(u, false, lightsObs); } catch (Throwable ignored) { }
+    }
+
+    /** Svetla kola: naučena (bilo koji ekran) imaju prednost, pa FYT; 1 upaljena, 0 ugašena, -1 ne zna se. */
+    private int carLights() {
+        int l = Lights.state(this, prefs);
+        return l >= 0 ? l : fytLights();
+    }
+
+    /** „Nauči svetla kola": snimak podešavanja sa ugašenim, pa sa upaljenim svetlima; ono što se promenilo su farovi. */
+    private void learnLights() {
+        final String[] ask = {"Apaga las luces del carro y toca Siguiente", "Ahora enciende las luces (de posición o bajas) y toca Siguiente"};
+        final int[] step = {0};
+        final java.util.Map<String, String>[] off = new java.util.Map[1];
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        final TextView msg = tv(ask[0], 17, TEXT, true);
+        msg.setSingleLine(false);
+        msg.setEllipsize(null);
+        box.addView(msg);
+        final AlertDialog d = new TB(this, dlg()).setTitle("Aprender las luces del carro").setView(box)
+            .setPositiveButton("Siguiente", null).setNegativeButton("Cancelar", null).create();
+        d.setOnShowListener(new DialogInterface.OnShowListener() { public void onShow(DialogInterface di) {
+            final android.widget.Button next = d.getButton(AlertDialog.BUTTON_POSITIVE);
+            next.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
+                next.setEnabled(false);
+                msg.setText(I18n.t("Leyendo los ajustes de la pantalla…"));
+                final Context app = getApplicationContext();
+                new Thread(new Runnable() { public void run() {
+                    final java.util.Map<String, String> snap = Lights.snapshot(app);
+                    h.post(new Runnable() { public void run() {
+                        if (!d.isShowing()) return;
+                        next.setEnabled(true);
+                        if (step[0] == 0) {
+                            off[0] = snap;
+                            step[0] = 1;
+                            msg.setText(I18n.t(ask[1]));
+                            return;
+                        }
+                        d.dismiss();
+                        lightsResult(Lights.changed(off[0], snap));
+                    }});
+                }}).start();
+            }});
+        }});
+        d.show();
+    }
+
+    /** Rezultat učenja: jedno podešavanje koje zvuči kao svetla se čuva odmah; inače korisnik bira. */
+    private void lightsResult(final java.util.List<String[]> ch) {
+        if (ch.isEmpty()) {
+            new TB(this, dlg()).setTitle("No cambió ningún ajuste")
+                .setMessage("Esta pantalla no guarda las luces en sus ajustes. Para el tema por horario usa Apariencia → Tema → Auto.")
+                .setPositiveButton("Aceptar", null).show();
+            return;
+        }
+        if (Lights.soundsLikeLights(ch.get(0)[0]) && (ch.size() == 1 || !Lights.soundsLikeLights(ch.get(1)[0]))) {
+            lightsSaved(ch.get(0));
+            return;
+        }
+        int n = Math.min(8, ch.size());
+        final String[] opts = new String[n];
+        for (int i = 0; i < n; i++) opts[i] = ch.get(i)[0] + " = " + ch.get(i)[1];
+        new TB(this, dlg()).setTitle("¿Cuáles son las luces?").setItems(opts, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface di, int w) { lightsSaved(ch.get(w)); }
+        }).setNegativeButton("Cancelar", null).show();
+    }
+
+    private void lightsSaved(String[] kv) {
+        Lights.save(prefs, kv[0], kv[1]);
+        watchLights();
+        toast(I18n.t("Luces aprendidas:") + " " + kv[0]);
+        if ("system".equals(prefs.getString("theme", "dark"))) { boolean was = LIGHT; applyThemeNow(); if (was != LIGHT) { applyAccent(); rebuild(); } }
+        if (settingsView != null) showSettings(settingsCat);
+    }
 
     // ── Equipo: marca de la pantalla (Ajustes → Tu vehículo → Equipo) ──
 
@@ -8160,10 +8323,13 @@ public class Main extends Activity {
     }
 
     /** Modo automático: ¿estamos en el horario oscuro? (por defecto de 6 p. m. a 6 a. m., como siempre). */
-    private boolean darkHours() {
+    private boolean darkHours() { return darkHours(true); }
+
+    /** byBright = false: bez merenja osvetljenosti (za osvetljenost dan/noć, da ne prati samu sebe). */
+    private boolean darkHours(boolean byBright) {
         // #36 (RGalindo2004): pantallas que bajan el brillo al prender las luces → oscuro con poco brillo.
         // Si la pantalla no informa su brillo, siguen las horas fijas.
-        if (prefs.getBoolean("auto_bright", false)) {
+        if (byBright && prefs.getBoolean("auto_bright", false)) {
             int b = brightnessPct();
             if (b >= 0) {
                 int thr = prefs.getInt("bright_dark", 40);
@@ -8216,7 +8382,7 @@ public class Main extends Activity {
 
     /** Modo «Sistema»: sigue el modo oscuro de la pantalla (algunas lo activan al encender las luces del carro). */
     private boolean systemNight() {
-        int l = fytLights();   // FYT: las luces del carro (car_mode); las demás pantallas, el modo oscuro de Android
+        int l = carLights();   // svetla kola (naučena ili FYT car_mode); inače tamni režim Androida
         if (l >= 0) return l == 1;
         try {
             return (getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK)
@@ -9025,13 +9191,28 @@ public class Main extends Activity {
         String t = prefs.getString("theme", "dark");
         final String[] themes = {"dark", "light", "auto", "system"};
         final boolean fy = fytOn();
-        segmented(c, "Modo", fy ? "Auto: por horario. Sistema: sigue las luces del carro (pantalla FYT)"
+        segmented(c, "Modo", fy || Lights.learned(prefs) ? "Auto: por horario. Sistema: sigue las luces del carro"
                 : "Auto: por horario. Sistema: sigue el modo oscuro de la pantalla (algunas lo cambian al encender las luces)",
             new String[]{"Oscuro", "Claro", "Auto", "Sistema"},
             Math.max(0, java.util.Arrays.asList(themes).indexOf(t)), new IntCb() { public void on(int i) {
                 prefs.edit().putString("theme", themes[i]).apply();
                 applyThemeNow(); applyAccent(); rebuild(); showSettings(settingsCat);
             }});
+        if ("system".equals(t)) {
+            // svetla kola učenjem (Lights): za ekrane koji nisu FYT, npr. wwc2
+            final boolean lo = Lights.learned(prefs);
+            int l = carLights();
+            row(c, "Aprender las luces del carro", "StradaOS compara los ajustes de la pantalla con las luces apagadas y encendidas para seguir tus faros",
+                lo ? I18n.t("Aprendidas ✓") : I18n.t("No aprendidas"), new Runnable() { public void run() { learnLights(); } });
+            if (lo || fy) row(c, "Luces del carro", lo ? prefs.getString(Lights.P_KEY, "") : null,
+                l < 0 ? I18n.t("Sin datos") : I18n.t(l == 1 ? "Encendidas" : "Apagadas"), new Runnable() { public void run() { showSettings(settingsCat); } });
+            if (lo) row(c, "Olvidar las luces", "Vuelve al modo oscuro de la pantalla", null, new Runnable() { public void run() {
+                Lights.forget(prefs);
+                watchLights();
+                boolean was = LIGHT; applyThemeNow(); if (was != LIGHT) { applyAccent(); rebuild(); }
+                showSettings(settingsCat);
+            }});
+        }
         if ("auto".equals(t)) {
             final boolean sunOn = prefs.getBoolean("auto_sun", false);
             final boolean brOn = prefs.getBoolean("auto_bright", false);
@@ -9097,6 +9278,32 @@ public class Main extends Activity {
                     prefs.edit().putInt("theme_delay_light", THEME_DELAYS[i]).apply();
                     showSettings(settingsCat);
                 }});
+        }
+        // osvetljenost ekrana za dan i noć (podrazumevano isključeno)
+        LinearLayout bs = section(body, "Brillo de día y de noche");
+        final boolean dnOn = prefs.getBoolean("dn_bright", false);
+        toggle(bs, "Cambiar el brillo de la pantalla", "De noche baja el brillo solo. Sigue el tema (Auto o Sistema) o, si no, el horario",
+            dnOn, new IntCb() { public void on(int i) {
+                prefs.edit().putBoolean("dn_bright", i == 1).apply();
+                if (i == 1) brightApplied = -1;
+                applyBrightness();
+                showSettings(settingsCat);
+            }});
+        if (dnOn) {
+            String[] bl = new String[BRIGHT_LV.length];
+            int curD = prefs.getInt("dn_bright_day", 100), curN = prefs.getInt("dn_bright_night", 30), sd = BRIGHT_LV.length - 1, sn = 5;
+            for (int i = 0; i < BRIGHT_LV.length; i++) { bl[i] = BRIGHT_LV[i] + " %"; if (BRIGHT_LV[i] == curD) sd = i; if (BRIGHT_LV[i] == curN) sn = i; }
+            choice(bs, "Brillo de día", null, bl, sd, new IntCb() { public void on(int i) {
+                prefs.edit().putInt("dn_bright_day", BRIGHT_LV[i]).apply(); brightApplied = -1; applyBrightness(); showSettings(settingsCat);
+            }});
+            choice(bs, "Brillo de noche", null, bl, sn, new IntCb() { public void on(int i) {
+                prefs.edit().putInt("dn_bright_night", BRIGHT_LV[i]).apply(); brightApplied = -1; applyBrightness(); showSettings(settingsCat);
+            }});
+            row(bs, "Ahora", null, I18n.t(brightNight() ? "Noche" : "Día"), null);
+            if (!canWriteSettings()) row(bs, "Permitir cambiar el brillo del sistema",
+                "Sin este permiso el brillo cambia solo mientras se ve StradaOS", I18n.t("Sin permiso"), new Runnable() { public void run() { askWriteSettings(); } });
+            if ("auto".equals(t) && prefs.getBoolean("auto_bright", false))
+                row(bs, "El tema sigue el brillo de la pantalla", "Con esta opción el día y la noche salen del horario fijo o del sol", "", null);
         }
         LinearLayout a = section(body, "Color de acento");
         LinearLayout r = rowBase(a, "Color", "Botones, anillo del reproductor, ruta y etiquetas");
@@ -9814,6 +10021,15 @@ public class Main extends Activity {
         toggle(hm, "Abrir StradaOS al encender", "Para pantallas que siempre arrancan en su menú de fábrica (Android 4 a 9)", prefs.getBoolean("boot_open", false), new IntCb() { public void on(int i) {
             prefs.edit().putBoolean("boot_open", i == 1).apply(); showSettings(settingsCat);
         }});
+        // poslednji signal paljenja koji je stigao (BootReceiver), da se vidi šta ekran šalje
+        String bootAct = prefs.getString(BootReceiver.P_ACTION, "");
+        if (bootAct.length() > 0) {
+            String sh = bootAct.substring(bootAct.lastIndexOf('.') + 1);
+            long ago = Math.max(0, (System.currentTimeMillis() - prefs.getLong(BootReceiver.P_AT, 0)) / 60000);
+            String opened = !prefs.getBoolean("boot_open", false) ? "" : !prefs.contains(BootReceiver.P_OK) ? ""
+                : " · " + I18n.t(prefs.getBoolean(BootReceiver.P_OK, false) ? "se abrió StradaOS" : "no se pudo abrir");
+            row(hm, "Último encendido", I18n.t("Señal " + sh + " hace " + ago + " min") + opened, null, null);
+        }
         // 2.21 (rvilonen-spec, #15): abrir una app al encender (la radio, para que empiece a sonar) y volver al inicio
         String bootApp = prefs.getString("boot_app", "");
         row(hm, "Abrir una app al encender", "StradaOS la abre un momento al arrancar (por ejemplo la radio, para que empiece a sonar) y vuelve al inicio",
