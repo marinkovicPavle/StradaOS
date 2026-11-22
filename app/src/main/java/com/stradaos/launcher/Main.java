@@ -221,6 +221,12 @@ public class Main extends Activity {
         };
         root.setBackgroundColor(BG);
         setContentView(root);
+        // točkić i tasteri: svako dugme posebno i okvir oko izabranog (vidi Rotary)
+        Rotary.load(prefs);
+        rotary = new Rotary(this, root, new Rotary.Scope() {
+            public View[] roots() { return focusRoots(); }
+            public boolean home() { return settingsView == null && drawer == null && (vpanel == null || !vpanel.isOpen()); }
+        });
         try {
             Location ll = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (!validLoc(ll)) ll = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -248,9 +254,7 @@ public class Main extends Activity {
             getContentResolver().registerContentObserver(
                 android.provider.Settings.System.getUriFor(android.provider.Settings.System.SCREEN_BRIGHTNESS), false, brightObs);
         } catch (Throwable ignored) { }
-        try {
-            getContentResolver().registerContentObserver(android.provider.Settings.System.getUriFor(Fyt.CAR_MODE), false, lightsObs);
-        } catch (Throwable ignored) { }
+        watchLights();
         startFyt();
         IntentFilter t = new IntentFilter(Intent.ACTION_TIME_TICK);
         t.addAction(Intent.ACTION_TIME_CHANGED);
@@ -482,6 +486,8 @@ public class Main extends Activity {
     protected void onResume() {
         super.onResume();
         Obd.addListener(obdWatch);
+        // povratak iz „Menjanje sistemskih podešavanja": ponovo primeni osvetljenost (sistemsku ili prozora)
+        if (prefs != null && prefs.getBoolean("dn_bright", false)) { brightApplied = -1; try { applyBrightness(); } catch (Throwable ignored) { } }
         if (homeFixing && SDK < 29) h.postDelayed(new Runnable() { public void run() { homeResult(); } }, 700);
         immersive();
         if (SDK >= 23 && !askedPerms) {
@@ -532,6 +538,102 @@ public class Main extends Activity {
         }
         if (e.getAction() == MotionEvent.ACTION_DOWN) idleReset();
         return super.dispatchTouchEvent(e);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent e) {
+        int code = e.getKeyCode();
+        if (Rotary.isNavKey(code)) {
+            if (idleView != null || idleSwallow) {
+                // kao dodir: taster koji gasi screensaver ne radi ništa drugo
+                if (e.getAction() == KeyEvent.ACTION_DOWN) { hideIdle(); idleSwallow = true; }
+                if (e.getAction() == KeyEvent.ACTION_UP) { idleSwallow = false; idleReset(); }
+                return true;
+            }
+            if (e.getAction() == KeyEvent.ACTION_DOWN) idleReset();
+            if (rotary != null && rotary.key(e)) return true;
+        }
+        return super.dispatchKeyEvent(e);
+    }
+
+    private Rotary rotary;
+
+    /** Šta točkić i strelice sada mogu da obiđu: ono što je gore pokriva ono ispod. */
+    private View[] focusRoots() {
+        if (settingsView != null && settingsView.getParent() != null) return new View[]{settingsView};
+        if (drawer != null && drawer.getParent() != null) return new View[]{drawer};
+        if (vpanel != null && vpanel.isOpen()) return new View[]{vpanel};
+        if (idleView != null) return new View[0];
+        return new View[]{board, vhandle};
+    }
+
+    /**
+     * Uči koje tastere šalje točkić u kolima: korak udesno, korak ulevo i pritisak. Prikazuje svaki taster koji
+     * stigne (ime, kod i scan kod): ako se pri okretanju ništa ne pojavi, jedinica ne prosleđuje točkić aplikacijama
+     * (koristi ga sistem ili CAN kutija) i nema šta da se nauči.
+     */
+    private void learnKnob() {
+        final int keepN = Rotary.next, keepP = Rotary.prev, keepO = Rotary.ok;
+        Rotary.next = Rotary.prev = Rotary.ok = -1;   // dok uči, tasteri ništa ne pomeraju
+        final String[] ask = {"Gira la perilla un paso a la derecha", "Ahora gírala un paso a la izquierda",
+            "Ahora presiónala (aceptar)"};
+        final int[] got = {-1, -1, -1};
+        final int[] step = {0};
+        final boolean[] done = {false};
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        final TextView msg = tv(ask[0], 17, TEXT, true);
+        msg.setSingleLine(false);
+        msg.setEllipsize(null);
+        final TextView seen = tv("Esperando una tecla…", 14, MUTED, false);
+        seen.setSingleLine(false);
+        seen.setEllipsize(null);
+        seen.setPadding(0, (int) (10 * s), 0, 0);
+        final TextView skip = tv("Omitir este paso", 14, RED, true);
+        skip.setPadding(0, (int) (16 * s), 0, (int) (4 * s));
+        box.addView(msg);
+        box.addView(seen);
+        box.addView(skip);
+        final AlertDialog d = new TB(this, dlg()).setTitle("Aprender la perilla").setView(box)
+            .setNegativeButton("Cancelar", null).create();
+        final Runnable finish = new Runnable() { public void run() {
+            done[0] = true;
+            SharedPreferences.Editor ed = prefs.edit();
+            String[] keys = {Rotary.P_NEXT, Rotary.P_PREV, Rotary.P_OK};
+            for (int k = 0; k < 3; k++) { if (got[k] > 0) ed.putInt(keys[k], got[k]); else ed.remove(keys[k]); }
+            ed.apply();
+            Rotary.load(prefs);
+            try { d.dismiss(); } catch (Throwable ignored) { }
+            toast(Rotary.learned() ? "Listo: gira la perilla para elegir y presiónala para abrir" : "No se aprendió ninguna tecla");
+            if (settingsView != null) showSettings(settingsCat);
+        }};
+        final Runnable advance = new Runnable() { public void run() {
+            step[0]++;
+            if (step[0] >= 3) { finish.run(); return; }
+            msg.setText(I18n.t(ask[step[0]]));
+        }};
+        skip.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { advance.run(); } });
+        d.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            public boolean onKey(DialogInterface di, int code, KeyEvent e) {
+                if (code == KeyEvent.KEYCODE_BACK || code == KeyEvent.KEYCODE_HOME) return false;
+                if (e.getAction() != KeyEvent.ACTION_DOWN || e.getRepeatCount() > 0) return true;
+                seen.setText(I18n.t("Llegó:") + " " + Rotary.keyName(code) + " · scan " + e.getScanCode());
+                int st = step[0];
+                if ((st == 1 && code == got[0]) || (st == 2 && (code == got[0] || code == got[1]) && code > 0)) {
+                    seen.setText(seen.getText() + "\n" + I18n.t("Es la misma tecla del paso anterior: prueba al otro lado"));
+                    return true;
+                }
+                got[st] = code;
+                advance.run();
+                return true;
+            }
+        });
+        d.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            public void onDismiss(DialogInterface di) {
+                if (!done[0]) { Rotary.next = keepN; Rotary.prev = keepP; Rotary.ok = keepO; }   // otkazano: ostaje kao pre
+            }
+        });
+        d.show();
     }
 
     private int idleColor() {
@@ -633,6 +735,7 @@ public class Main extends Activity {
             else toast("Sin permiso de almacenamiento no se pueden buscar mapas");
             return;
         }
+        if (req == REQ_DIAG_W) { h.post(new Runnable() { public void run() { runDiag(); } }); return; }   // con o sin permiso se sigue
         if (req == REQ_BACKUP_W) { h.post(new Runnable() { public void run() { backupSave0(); } }); return; }   // con o sin permiso se sigue
         if (req == REQ_BACKUP_R) { h.post(new Runnable() { public void run() { backupRestore0(); } }); return; }
         if (req != 77 && req != 78) return;
@@ -1365,6 +1468,7 @@ public class Main extends Activity {
 
         drawer = null;
         settingsView = null;
+        if (rotary != null) rotary.style(RED, s);
         updateClock();
         refreshStates();
         updateStatusIcons();
@@ -1761,8 +1865,11 @@ public class Main extends Activity {
         chip.setVisibility(prefs.getString("car_tag", "").trim().length() == 0 ? View.GONE : View.VISIBLE);
         placeWrap(card, chip, 20, 46);
 
-        Bitmap photo = CarPhoto.load(this);
-        if (photo != null) {
+        boolean spin3d = CarSpin.on(this, prefs);
+        Bitmap photo = spin3d ? null : CarPhoto.load(this);
+        if (spin3d) {
+            place(card, carSpin(null), 18, 78, 264, 160 + dy);
+        } else if (photo != null) {
             ImageView car = new ImageView(this);
             // 2.18: una foto con fondo (sin recortar) llena el recuadro con esquinas redondas; la recortada, como siempre
             boolean cutout = false;
@@ -2864,6 +2971,7 @@ public class Main extends Activity {
             public void onClick(View v) { openNavMenu(); }
         });
         navHud = hud;
+        Rotary.proxy(turnBox, hud);   // točkić: strelica skretanja otvara meni rute (✕ je zaustavlja)
         place(card, hud, 12, 12, mapW - 24, 72);
 
         // 2.18: qué botones de conexión se ven (Reinaldo, MIGSGx #12). Con uno o ninguno, el clima usa el espacio libre.
@@ -3015,6 +3123,10 @@ public class Main extends Activity {
                 else setOpen[isOpen ? 1 : 0].run();
                 return true;
             }
+        });
+        // točkić: i strelica može da se izabere i pritisne (prstom i dalje radi dodir/prevlačenje odozgo)
+        handle.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) { setOpen[prefs.getBoolean("aa_panel_open", true) ? 1 : 0].run(); }
         });
         View.OnTouchListener swipeDown = new View.OnTouchListener() {
             float x0, y0;
@@ -3627,6 +3739,7 @@ public class Main extends Activity {
         card.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) { openMusicApp(); }
         });
+        Rotary.proxy(playerArt, card);   // točkić: omot zamenjuje karticu (otvara muzičku aplikaciju)
         renderTrack();
         // Oculta (2.18): se arma igual (la música sigue actualizándose sin fallar) pero no se muestra
         if (!showPlayer) board.removeView(card);
@@ -4263,6 +4376,7 @@ public class Main extends Activity {
         });
         card.setOnLongClickListener(new View.OnLongClickListener() { public boolean onLongClick(View v) { showPlayerDiag(); return true; } });
         card.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { openMusicApp(); } });
+        Rotary.proxy(playerArt, card);
         renderTrack();
     }
 
@@ -4335,8 +4449,11 @@ public class Main extends Activity {
         View.OnLongClickListener photoLong = new View.OnLongClickListener() {
             public boolean onLongClick(View v) { photoMenu(); return true; }
         };
-        Bitmap photo = CarPhoto.load(this);
-        if (photo != null) {
+        boolean spin3d = CarSpin.on(this, prefs);
+        Bitmap photo = spin3d ? null : CarPhoto.load(this);
+        if (spin3d) {
+            place(card, carSpin(cardTap), px0, cy + 4, pw, ch - 8);
+        } else if (photo != null) {
             boolean cut = false;
             try { cut = CarPhoto.hasTransparency(photo); } catch (Throwable ignored) { }
             View pv;
@@ -4865,6 +4982,7 @@ public class Main extends Activity {
         });
         card.setOnLongClickListener(new View.OnLongClickListener() { public boolean onLongClick(View v) { showPlayerDiag(); return true; } });
         card.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { openMusicApp(); } });
+        Rotary.proxy(playerArt, card);
         renderTrack();
     }
 
@@ -5225,6 +5343,7 @@ public class Main extends Activity {
         });
         card.setOnLongClickListener(new View.OnLongClickListener() { public boolean onLongClick(View v) { showPlayerDiag(); return true; } });
         card.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { openMusicApp(); } });
+        Rotary.proxy(playerArt, card);
         renderTrack();
     }
 
@@ -5275,9 +5394,12 @@ public class Main extends Activity {
             // carros sin GPS: la foto del vehículo (o su ícono) en lugar de la velocidad
             sv.setVisibility(View.GONE);
             g.setVisibility(View.GONE);
-            Bitmap photo = CarPhoto.load(this);
+            boolean spin3d = CarSpin.on(this, prefs);
+            Bitmap photo = spin3d ? null : CarPhoto.load(this);
             float pw = w - 2 * m + 8, ph = hh - 34 - 10;
-            if (photo != null) {
+            if (spin3d) {
+                place(card, carSpin(null), m - 4, 34, pw, ph);
+            } else if (photo != null) {
                 ImageView car = new ImageView(this);
                 boolean cut = false;
                 try { cut = CarPhoto.hasTransparency(photo); } catch (Throwable ignored) { }
@@ -5831,7 +5953,7 @@ public class Main extends Activity {
     static final String[] MUSIC_PKGS = {"com.spotify.music", "in.krosbits.musicolet", "com.google.android.apps.youtube.music",
         "com.maxrave.simpmusic", "com.maxmpz.audioplayer", "org.videolan.vlc", "deezer.android.app", "com.amazon.mp3",
         "com.apple.android.music", "com.soundcloud.android", "com.google.android.youtube", "com.aspiro.tidal", "com.zionhuang.music",
-        "it.vfsfitvnm.vimusic", "app.vitune.android", "com.kapp.youtube.final"};
+        "it.vfsfitvnm.vimusic", "app.vitune.android", "com.kapp.youtube.final", "com.aimp.player"};
     static final String[] NAV_PKGS = {"com.waze", "com.google.android.apps.maps", "com.google.android.apps.mapslite", "com.sygic.aura",
         "net.osmand", "net.osmand.plus", "app.organicmaps", "com.mapswithme.maps.pro", "com.here.app.maps", "ru.yandex.yandexnavi",
         "com.huawei.maps.app", "cz.seznam.mapy", "com.tomtom.gplay.navapp", "com.navitel", "com.magicearth.app"};
@@ -7295,7 +7417,17 @@ public class Main extends Activity {
             .setNegativeButton("Cerrar", null).show();
     }
 
+    private static final int REQ_DIAG_W = 85;
+    private boolean askedDiagWrite;
+
     private void runDiag() {
+        // Android 6–9: dozvola za memoriju, da StradaDiag bude u glavnoj memoriji; bez nje ide u folder aplikacije
+        if (SDK >= 23 && SDK <= 28 && !askedDiagWrite
+                && checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            askedDiagWrite = true;
+            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQ_DIAG_W);
+            return;
+        }
         toast("Exportando… puede tardar un minuto");
         new Thread(new Runnable() {
             public void run() {
@@ -7304,7 +7436,9 @@ public class Main extends Activity {
                     public void run() {
                         new TB(Main.this, dlg())
                             .setTitle("Diagnóstico listo")
-                            .setMessage("Se guardó en:\n" + r + "\n\nCopia la carpeta StradaDiag a una memoria USB y adjúntala en un «issue» del repositorio de StradaOS en GitHub.")
+                            .setMessage(r.contains("\nUSB: ")
+                                ? "Se guardó en:\n" + r + "\n\nLa carpeta StradaDiag ya está también en la memoria USB (Android/data). Adjúntala en un «issue» del repositorio de StradaOS en GitHub."
+                                : "Se guardó en:\n" + r + "\n\nCopia la carpeta StradaDiag a una memoria USB y adjúntala en un «issue» del repositorio de StradaOS en GitHub. Si conectas una memoria USB antes de exportar, se copia sola.")
                             .setPositiveButton("OK", null).show();
                     }
                 });
@@ -7592,15 +7726,31 @@ public class Main extends Activity {
 
     private void photoMenu() {
         final boolean has = CarPhoto.load(this) != null;
-        String[] opts = has ? new String[]{"Elegir otra foto", "Quitar la foto"} : new String[]{"Elegir foto"};
+        final boolean can3d = CarSpin.available(this), on3d = CarSpin.on(this, prefs);
+        final java.util.List<String> opts = new java.util.ArrayList<String>();
+        opts.add(has ? "Elegir otra foto" : "Elegir foto");
+        if (has) opts.add("Quitar la foto");
+        if (can3d) opts.add(on3d ? "Usar la foto en vez del auto 3D" : "Usar el auto 3D (W204)");
         new TB(this, dlg())
             .setTitle("Foto del vehículo")
-            .setItems(opts, new DialogInterface.OnClickListener() {
+            .setItems(opts.toArray(new String[0]), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface d, int w) {
-                    if (w == 0) pickPhoto();
-                    else { CarPhoto.delete(Main.this); rebuild(); }
+                    String o = opts.get(w);
+                    if (o.startsWith("Elegir")) pickPhoto();
+                    else if (o.equals("Quitar la foto")) { CarPhoto.delete(Main.this); rebuild(); }
+                    else { prefs.edit().putBoolean(CarSpin.P_ON, !on3d).apply(); rebuild(); }
                 }
             }).show();
+    }
+
+    /** Auto 3D (CarSpin) na kartici vozila: prevlačenje ga okreće, dodir kao na kartici, držanje otvara meni fotografije. */
+    private View carSpin(View.OnClickListener tap) {
+        CarSpin sp = new CarSpin(this, prefs);
+        if (tap != null) sp.setOnClickListener(tap);
+        sp.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) { photoMenu(); return true; }
+        });
+        return sp;
     }
 
     private void pickPhoto() {
@@ -7870,6 +8020,85 @@ public class Main extends Activity {
             BG = 0xFF15171C; CARD = 0xFF1E2128; INNER = 0xFF262A33; BTN = 0xFF2A2E37; DOCK = 0xFF0D0E11;
             TEXT = 0xFFF2F3F5; MUTED = 0xFF8B9099; SOFT = 0xFFC5C8CE; CIRCLE = 0xFF23262E; ICON = 0xFFFFFFFF;
         }
+        try { applyBrightness(); } catch (Throwable e) { Guard.log("Osvetljenost: " + e); }
+    }
+
+    // ── Osvetljenost ekrana za dan i noć (ideja iz LiteDash-a, Brightness.kt, GPL-3.0) ──
+    // Sa dozvolom „Menjanje sistemskih podešavanja" menja osvetljenost sistema i pri isključivanju vraća korisnikovu;
+    // bez nje važi samo dok se vidi StradaOS (osvetljenost prozora).
+    static final int[] BRIGHT_LV = {5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100};
+    private int brightApplied = -2;
+
+    private boolean canWriteSettings() {
+        if (SDK < 23) return true;
+        try { return android.provider.Settings.System.canWrite(this); } catch (Throwable e) { return false; }
+    }
+
+    /** Noć za osvetljenost: u Auto i Sistem isto što i tema; inače po satima ili suncu (bez merenja osvetljenosti). */
+    private boolean brightNight() {
+        String mode = prefs.getString("theme", "dark");
+        if ("system".equals(mode) || ("auto".equals(mode) && !prefs.getBoolean("auto_bright", false))) return !LIGHT;
+        return darkHours(false);
+    }
+
+    private void applyBrightness() {
+        if (prefs == null) return;
+        if (!prefs.getBoolean("dn_bright", false)) { if (brightApplied != -2 || prefs.contains("dn_bright_user")) restoreBrightness(); return; }
+        int pct = brightNight() ? prefs.getInt("dn_bright_night", 30) : prefs.getInt("dn_bright_day", 100);
+        if (pct == brightApplied) return;
+        brightApplied = pct;
+        final int v = Math.max(1, Math.round(pct * 255f / 100f));
+        if (canWriteSettings()) {
+            final Context app = getApplicationContext();
+            if (!prefs.contains("dn_bright_user")) {
+                int cur = -1;
+                try { cur = android.provider.Settings.System.getInt(getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS, -1); } catch (Throwable ignored) { }
+                if (cur >= 0) prefs.edit().putInt("dn_bright_user", cur).apply();
+            }
+            windowBrightness(-1f);
+            new Thread(new Runnable() { public void run() {
+                try {
+                    android.content.ContentResolver r = app.getContentResolver();
+                    android.provider.Settings.System.putInt(r, android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
+                        android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                    android.provider.Settings.System.putInt(r, android.provider.Settings.System.SCREEN_BRIGHTNESS, v);
+                } catch (Throwable e) { Guard.log("Osvetljenost sistema: " + e); }
+            }}).start();
+        } else {
+            windowBrightness(pct / 100f);
+        }
+    }
+
+    /** Isključeno: vraća osvetljenost koju je korisnik imao pre (ako je StradaOS menjao sistemsku). */
+    private void restoreBrightness() {
+        brightApplied = -2;
+        windowBrightness(-1f);
+        final int user = prefs.getInt("dn_bright_user", -1);
+        prefs.edit().remove("dn_bright_user").apply();
+        if (user < 0 || !canWriteSettings()) return;
+        final Context app = getApplicationContext();
+        new Thread(new Runnable() { public void run() {
+            try { android.provider.Settings.System.putInt(app.getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS, user); }
+            catch (Throwable ignored) { }
+        }}).start();
+    }
+
+    private void windowBrightness(float f) {
+        try {
+            android.view.WindowManager.LayoutParams lp = getWindow().getAttributes();
+            if (lp.screenBrightness == f) return;
+            lp.screenBrightness = f;
+            getWindow().setAttributes(lp);
+        } catch (Throwable ignored) { }
+    }
+
+    private void askWriteSettings() {
+        try {
+            startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS,
+                android.net.Uri.parse("package:" + getPackageName())));
+        } catch (Throwable e) {
+            toast("Esta pantalla no tiene ese ajuste: el brillo cambia solo mientras se ve StradaOS");
+        }
     }
 
     // ── Espera antes de cambiar de tema (Auto, Sistema y Luces) ──
@@ -7947,12 +8176,96 @@ public class Main extends Activity {
     private final android.database.ContentObserver lightsObs = new android.database.ContentObserver(new Handler(android.os.Looper.getMainLooper())) {
         @Override public void onChange(boolean selfChange) {
             try {
-                if (prefs == null || root == null || !"system".equals(prefs.getString("theme", "dark")) || !fytOn()) return;
+                if (prefs == null || root == null || !"system".equals(prefs.getString("theme", "dark"))) return;
+                if (!fytOn() && !Lights.learned(prefs)) return;
                 h.removeCallbacks(brightApply);
                 h.postDelayed(brightApply, 300);
             } catch (Throwable ignored) { }
         }
     };
+
+    /** Prati car_mode (FYT) i, ako su naučena, svetla kola iz sistemskih podešavanja (Lights). */
+    private void watchLights() {
+        try { getContentResolver().unregisterContentObserver(lightsObs); } catch (Throwable ignored) { }
+        try {
+            getContentResolver().registerContentObserver(android.provider.Settings.System.getUriFor(Fyt.CAR_MODE), false, lightsObs);
+        } catch (Throwable ignored) { }
+        android.net.Uri u = Lights.uri(prefs);
+        if (u != null) try { getContentResolver().registerContentObserver(u, false, lightsObs); } catch (Throwable ignored) { }
+    }
+
+    /** Svetla kola: naučena (bilo koji ekran) imaju prednost, pa FYT; 1 upaljena, 0 ugašena, -1 ne zna se. */
+    private int carLights() {
+        int l = Lights.state(this, prefs);
+        return l >= 0 ? l : fytLights();
+    }
+
+    /** „Nauči svetla kola": snimak podešavanja sa ugašenim, pa sa upaljenim svetlima; ono što se promenilo su farovi. */
+    private void learnLights() {
+        final String[] ask = {"Apaga las luces del carro y toca Siguiente", "Ahora enciende las luces (de posición o bajas) y toca Siguiente"};
+        final int[] step = {0};
+        final java.util.Map<String, String>[] off = new java.util.Map[1];
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        final TextView msg = tv(ask[0], 17, TEXT, true);
+        msg.setSingleLine(false);
+        msg.setEllipsize(null);
+        box.addView(msg);
+        final AlertDialog d = new TB(this, dlg()).setTitle("Aprender las luces del carro").setView(box)
+            .setPositiveButton("Siguiente", null).setNegativeButton("Cancelar", null).create();
+        d.setOnShowListener(new DialogInterface.OnShowListener() { public void onShow(DialogInterface di) {
+            final android.widget.Button next = d.getButton(AlertDialog.BUTTON_POSITIVE);
+            next.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
+                next.setEnabled(false);
+                msg.setText(I18n.t("Leyendo los ajustes de la pantalla…"));
+                final Context app = getApplicationContext();
+                new Thread(new Runnable() { public void run() {
+                    final java.util.Map<String, String> snap = Lights.snapshot(app);
+                    h.post(new Runnable() { public void run() {
+                        if (!d.isShowing()) return;
+                        next.setEnabled(true);
+                        if (step[0] == 0) {
+                            off[0] = snap;
+                            step[0] = 1;
+                            msg.setText(I18n.t(ask[1]));
+                            return;
+                        }
+                        d.dismiss();
+                        lightsResult(Lights.changed(off[0], snap));
+                    }});
+                }}).start();
+            }});
+        }});
+        d.show();
+    }
+
+    /** Rezultat učenja: jedno podešavanje koje zvuči kao svetla se čuva odmah; inače korisnik bira. */
+    private void lightsResult(final java.util.List<String[]> ch) {
+        if (ch.isEmpty()) {
+            new TB(this, dlg()).setTitle("No cambió ningún ajuste")
+                .setMessage("Esta pantalla no guarda las luces en sus ajustes. Para el tema por horario usa Apariencia → Tema → Auto.")
+                .setPositiveButton("Aceptar", null).show();
+            return;
+        }
+        if (Lights.soundsLikeLights(ch.get(0)[0]) && (ch.size() == 1 || !Lights.soundsLikeLights(ch.get(1)[0]))) {
+            lightsSaved(ch.get(0));
+            return;
+        }
+        int n = Math.min(8, ch.size());
+        final String[] opts = new String[n];
+        for (int i = 0; i < n; i++) opts[i] = ch.get(i)[0] + " = " + ch.get(i)[1];
+        new TB(this, dlg()).setTitle("¿Cuáles son las luces?").setItems(opts, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface di, int w) { lightsSaved(ch.get(w)); }
+        }).setNegativeButton("Cancelar", null).show();
+    }
+
+    private void lightsSaved(String[] kv) {
+        Lights.save(prefs, kv[0], kv[1]);
+        watchLights();
+        toast(I18n.t("Luces aprendidas:") + " " + kv[0]);
+        if ("system".equals(prefs.getString("theme", "dark"))) { boolean was = LIGHT; applyThemeNow(); if (was != LIGHT) { applyAccent(); rebuild(); } }
+        if (settingsView != null) showSettings(settingsCat);
+    }
 
     // ── Equipo: marca de la pantalla (Ajustes → Tu vehículo → Equipo) ──
 
@@ -8048,10 +8361,13 @@ public class Main extends Activity {
     }
 
     /** Modo automático: ¿estamos en el horario oscuro? (por defecto de 6 p. m. a 6 a. m., como siempre). */
-    private boolean darkHours() {
+    private boolean darkHours() { return darkHours(true); }
+
+    /** byBright = false: bez merenja osvetljenosti (za osvetljenost dan/noć, da ne prati samu sebe). */
+    private boolean darkHours(boolean byBright) {
         // #36 (RGalindo2004): pantallas que bajan el brillo al prender las luces → oscuro con poco brillo.
         // Si la pantalla no informa su brillo, siguen las horas fijas.
-        if (prefs.getBoolean("auto_bright", false)) {
+        if (byBright && prefs.getBoolean("auto_bright", false)) {
             int b = brightnessPct();
             if (b >= 0) {
                 int thr = prefs.getInt("bright_dark", 40);
@@ -8104,7 +8420,7 @@ public class Main extends Activity {
 
     /** Modo «Sistema»: sigue el modo oscuro de la pantalla (algunas lo activan al encender las luces del carro). */
     private boolean systemNight() {
-        int l = fytLights();   // FYT: las luces del carro (car_mode); las demás pantallas, el modo oscuro de Android
+        int l = carLights();   // svetla kola (naučena ili FYT car_mode); inače tamni režim Androida
         if (l >= 0) return l == 1;
         try {
             return (getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK)
@@ -8783,6 +9099,10 @@ public class Main extends Activity {
         LinearLayout f = section(body, "Foto");
         row(f, "Foto del vehículo", "Se usa tal cual; si quieres, le puedes quitar el fondo", CarPhoto.load(this) != null ? "Configurada" : "Sin foto",
             new Runnable() { public void run() { photoMenu(); } });
+        if (CarSpin.available(this))
+            toggle(f, "Auto 3D en la tarjeta", "En vez de la foto: un W204 que giras con el dedo", prefs.getBoolean(CarSpin.P_ON, false), new IntCb() { public void on(int i) {
+                prefs.edit().putBoolean(CarSpin.P_ON, i == 1).apply(); rebuild(); showSettings(settingsCat);
+            }});
         LinearLayout un = section(body, "Unidades");
         String su = prefs.getString("speed_unit", "auto");
         segmented(un, "Velocidad", "Automático: mph en EE. UU. y Reino Unido", new String[]{"Auto", "km/h", "mph"}, "kmh".equals(su) ? 1 : "mph".equals(su) ? 2 : 0,
@@ -8913,13 +9233,28 @@ public class Main extends Activity {
         String t = prefs.getString("theme", "dark");
         final String[] themes = {"dark", "light", "auto", "system"};
         final boolean fy = fytOn();
-        segmented(c, "Modo", fy ? "Auto: por horario. Sistema: sigue las luces del carro (pantalla FYT)"
+        segmented(c, "Modo", fy || Lights.learned(prefs) ? "Auto: por horario. Sistema: sigue las luces del carro"
                 : "Auto: por horario. Sistema: sigue el modo oscuro de la pantalla (algunas lo cambian al encender las luces)",
             new String[]{"Oscuro", "Claro", "Auto", "Sistema"},
             Math.max(0, java.util.Arrays.asList(themes).indexOf(t)), new IntCb() { public void on(int i) {
                 prefs.edit().putString("theme", themes[i]).apply();
                 applyThemeNow(); applyAccent(); rebuild(); showSettings(settingsCat);
             }});
+        if ("system".equals(t)) {
+            // svetla kola učenjem (Lights): za ekrane koji nisu FYT, npr. wwc2
+            final boolean lo = Lights.learned(prefs);
+            int l = carLights();
+            row(c, "Aprender las luces del carro", "StradaOS compara los ajustes de la pantalla con las luces apagadas y encendidas para seguir tus faros",
+                lo ? I18n.t("Aprendidas ✓") : I18n.t("No aprendidas"), new Runnable() { public void run() { learnLights(); } });
+            if (lo || fy) row(c, "Luces del carro", lo ? prefs.getString(Lights.P_KEY, "") : null,
+                l < 0 ? I18n.t("Sin datos") : I18n.t(l == 1 ? "Encendidas" : "Apagadas"), new Runnable() { public void run() { showSettings(settingsCat); } });
+            if (lo) row(c, "Olvidar las luces", "Vuelve al modo oscuro de la pantalla", null, new Runnable() { public void run() {
+                Lights.forget(prefs);
+                watchLights();
+                boolean was = LIGHT; applyThemeNow(); if (was != LIGHT) { applyAccent(); rebuild(); }
+                showSettings(settingsCat);
+            }});
+        }
         if ("auto".equals(t)) {
             final boolean sunOn = prefs.getBoolean("auto_sun", false);
             final boolean brOn = prefs.getBoolean("auto_bright", false);
@@ -8985,6 +9320,32 @@ public class Main extends Activity {
                     prefs.edit().putInt("theme_delay_light", THEME_DELAYS[i]).apply();
                     showSettings(settingsCat);
                 }});
+        }
+        // osvetljenost ekrana za dan i noć (podrazumevano isključeno)
+        LinearLayout bs = section(body, "Brillo de día y de noche");
+        final boolean dnOn = prefs.getBoolean("dn_bright", false);
+        toggle(bs, "Cambiar el brillo de la pantalla", "De noche baja el brillo solo. Sigue el tema (Auto o Sistema) o, si no, el horario",
+            dnOn, new IntCb() { public void on(int i) {
+                prefs.edit().putBoolean("dn_bright", i == 1).apply();
+                if (i == 1) brightApplied = -1;
+                applyBrightness();
+                showSettings(settingsCat);
+            }});
+        if (dnOn) {
+            String[] bl = new String[BRIGHT_LV.length];
+            int curD = prefs.getInt("dn_bright_day", 100), curN = prefs.getInt("dn_bright_night", 30), sd = BRIGHT_LV.length - 1, sn = 5;
+            for (int i = 0; i < BRIGHT_LV.length; i++) { bl[i] = BRIGHT_LV[i] + " %"; if (BRIGHT_LV[i] == curD) sd = i; if (BRIGHT_LV[i] == curN) sn = i; }
+            choice(bs, "Brillo de día", null, bl, sd, new IntCb() { public void on(int i) {
+                prefs.edit().putInt("dn_bright_day", BRIGHT_LV[i]).apply(); brightApplied = -1; applyBrightness(); showSettings(settingsCat);
+            }});
+            choice(bs, "Brillo de noche", null, bl, sn, new IntCb() { public void on(int i) {
+                prefs.edit().putInt("dn_bright_night", BRIGHT_LV[i]).apply(); brightApplied = -1; applyBrightness(); showSettings(settingsCat);
+            }});
+            row(bs, "Ahora", null, I18n.t(brightNight() ? "Noche" : "Día"), null);
+            if (!canWriteSettings()) row(bs, "Permitir cambiar el brillo del sistema",
+                "Sin este permiso el brillo cambia solo mientras se ve StradaOS", I18n.t("Sin permiso"), new Runnable() { public void run() { askWriteSettings(); } });
+            if ("auto".equals(t) && prefs.getBoolean("auto_bright", false))
+                row(bs, "El tema sigue el brillo de la pantalla", "Con esta opción el día y la noche salen del horario fijo o del sol", "", null);
         }
         LinearLayout a = section(body, "Color de acento");
         LinearLayout r = rowBase(a, "Color", "Botones, anillo del reproductor, ruta y etiquetas");
@@ -9683,6 +10044,17 @@ public class Main extends Activity {
             if (i == 1) { h.removeCallbacks(autoBackup); h.postDelayed(autoBackup, 500); }
             showSettings(settingsCat);
         }});
+        // točkić u kolima (W204 sa COMAND-om): nauči njegove tastere da se početni ekran obilazi bez dodira
+        LinearLayout kn = section(body, "Perilla y teclas del carro");
+        row(kn, "Aprender la perilla", "Gira y presiona la perilla o las flechas del volante: así eliges cada botón del inicio sin tocar la pantalla",
+            Rotary.learned() ? "Aprendida ✓" : "Sin aprender", new Runnable() { public void run() { learnKnob(); } });
+        if (Rotary.learned()) {
+            row(kn, "Olvidar la perilla", "Las flechas vuelven a moverse como siempre", null, new Runnable() { public void run() {
+                prefs.edit().remove(Rotary.P_NEXT).remove(Rotary.P_PREV).remove(Rotary.P_OK).apply();
+                Rotary.load(prefs);
+                showSettings(settingsCat);
+            }});
+        }
         LinearLayout hm = section(body, "Al encender");
         final boolean def = isDefaultHome();
         row(hm, "Launcher predeterminado", "La que aparece al encender y al tocar Inicio", def ? "StradaOS ✓" : "Otra · toca para cambiar", new Runnable() { public void run() {
@@ -9691,6 +10063,15 @@ public class Main extends Activity {
         toggle(hm, "Abrir StradaOS al encender", "Para pantallas que siempre arrancan en su menú de fábrica (Android 4 a 9)", prefs.getBoolean("boot_open", false), new IntCb() { public void on(int i) {
             prefs.edit().putBoolean("boot_open", i == 1).apply(); showSettings(settingsCat);
         }});
+        // poslednji signal paljenja koji je stigao (BootReceiver), da se vidi šta ekran šalje
+        String bootAct = prefs.getString(BootReceiver.P_ACTION, "");
+        if (bootAct.length() > 0) {
+            String sh = bootAct.substring(bootAct.lastIndexOf('.') + 1);
+            long ago = Math.max(0, (System.currentTimeMillis() - prefs.getLong(BootReceiver.P_AT, 0)) / 60000);
+            String opened = !prefs.getBoolean("boot_open", false) ? "" : !prefs.contains(BootReceiver.P_OK) ? ""
+                : " · " + I18n.t(prefs.getBoolean(BootReceiver.P_OK, false) ? "se abrió StradaOS" : "no se pudo abrir");
+            row(hm, "Último encendido", I18n.t("Señal " + sh + " hace " + ago + " min") + opened, null, null);
+        }
         // 2.21 (rvilonen-spec, #15): abrir una app al encender (la radio, para que empiece a sonar) y volver al inicio
         String bootApp = prefs.getString("boot_app", "");
         row(hm, "Abrir una app al encender", "StradaOS la abre un momento al arrancar (por ejemplo la radio, para que empiece a sonar) y vuelve al inicio",
@@ -9703,6 +10084,17 @@ public class Main extends Activity {
                     showSettings(settingsCat);
                 }});
             }});
+        if (SDK >= 21) {
+            String mp = prefs.getString("music_app", null);
+            ComponentName mcn = mp != null ? ComponentName.unflattenFromString(mp) : null;
+            String mpkg = mcn != null ? mcn.getPackageName() : firstInstalled(MUSIC_PKGS);
+            toggle(hm, "Seguir con la música al encender", mpkg != null
+                    ? I18n.t("Le da ▶ a " + labelOf(mpkg) + " sin abrirla. No con CarPlay o Android Auto conectado")
+                    : "Le da ▶ a la última app de música. No con CarPlay o Android Auto conectado",
+                prefs.getBoolean("boot_music", false), new IntCb() { public void on(int i) {
+                    prefs.edit().putBoolean("boot_music", i == 1).apply();
+                }});
+        }
         // Salidas (issue #9): una pantalla Android 11 quedó atrapada en StradaOS tras elegirlo como launcher desde su
         // modo fábrica (toda app, incluso la ventana de desinstalar, se abría y volvía a StradaOS).
         LinearLayout out = section(body, "Salir de StradaOS");
@@ -9724,7 +10116,7 @@ public class Main extends Activity {
         LinearLayout k = section(body, "Compatibilidad");
         row(k, "Qué funciona en esta pantalla", "Cada función, desde qué Android sirve y su estado aquí", null, new Runnable() { public void run() { showCompat(); } });
         LinearLayout d = section(body, "Soporte");
-        row(d, "Exportar diagnóstico", "Guarda información de las apps de audio en la memoria interna", null, new Runnable() { public void run() { runDiag(); } });
+        row(d, "Exportar diagnóstico", "Guarda información de las apps de audio en la memoria interna y en la USB si está conectada", null, new Runnable() { public void run() { runDiag(); } });
     }
 
     // ───────────────────────── copia de seguridad (2.21) ─────────────────────────
@@ -9954,6 +10346,7 @@ public class Main extends Activity {
         bootAppDone = true;
         if (SystemClock.elapsedRealtime() > 4 * 60000L) return;
         runBootApp(2000);
+        bootMusic(6000);
     }
 
     /**
@@ -9964,10 +10357,44 @@ public class Main extends Activity {
     private final BroadcastReceiver screenReceiver = new BroadcastReceiver() {
         public void onReceive(Context c, Intent i) {
             if (Intent.ACTION_SCREEN_OFF.equals(i.getAction())) { screenOffAt = SystemClock.elapsedRealtime(); return; }
-            if (screenOffAt > 0 && SystemClock.elapsedRealtime() - screenOffAt > 5 * 60000L && hasWindowFocus()) runBootApp(1500);
+            if (screenOffAt > 0 && SystemClock.elapsedRealtime() - screenOffAt > 5 * 60000L) {
+                if (hasWindowFocus()) runBootApp(1500);
+                bootMusic(3000);
+            }
             screenOffAt = 0;
         }
     };
+
+    /**
+     * „Nastavi muziku pri paljenju" (ideja iz Dashphonic-a): pošalje ▶ aplikaciji za muziku (izabranoj ili prvoj
+     * poznatoj, npr. AIMP), bez otvaranja. Ako posle 3 s i dalje ništa ne svira, ▶ ide preko Androida, koji ga daje
+     * poslednjoj aplikaciji koja je svirala. Ne radi ništa ako muzika već svira ili su povezani CarPlay / Android Auto
+     * (tada muzika ide sa telefona).
+     */
+    private void bootMusic(long delay) {
+        if (SDK < 21 || !prefs.getBoolean("boot_music", false) || !prefs.getBoolean("setup_done", false)) return;
+        h.postDelayed(new Runnable() { public void run() {
+            final AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+            if (am.isMusicActive() || projectionActive()) return;
+            String saved = prefs.getString("music_app", null);
+            ComponentName cn = saved != null ? ComponentName.unflattenFromString(saved) : null;
+            String pkg = cn != null ? cn.getPackageName() : firstInstalled(MUSIC_PKGS);
+            if (pkg != null) {
+                long t = SystemClock.uptimeMillis();
+                for (int a : new int[]{KeyEvent.ACTION_DOWN, KeyEvent.ACTION_UP}) {
+                    Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
+                    i.setPackage(pkg);
+                    i.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(t, t, a, KeyEvent.KEYCODE_MEDIA_PLAY, 0));
+                    try { sendBroadcast(i); } catch (Throwable ignored) { }
+                }
+            }
+            h.postDelayed(new Runnable() { public void run() {
+                if (am.isMusicActive() || projectionActive()) return;
+                sendMediaKey(KeyEvent.KEYCODE_MEDIA_PLAY);
+                h.postDelayed(new Runnable() { public void run() { updatePlayIcon(); } }, 800);
+            }}, pkg != null ? 3000 : 0);
+        }}, delay);
+    }
 
     private void runBootApp(long delay) {
         final String comp = prefs.getString("boot_app", "");
@@ -10114,6 +10541,8 @@ public class Main extends Activity {
         row(l, "Android Auto", "Open Headunit (GPL-3.0) · Android Auto es marca de Google", null, null);
         row(l, "Códigos QR", "QR Code generator library · Project Nayuki (MIT)", null, null);
         row(l, "Íconos", "Material Symbols (Apache 2.0)", null, null);
+        if (CarSpin.available(this))
+            row(l, "Auto 3D", "«2008 Mercedes-Benz C63 AMG» de 007 (sketchfab.com/tangwang920) · CC BY 4.0", null, null);
         row(l, "Certificados raíz", "Mozilla CA (certifi, MPL-2.0)", null, null);
     }
 

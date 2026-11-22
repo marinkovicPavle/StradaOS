@@ -352,7 +352,7 @@ public class Nav {
 
     private static List<Place> searchNominatim(Context c, String q) throws Exception {
         String url = "https://nominatim.openstreetmap.org/search?format=json&limit=6&addressdetails=1&q="
-                + URLEncoder.encode(q, "UTF-8") + "&accept-language=" + URLEncoder.encode(I18n.lang, "UTF-8");
+                + URLEncoder.encode(q, "UTF-8") + "&accept-language=" + URLEncoder.encode(I18n.webLang(), "UTF-8");
         String raw = new String(navGet(c, url, 10000), "UTF-8");
         JSONArray arr = new JSONArray(raw);
         List<Place> out = new ArrayList<Place>();
@@ -2367,7 +2367,7 @@ public class Nav {
                                     try {
                                         int res = tts.setLanguage(I18n.loc);
                                         if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
-                                            tts.setLanguage(new Locale(I18n.lang));
+                                            tts.setLanguage(new Locale(I18n.loc.getLanguage()));
                                         }
                                         tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                                             public void onStart(String utteranceId) { }

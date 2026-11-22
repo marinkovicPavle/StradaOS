@@ -29,6 +29,11 @@ public class Diag {
     public static String export(Context c) {
         File out = new File(Environment.getExternalStorageDirectory(), "StradaDiag");
         out.mkdirs();
+        // bez dozvole za memoriju (Android 6+ je traži posebno): u folder aplikacije, koji je ne traži (Android 4.4+)
+        if (!out.canWrite()) {
+            File app = c.getExternalFilesDir(null);
+            if (app != null) { out = new File(app, "StradaDiag"); out.mkdirs(); }
+        }
         PackageManager pm = c.getPackageManager();
         int copied = 0;
         long bytes = 0;
@@ -93,7 +98,31 @@ public class Diag {
         } finally {
             if (bw != null) bw.close();
         }
-        return out.getAbsolutePath() + "  (" + copied + " apps, " + (bytes / 1024 / 1024) + " MB)";
+        String usb = toUsb(c, out);
+        return out.getAbsolutePath() + "  (" + copied + " apps, " + (bytes / 1024 / 1024) + " MB)" + (usb == null ? "" : "\nUSB: " + usb);
+    }
+
+    /**
+     * Kopija na USB ili SD karticu, ako je utaknuta: ekrani bez adb-a nemaju drugi put da se fajlovi iznesu.
+     * Android 4.4+ dozvoljava aplikaciji da piše samo u svoj folder na USB-u (Android/data/<paket>/files), bez dozvole.
+     */
+    private static String toUsb(Context c, File from) {
+        if (Build.VERSION.SDK_INT < 19) return null;
+        StringBuilder where = new StringBuilder();
+        try {
+            File[] dirs = c.getExternalFilesDirs(null);
+            File[] files = from.listFiles();
+            if (dirs == null || files == null) return null;
+            for (int i = 1; i < dirs.length; i++) {   // [0] je unutrašnja memorija
+                if (dirs[i] == null) continue;
+                File d = new File(dirs[i], "StradaDiag");
+                d.mkdirs();
+                long n = 0;
+                for (File f : files) if (f.isFile()) n += copy(f, new File(d, f.getName()));
+                if (n > 0) where.append(where.length() > 0 ? "\n" : "").append(d.getAbsolutePath());
+            }
+        } catch (Throwable ignored) { }
+        return where.length() > 0 ? where.toString() : null;
     }
 
     private static long copy(File a, File b) {

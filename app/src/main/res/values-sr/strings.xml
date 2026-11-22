@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="acc_desc">Omogućava StradaOS-u da prikaže omot i naziv pesme iz Android Auto-a tako što čita notifikaciju Open Headunit-a. Ništa drugo ne čita.</string>
+    <string name="acc_label">Omot iz Android Auto-a</string>
+    <string name="obd_label">Vozilo</string>
+</resources>

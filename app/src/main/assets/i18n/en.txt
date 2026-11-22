@@ -1845,3 +1845,64 @@ leída: «{}» — {} · {}/{} s · {}	read: «{}» — {} · {}/{} s · {}
 sonando	playing
 en pausa	paused
 estado ?	state ?
+# točkić u kolima (Rotary)
+Perilla y teclas del carro	Car knob and keys
+Aprender la perilla	Learn the knob
+Gira y presiona la perilla o las flechas del volante: así eliges cada botón del inicio sin tocar la pantalla	Turn and press the car's knob or the steering wheel arrows to pick each home button without touching the screen
+Aprendida ✓	Learned ✓
+Sin aprender	Not learned
+Olvidar la perilla	Forget the knob
+Las flechas vuelven a moverse como siempre	The arrow keys move as usual again
+Gira la perilla un paso a la derecha	Turn the knob one step to the right
+Ahora gírala un paso a la izquierda	Now turn it one step to the left
+Ahora presiónala (aceptar)	Now press it (OK)
+Esperando una tecla…	Waiting for a key…
+Omitir este paso	Skip this step
+Listo: gira la perilla para elegir y presiónala para abrir	Done: turn the knob to choose and press it to open
+No se aprendió ninguna tecla	No key was learned
+Llegó:	Received:
+Es la misma tecla del paso anterior: prueba al otro lado	That's the same key as the previous step: try the other direction
+# 2.32+: luces aprendidas, brillo de día y de noche, señales de encendido (ideas de LiteDash)
+Apaga las luces del carro y toca Siguiente	Turn off the car lights and tap Next
+Ahora enciende las luces (de posición o bajas) y toca Siguiente	Now turn on the lights (parking or low beams) and tap Next
+Leyendo los ajustes de la pantalla…	Reading the screen's settings…
+Aprender las luces del carro	Learn the car lights
+No cambió ningún ajuste	No setting changed
+Esta pantalla no guarda las luces en sus ajustes. Para el tema por horario usa Apariencia → Tema → Auto.	This screen doesn't store the lights in its settings. For a schedule-based theme use Appearance → Theme → Auto.
+¿Cuáles son las luces?	Which one is the lights?
+Luces aprendidas:	Lights learned:
+Auto: por horario. Sistema: sigue las luces del carro	Auto: by schedule. System: follows the car lights
+StradaOS compara los ajustes de la pantalla con las luces apagadas y encendidas para seguir tus faros	StradaOS compares the screen's settings with the lights off and on to follow your headlights
+Aprendidas ✓	Learned ✓
+Olvidar las luces	Forget the lights
+Vuelve al modo oscuro de la pantalla	Goes back to the screen's dark mode
+Esta pantalla no tiene ese ajuste: el brillo cambia solo mientras se ve StradaOS	This screen doesn't have that setting: the brightness changes only while StradaOS is showing
+Brillo de día y de noche	Day and night brightness
+Cambiar el brillo de la pantalla	Change the screen brightness
+De noche baja el brillo solo. Sigue el tema (Auto o Sistema) o, si no, el horario	Lowers the brightness at night by itself. Follows the theme (Auto or System) or, otherwise, the schedule
+Brillo de día	Day brightness
+Brillo de noche	Night brightness
+Noche	Night
+Día	Day
+Permitir cambiar el brillo del sistema	Allow changing the system brightness
+Sin este permiso el brillo cambia solo mientras se ve StradaOS	Without this permission the brightness changes only while StradaOS is showing
+El tema sigue el brillo de la pantalla	The theme follows the screen brightness
+Con esta opción el día y la noche salen del horario fijo o del sol	With this option, day and night come from the fixed hours or the sun
+Último encendido	Last startup
+Señal {} hace {} min	Signal {} {} min ago
+se abrió StradaOS	StradaOS opened
+no se pudo abrir	couldn't open
+No aprendidas	Not learned
+# auto 3D en la tarjeta del vehículo
+Usar la foto en vez del auto 3D	Use the photo instead of the 3D car
+Usar el auto 3D (W204)	Use the 3D car (W204)
+Auto 3D en la tarjeta	3D car on the card
+En vez de la foto: un W204 que giras con el dedo	Instead of the photo: a W204 you spin with your finger
+Auto 3D	3D car
+«2008 Mercedes-Benz C63 AMG» de 007 (sketchfab.com/tangwang920) · CC BY 4.0	“2008 Mercedes-Benz C63 AMG” by 007 (sketchfab.com/tangwang920) · CC BY 4.0
+Guarda información de las apps de audio en la memoria interna y en la USB si está conectada	Saves info about the audio apps to internal storage, and to the USB stick if one is plugged in
+Se guardó en:\n{}\n\nLa carpeta StradaDiag ya está también en la memoria USB (Android/data). Adjúntala en un «issue» del repositorio de StradaOS en GitHub.	Saved to:\n{}\n\nThe StradaDiag folder is also on the USB stick (Android/data). Attach it to an issue in the StradaOS GitHub repository.
+Se guardó en:\n{}\n\nCopia la carpeta StradaDiag a una memoria USB y adjúntala en un «issue» del repositorio de StradaOS en GitHub. Si conectas una memoria USB antes de exportar, se copia sola.	Saved to:\n{}\n\nCopy the StradaDiag folder to a USB stick and attach it to an issue in the StradaOS GitHub repository. If you plug in a USB stick before exporting, it is copied there automatically.
+Seguir con la música al encender	Resume music at startup
+Le da ▶ a {} sin abrirla. No con CarPlay o Android Auto conectado	Presses ▶ in {} without opening it. Not while CarPlay or Android Auto is connected
+Le da ▶ a la última app de música. No con CarPlay o Android Auto conectado	Presses ▶ in the last music app. Not while CarPlay or Android Auto is connected
